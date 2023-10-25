@@ -9,7 +9,6 @@ void Schedule::readClassesData(){
     ifstream file("classes.csv");
 
     string line;
-    string word;
 
     vector<string> aux;
 
