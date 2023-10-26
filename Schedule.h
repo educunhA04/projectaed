@@ -27,9 +27,9 @@ class Schedule {
         void setStudents(const set<Student> & newStudents){
             this->students = newStudents;
         }
-
-        void readClassesData();
-        void readStudentsData();
+        void setClasses(const vector<Classes>& newClasses){
+            this -> ucInSchedule = newClasses;
+        }
 };
 
 #endif //PROJETO_SCHEDULE_H

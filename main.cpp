@@ -6,15 +6,14 @@
 
 using namespace std;
 
-
 int main(){
     // Get Data;
-    Schedule sched;
-    sched.readClassesData();
-    sched.readStudentsData();
+    Schedule allData;
+    allData.setClasses(readClassesData()); // classcode, uccode, weekday, starthour, duration, type
+    allData.setStudents(readStudentsData()); // studentname, upcode, classcode, uccode
 
     // Initialize Menu and Move Data inside the menu;
     Menu menu;
-    menu.setSched(sched);
+    menu.setSched(allData);
     menu.start();
 }
