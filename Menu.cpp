@@ -3,6 +3,12 @@
 #include <string>
 using namespace std;
 
+string toLowerSTR (string str){
+    for(auto& elem : str){
+        elem = tolower(elem);}
+    return str;
+}
+
 void Menu:: showClassSchedule_4(){
     string inp;
     cout << "Insert a valid Class Code: \n";
@@ -10,7 +16,7 @@ void Menu:: showClassSchedule_4(){
     bool found = false;
 
     for(auto element : sched.getUCS()){
-        if (inp == element.getClassCode()) found = true;
+        if (toLowerSTR(inp) == toLowerSTR(element.getClassCode())) found = true;
     }
     if(found){
         cout << "Showing Schedule for class " << inp << "\n";
