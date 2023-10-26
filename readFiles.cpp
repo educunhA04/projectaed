@@ -2,22 +2,22 @@
 #include <fstream>
 #include <sstream>
 #include "Student.h"
-#include "Classes.h"
 #include "TimeType.h"
 #include "Schedule.h"
 
 using namespace std;
 
 void Schedule::readClassesData(){
+    // leitura do ficheiro classes.csv
     ifstream file("classes.csv");
 
     string line;
     string word;
 
     vector<string> aux;
-
+    vector<Classes> ucInSch;
     if (file.is_open()){
-
+        cout << "top";
         while (getline(file, line)){
             aux.clear();
             istringstream  iss(line);
@@ -34,7 +34,14 @@ void Schedule::readClassesData(){
             string duration = aux[4];
             string type = aux[5];
 
+            //horário de uma aluno
             TimeType time = TimeType(weekday, startHour, duration, type);
+
+            //criar classes
+            Classes nclass = Classes(classCode, ucCode, time);
+
+            //adicionar nclass a um vetor de classes
+            ucInSch.push_back(nclass);
         }
     }
 
@@ -43,6 +50,7 @@ void Schedule::readClassesData(){
 }
 
 void Schedule::readStudentsData(){
+    // leitura do ficheiro students_classes.csv
     ifstream file("students_classes.csv");
 
     string line;

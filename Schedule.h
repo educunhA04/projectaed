@@ -28,9 +28,10 @@ class Schedule {
             this->students = newStudents;
         }
 
-    void readClassesData();
+        void readClassesData();
+        void readStudentsData();
 
-    void readStudentsData();
+
 };
 
 #endif //PROJETO_SCHEDULE_H
