@@ -36,13 +36,13 @@ void Schedule::readClassesData(){
             string duration = aux[4];
             string type = aux[5];
 
-            //horário de um aluno
+            // data hora e tipo de uma aula //
             TimeType time = TimeType(weekday, startHour, duration, type);
 
-            //criar classes
+            // criar aula //
             Classes nclass = Classes(classCode, ucCode, time);
 
-            //adicionar nclass a um vetor de classes
+            // adicionar nclass a um vetor de classes (adicionar aulas ao vetor com as aulas) //
             ucInSch.push_back(nclass);
         }
     }
