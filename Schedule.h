@@ -30,8 +30,6 @@ class Schedule {
 
         void readClassesData();
         void readStudentsData();
-
-
 };
 
 #endif //PROJETO_SCHEDULE_H

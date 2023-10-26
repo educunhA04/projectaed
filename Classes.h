@@ -14,9 +14,7 @@ class Classes{
         TimeType timetable;
 
     public:
-        Classes(){
-
-        }
+        Classes(){}
         Classes(const string& cCode, const string& uCode, const TimeType& newTimetable) {
             this->classCode = cCode;
             this->ucCode = uCode;

@@ -23,7 +23,7 @@ void Menu::checkOccupationPer_5() {
     else if (inp == "2"){checkOccupationPerClass_2();}
     else if (inp == "3"){checkOccupationPerUC_3();}
     else if (inp == "4" || inp == "B" || inp == "b"){accessInfo_1();}
-    else {cout << "|-- Invalid Output -----------------------|\n";}
+    else {cout << "|-- Invalid Input ------------------------|\n";}
 }
 
 void Menu::showStudentsPer_2() {
@@ -45,7 +45,7 @@ void Menu::showStudentsPer_2() {
     else if (inp == "2"){showStudentsPerClass_2();}
     else if (inp == "3"){showStudentsPerUC_3();}
     else if (inp == "4" || inp == "B" || inp == "b"){accessInfo_1();}
-    else {cout << "|-- Invalid Output -----------------------|\n";}
+    else {cout << "|-- Invalid Input ------------------------|\n";}
 }
 
 void Menu::requestChange_2(){
@@ -67,7 +67,7 @@ void Menu::requestChange_2(){
     else if (inp == "2"){removeStudent_2();}
     else if (inp == "3"){switchStudent_3();}
     else if (inp == "4" || inp == "B" || inp == "b"){start();}
-    else {cout << "|-- Invalid Output -----------------------|\n";}
+    else {cout << "|-- Invalid Input ------------------------|\n";}
 }
 
 void Menu::accessInfo_1() {
@@ -95,7 +95,7 @@ void Menu::accessInfo_1() {
     else if (inp == "5"){checkOccupationPer_5();}
     else if (inp == "6"){checkBiggestUc_6();}
     else if (inp == "7" || inp == "B" || inp == "b"){start();}
-    else {cout << "|-- Invalid Output -----------------------|\n";}
+    else {cout << "|-- Invalid Input ------------------------|\n";}
 }
 
 void Menu::start() {
@@ -122,7 +122,7 @@ void Menu::start() {
             isOpen = false;
         }
         else{
-            cout << "|-- Invalid Output -----------------------|\n";
+            cout << "|-- Invalid Input ------------------------|\n";
         }
     }
 }
