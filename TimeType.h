@@ -13,10 +13,10 @@ class TimeType {
     public:
         TimeType(){}
         TimeType(const string& newDay, const string& newStartHour, const string& newClassDuration, const string& newTypeOfClass){
-            this-> day = newDay;
-            this-> startHour = newStartHour;
-            this-> classDuration = newClassDuration;
-            this-> typeOfClass = newTypeOfClass;
+            this -> day = newDay;
+            this -> startHour = newStartHour;
+            this -> classDuration = newClassDuration;
+            this -> typeOfClass = newTypeOfClass;
         }
 
         string getDay() {return day;}
