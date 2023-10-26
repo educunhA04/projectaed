@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/gg2003/Desktop/AED 23-24/Projeto/projectaed/cmake-build-debug"
+			"value" : "/home/eduardocunha/Desktop/AEDProject/projectaed/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -543,7 +543,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/gg2003/Desktop/AED 23-24/Projeto/projectaed/cmake-build-debug/CMakeFiles/pkgRedirects"
+			"value" : "/home/eduardocunha/Desktop/AEDProject/projectaed/cmake-build-debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -603,7 +603,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/gg2003/Desktop/AED 23-24/Projeto/projectaed"
+			"value" : "/home/eduardocunha/Desktop/AEDProject/projectaed"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -1147,7 +1147,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/gg2003/Desktop/AED 23-24/Projeto/projectaed/cmake-build-debug"
+			"value" : "/home/eduardocunha/Desktop/AEDProject/projectaed/cmake-build-debug"
 		},
 		{
 			"name" : "untitled_IS_TOP_LEVEL",
@@ -1171,7 +1171,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/gg2003/Desktop/AED 23-24/Projeto/projectaed"
+			"value" : "/home/eduardocunha/Desktop/AEDProject/projectaed"
 		}
 	],
 	"kind" : "cache",

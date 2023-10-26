@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/gg2003/Desktop/AED 23-24/Projeto/projectaed/cmake-build-debug",
-		"source" : "/home/gg2003/Desktop/AED 23-24/Projeto/projectaed"
+		"build" : "/home/eduardocunha/Desktop/AEDProject/projectaed/cmake-build-debug",
+		"source" : "/home/eduardocunha/Desktop/AEDProject/projectaed"
 	},
 	"version" : 
 	{
