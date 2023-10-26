@@ -16,7 +16,7 @@ class Schedule {
 
     public:
         Schedule();
-        Schedule(const vector<Classes> newUcInShedule, const set<Student> newStudents){
+        Schedule(const vector<Classes>& newUcInShedule, const set<Student>& newStudents){
             this->ucInSchedule = newUcInShedule;
             this->students = newStudents;
         }
@@ -24,7 +24,7 @@ class Schedule {
         vector<Classes> getUCS() const {return ucInSchedule;}
         set<Student> getStudents() const {return students;}
 
-        void setStudents(const set<Student> & newStudents){
+        void setStudents(const set<Student>& newStudents){
             this->students = newStudents;
         }
         void setClasses(const vector<Classes>& newClasses){

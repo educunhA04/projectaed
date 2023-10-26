@@ -3,6 +3,58 @@
 #include <string>
 using namespace std;
 
+void Menu:: showClassSchedule_4(){
+    string inp;
+    cout << "Insert a valid Class Code: \n";
+    cin >> inp;
+    bool found = false;
+
+    for(auto element : sched.getUCS()){
+        if (inp == element.getClassCode()) found = true;
+    }
+    if(found){
+        cout << "Showing Schedule for class " << inp << "\n";
+        for(auto element2 : sched.getUCS()){
+            cout << "UCCode: " << element2.getUcCode() << " / "
+                 << "Day: " << element2.getTimetable().getDay() << " / "
+                 << "Type: " << element2.getTimetable().getTypeOfClass() << " / "
+                 << "StartHour: " << element2.getTimetable().getStartHour() << " / "
+                 << "Duration: " << element2.getTimetable().getClassDuration() << "\n";
+        }
+    }
+    else (!found){
+        cout << "Class not found.";
+    }
+    accessInfo_1();
+}
+
+void Menu::showStudentSchedule_1(){
+    string inp;
+    cout << "Insert a valid student Code: \n";
+    cin >> inp;
+    bool found = false;
+
+    for(auto element : sched.getStudents()){
+        if (element.getStudentCode() == inp){
+            found = true;
+            auto horario = element.getStudentSchedule();
+            cout << "Showing " << element.getName() << "'s Schedule";
+            for(auto aula : horario){
+                cout << "UCCode: " << aula.getUcCode() << " / "
+                     << "ClassCode: " << aula.getClassCode() << " / "
+                     << "Day: " << aula.getTimetable().getDay() << " / "
+                     << "Type: " << aula.getTimetable().getTypeOfClass() << " / "
+                     << "StartHour: " << aula.getTimetable().getStartHour() << " / "
+                     << "Duration: " << aula.getTimetable().getClassDuration() << "\n";
+            }
+        }
+    }
+    if (!found){
+        cout << "Student not found.";
+    }
+    accessInfo_1();
+}
+
 void Menu::checkOccupationPer_5() {
     cout << "|--[ Access Info ]------------------------|\n"
          << "|-----------------------------------------|\n"
@@ -107,7 +159,7 @@ void Menu::start() {
              << "|-----------------------------------------|\n"
              << "|-- 1: Access Info -----------------------|\n"
              << "|-- 2: Request a change ------------------|\n"
-             << "|-- Q: Quit ------------------------------|\n"
+             << "|-- C: Close -----------------------------|\n"
              << "|-----------------------------------------|\n";
 
         cout << endl << "Insert your desired option:";
@@ -116,7 +168,7 @@ void Menu::start() {
 
         if(inp == "1") accessInfo_1();
         else if(inp == "2") requestChange_2();
-        else if(inp == "3" || inp == "q" || inp == "Q"){
+        else if(inp == "3" || inp == "c" || inp == "C"){
             cout << "|-- The program will now close -----------|\n";
             isOpen = false;
         }

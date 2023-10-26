@@ -26,6 +26,7 @@ class Student{
 
         string getName(){return name;}
         string getStudentCode(){return studentCode;}
+        list<Classes> getStudentSchedule(){return lessons;}
 };
 
 #endif //PROJETO_STUDENT_H
