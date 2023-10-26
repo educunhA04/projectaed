@@ -22,7 +22,7 @@ void Menu:: showClassSchedule_4(){
                  << "Duration: " << element2.getTimetable().getClassDuration() << "\n";
         }
     }
-    else (!found){
+    else {
         cout << "Class not found.";
     }
     accessInfo_1();
