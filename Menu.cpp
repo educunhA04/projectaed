@@ -3,11 +3,10 @@
 #include <string>
 using namespace std;
 
-
 void Menu::checkOccupationPer_5() {
-    cout << "|--- Access Info -------------------------|\n"
+    cout << "|--[ Access Info ]------------------------|\n"
          << "|-----------------------------------------|\n"
-         << "|-- Check Occupation Per -----------------|\n"
+         << "|-[ Check Occupation Per ]----------------|\n"
          << "|-----------------------------------------|\n"
          << "|-- 1: Year ------------------------------|\n"
          << "|-- 2: Class -----------------------------|\n"
@@ -27,9 +26,9 @@ void Menu::checkOccupationPer_5() {
 }
 
 void Menu::showStudentsPer_2() {
-    cout << "|--- Access Info -------------------------|\n"
+    cout << "|--[ Access Info ]------------------------|\n"
          << "|-----------------------------------------|\n"
-         << "|-- Show Students Per --------------------|\n"
+         << "|-[ Show Students Per ]-------------------|\n"
          << "|-----------------------------------------|\n"
          << "|-- 1: Year ------------------------------|\n"
          << "|-- 2: Class -----------------------------|\n"
@@ -49,9 +48,9 @@ void Menu::showStudentsPer_2() {
 }
 
 void Menu::requestChange_2(){
-    cout << "|--- Request Change ----------------------|\n"
+    cout << "|--[ Request Change ]---------------------|\n"
          << "|-----------------------------------------|\n"
-         << "|-- What Change request do you have? -----|\n"
+         << "|-[ What Change request do you have? ]----|\n"
          << "|-----------------------------------------|\n"
          << "|-- 1: Add Student to a Class ------------|\n"
          << "|-- 2: Remove Student from a Class -------|\n"
@@ -71,9 +70,9 @@ void Menu::requestChange_2(){
 }
 
 void Menu::accessInfo_1() {
-    cout << "|--- Access Info -------------------------|\n"
+    cout << "|--[ Access Info ]------------------------|\n"
          << "|-----------------------------------------|\n"
-         << "|-- What Info do you wish to access? -----|\n"
+         << "|-[ What Info do you wish to access? ]----|\n"
          << "|-----------------------------------------|\n"
          << "|-- 1: A Student's Schedule --------------|\n"
          << "|-- 2: Student's per Year/UC/Class ------ |\n"
@@ -102,9 +101,9 @@ void Menu::start() {
     bool isOpen = true;
 
     while (isOpen){
-        cout << "|--- Menu --------------------------------|\n"
+        cout << "|--[ Menu ]-------------------------------|\n"
              << "|-----------------------------------------|\n"
-             << "|-- What action do you wish to perform? --|\n"
+             << "|-[ What action do you wish to perform? ]-|\n"
              << "|-----------------------------------------|\n"
              << "|-- 1: Access Info -----------------------|\n"
              << "|-- 2: Request a change ------------------|\n"
