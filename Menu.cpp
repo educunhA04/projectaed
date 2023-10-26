@@ -50,7 +50,7 @@ void Menu::showStudentSchedule_1(){
         }
     }
     if (!found){
-        cout << "Student not found.";
+        cout << "Class not found.";
     }
     accessInfo_1();
 }
