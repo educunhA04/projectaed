@@ -15,13 +15,14 @@ void Schedule::readClassesData(){
     string word;
 
     vector<string> aux;
-    vector<TimeType> t;
     vector<Classes> ucInSch;
+
     if (file.is_open()){
         cout << "top";
         while (getline(file, line)){
             aux.clear();
             istringstream  iss(line);
+
             while (iss >> word) {
                 if (word != ",") {
                     aux.push_back(word);
@@ -37,9 +38,9 @@ void Schedule::readClassesData(){
 
             //horário de um aluno
             TimeType time = TimeType(weekday, startHour, duration, type);
-            t.push_back(time);
+
             //criar classes
-            Classes nclass = Classes(classCode, ucCode, t);
+            Classes nclass = Classes(classCode, ucCode, time);
 
             //adicionar nclass a um vetor de classes
             ucInSch.push_back(nclass);

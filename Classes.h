@@ -16,9 +16,9 @@ class Classes{
     public:
         Classes(){}
         Classes(const string& cCode, const string& uCode, const TimeType& newTimetable) {
-            this->classCode = cCode;
-            this->ucCode = uCode;
-            this->timetable = newTimetable;
+            this -> classCode = cCode;
+            this -> ucCode = uCode;
+            this -> timetable = newTimetable;
         }
 
         string getClassCode() const {return classCode;}
