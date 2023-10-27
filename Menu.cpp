@@ -1,12 +1,72 @@
 #include "Menu.h"
 #include <iostream>
 #include <string>
+#include <set>
 using namespace std;
 
 string toLowerSTR (string str){
     for(auto& elem : str){
         elem = tolower(elem);}
     return str;
+}
+
+void Menu::checkOccupationPerClass_2() {
+    string inp;
+    cout << "Insert a valid Class code: \n";
+    cin >> inp;
+
+    int count = 0;
+    bool found = false;
+
+    for (auto element : sched.getStudents()){
+        bool foundstudent = false;
+        auto horario = element.getStudentSchedule();
+
+        while(!foundstudent){
+            for(auto aula : horario){
+                if (toLowerSTR(aula.getClassCode()) == toLowerSTR(inp)){
+                    count++;
+                    foundstudent = true;
+                    found = true;
+                }
+            }
+
+        }
+    }
+    if(!found){
+        cout << "Class not found.";
+    }
+    else{
+        cout << "The number of students with lessons in class " << inp << " is " << count << ".";
+    }
+}
+
+void Menu::checkOccupationPerUC_3() {
+    string inp;
+    cout << "Insert a valid UC Code: \n";
+    cin >> inp;
+
+    int count = 0;
+    bool found = false;
+
+    for (auto element: sched.getStudents()){
+        bool foundstudent = false;
+        auto horario = element.getStudentSchedule();
+
+        while (!foundstudent){
+            for(auto aula : horario){
+                if(toLowerSTR(inp) == toLowerSTR(aula.getUcCode())) {
+                    count++;
+                    found = true;
+                    foundstudent = true;
+                }
+            }
+        }
+    }
+    if(!found){cout << "UC not found.";}
+    else{
+        cout << "The number of students studying the UC " << inp << " is " << count << ".";
+    }
 }
 
 void Menu:: showClassSchedule_4(){
@@ -51,14 +111,35 @@ void Menu::showStudentSchedule_1(){
                      << "Day: " << aula.getTimetable().getDay() << " / "
                      << "Type: " << aula.getTimetable().getTypeOfClass() << " / "
                      << "StartHour: " << aula.getTimetable().getStartHour() << " / "
-                     << "Duration: " << aula.getTimetable().getClassDuration() << "\n";
+                     << "Duration: " << aula.getTimetable().getClassDuration() << "\n\n";
             }
         }
     }
     if (!found){
         cout << "Student not found.";
+
+        cout << "Schedule not found.";
     }
     accessInfo_1();
+}
+
+void Menu::showStudentsInAtLeastNUCs_3() {
+    cout << endl << "Insert the number of UCs:";
+    int input;
+    cin >> input;
+    int sum = 0;
+    set<string> a;
+    for (auto element : sched.getStudents()) {
+        auto horario = element.getStudentSchedule();
+
+        for (auto aula : horario) {
+            a.insert(aula.getUcCode());
+        }
+        if (a.size() >= input) {
+            cout << element.getStudentCode() << " " << element.getStudentCode() << endl;
+        }
+        sum = 0;
+    }
 }
 
 void Menu::checkOccupationPer_5() {
@@ -104,6 +185,8 @@ void Menu::showStudentsPer_2() {
     else if (inp == "4" || inp == "B" || inp == "b"){accessInfo_1();}
     else {cout << "|-- Invalid Input ------------------------|\n";}
 }
+
+
 
 void Menu::requestChange_2(){
     cout << "|--[ Request Change ]---------------------|\n"

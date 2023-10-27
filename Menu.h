@@ -25,20 +25,20 @@ class Menu{
 
         void showClassSchedule_4();
         void checkOccupationPer_5();
-        void checkBiggestUc_6();
+        void checkBiggestUc_6(); // TODO
 
         // 3rd Part -> requestChange //
-        void addStudent_1();
-        void removeStudent_2();
-        void switchStudent_3();
+        void addStudent_1(); // TODO
+        void removeStudent_2(); // TODO
+        void switchStudent_3(); // TODO
 
         // 4th Part -> accessInfo -> showStudentsPer
-        void showStudentsPerYear_1();
-        void showStudentsPerClass_2();
-        void showStudentsPerUC_3();
+        void showStudentsPerYear_1(); // TODO
+        void showStudentsPerClass_2(); // TODO
+        void showStudentsPerUC_3(); // TODO
 
         // 5th Part -> accessInfo -> checkOccupationPer
-        void checkOccupationPerYear_1();
+        void checkOccupationPerYear_1(); // TODO
         void checkOccupationPerClass_2();
         void checkOccupationPerUC_3();
 };

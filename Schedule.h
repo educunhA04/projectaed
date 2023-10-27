@@ -3,7 +3,6 @@
 
 #include <vector>
 #include <set>
-
 #include "Student.h"
 #include "Classes.h"
 
@@ -15,7 +14,8 @@ class Schedule {
         set<Student> students;
 
     public:
-        Schedule();
+        Schedule(){
+        }
         Schedule(const vector<Classes>& newUcInShedule, const set<Student>& newStudents){
             this->ucInSchedule = newUcInShedule;
             this->students = newStudents;
