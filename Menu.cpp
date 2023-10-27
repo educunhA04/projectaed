@@ -140,6 +140,27 @@ void Menu::showStudentsInAtLeastNUCs_3() {
     }
 }
 
+void Menu::checkBiggestUc_6() {
+    string t = data.getUCS()[0].getUcCode(); //primeira uc
+    string m; //biggest uc;
+    int count = 0;
+    int max = 0;
+    for (auto aula : data.getUCS()) {
+        if (aula.getUcCode() == t) {
+            count++;
+        }
+        else {
+            if (count > max) {
+                m = aula.getUcCode();
+                max = count;
+            }
+            count = 0;
+            t = aula.getUcCode();
+        }
+    }
+    cout << m << endl;
+}
+
 void Menu::checkOccupationPer_5() {
     cout << "|--[ Access Info ]------------------------|\n"
          << "|-----------------------------------------|\n"
