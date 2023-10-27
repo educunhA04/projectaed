@@ -27,7 +27,7 @@ class Menu{
 
         void showClassSchedule_4();
         void checkOccupationPer_5();
-        void checkBiggestUc_6(); // TODO
+        void checkBiggestUc_6();
 
         // 3rd Part -> requestChange //
         void addStudent_1(); // TODO

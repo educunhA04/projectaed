@@ -161,6 +161,32 @@ void Menu::checkBiggestUc_6() {
     cout << m << endl;
 }
 
+void Menu::addStudent_1() {
+
+} // TODO
+void Menu::removeStudent_2() {
+
+}; // TODO
+void Menu::switchStudent_3(){
+
+}; // TODO
+
+// 4th Part -> accessInfo -> showStudentsPer
+void Menu::showStudentsPerYear_1() {
+
+}; // TODO
+void Menu::showStudentsPerClass_2(){
+
+}; // TODO
+void Menu::showStudentsPerUC_3(){
+
+}; // TODO
+
+// 5th Part -> accessInfo -> checkOccupationPer
+void Menu::checkOccupationPerYear_1() {
+
+}; // TODO
+
 void Menu::checkOccupationPer_5() {
     cout << "|--[ Access Info ]------------------------|\n"
          << "|-----------------------------------------|\n"
