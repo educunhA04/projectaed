@@ -12,6 +12,6 @@ int main(){
 
     // Initialize Menu and Move Data inside the menu;
     Menu menu;
-    menu.setSched(allData);
+    menu.setData(allData);
     menu.start();
 }

@@ -18,7 +18,7 @@ void Menu::checkOccupationPerClass_2() {
     int count = 0;
     bool found = false;
 
-    for (auto element : sched.getStudents()){
+    for (auto element : data.getStudents()){
         bool foundstudent = false;
         auto horario = element.getStudentSchedule();
 
@@ -49,7 +49,7 @@ void Menu::checkOccupationPerUC_3() {
     int count = 0;
     bool found = false;
 
-    for (auto element: sched.getStudents()){
+    for (auto element: data.getStudents()){
         bool foundstudent = false;
         auto horario = element.getStudentSchedule();
 
@@ -75,12 +75,12 @@ void Menu:: showClassSchedule_4(){
     cin >> inp;
     bool found = false;
 
-    for(auto element : sched.getUCS()){
+    for(auto element : data.getUCS()){
         if (toLowerSTR(inp) == toLowerSTR(element.getClassCode())) found = true;
     }
     if(found){
         cout << "Showing Schedule for class " << inp << "\n";
-        for(auto element2 : sched.getUCS()){
+        for(auto element2 : data.getUCS()){
             cout << "UCCode: " << element2.getUcCode() << " / "
                  << "Day: " << element2.getTimetable().getDay() << " / "
                  << "Type: " << element2.getTimetable().getTypeOfClass() << " / "
@@ -100,7 +100,7 @@ void Menu::showStudentSchedule_1(){
     cin >> inp;
     bool found = false;
 
-    for(auto element : sched.getStudents()){
+    for(auto element : data.getStudents()){
         if (element.getStudentCode() == inp){
             found = true;
             auto horario = element.getStudentSchedule();
@@ -128,7 +128,7 @@ void Menu::showStudentsInAtLeastNUCs_3() {
     int input;
     cin >> input;
     set<string> a;
-    for (auto element : sched.getStudents()) {
+    for (auto element : data.getStudents()) {
         auto horario = element.getStudentSchedule();
 
         for (auto aula : horario) {

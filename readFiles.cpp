@@ -3,8 +3,7 @@
 #include <sstream>
 #include <set>
 #include <vector>
-#include "Student.h"
-#include "TimeType.h"
+#include "AllData.h"
 
 using namespace std;
 

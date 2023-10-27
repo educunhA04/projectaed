@@ -3,15 +3,17 @@
 
 #include "AllData.h"
 
+using namespace std;
+
 class Menu{
     private:
-        AllData sched;
+        AllData data;
 
     public:
         Menu();
         void start();
-        void setSched(const AllData& newSched){
-            this->sched = newSched;
+        void setData(const AllData& newData){
+            this->data = newData;
         }
 
         // 1st Part of the Menu //
