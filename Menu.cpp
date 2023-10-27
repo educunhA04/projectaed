@@ -1,6 +1,7 @@
 #include "Menu.h"
 #include <iostream>
 #include <string>
+#include <set>
 using namespace std;
 
 string toLowerSTR (string str){
@@ -66,12 +67,14 @@ void Menu::showStudentsInAtLeastNUCs_3() {
     int input;
     cin >> input;
     int sum = 0;
+    set<string> a;
     for (auto element : sched.getStudents()) {
         auto horario = element.getStudentSchedule();
+
         for (auto aula : horario) {
-            sum++;
+            a.insert(aula.getUcCode());
         }
-        if (sum >= input) {
+        if (a.size() >= input) {
             cout << element.getStudentCode() << " " << element.getStudentCode() << endl;
         }
         sum = 0;
