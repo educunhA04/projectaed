@@ -4,11 +4,14 @@
 #include <set>
 using namespace std;
 
+
 string toLowerSTR (string str){
     for(auto& elem : str){
         elem = tolower(elem);}
     return str;
 }
+
+Menu::Menu() : data(vector<Classes>(), set<Student>()) {} //contructor
 
 void Menu::checkOccupationPerClass_2() {
     string inp;

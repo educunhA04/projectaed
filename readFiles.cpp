@@ -4,10 +4,9 @@
 #include <set>
 #include <vector>
 #include "AllData.h"
+#include "readFiles.h"
 
 using namespace std;
-vector<Classes> readClassesData();
-set<Student> readStudentsData();
 
 vector<Classes> readClassesData(){ 
     // leitura do ficheiro classes.csv //
@@ -83,7 +82,7 @@ set<Student> readStudentsData(){
             }
 
             else {
-                ucclass.push_back(make_pair(aux[2], aux[3]));
+                ucclass.emplace_back(aux[2], aux[3]);
             }
         }
     }
