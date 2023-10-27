@@ -56,9 +56,28 @@ void Menu::showStudentSchedule_1(){
         }
     }
     if (!found){
-        cout << "Class not found.";
+        cout << "Schedule not found.";
     }
     accessInfo_1();
+}
+
+void Menu::showStudentsInAtLeastNUCs_3() {
+    cout << endl << "Insert a number:";
+    int input;
+    cin >> input;
+    int sum = 0;
+    for (auto element : sched.getStudents()) {
+        auto horario = element.getStudentSchedule();
+        for (auto aula : horario) {
+            sum++;
+        }
+        if (sum >= input) {
+            cout << element.getStudentCode() << " " << element.getStudentCode() << endl;
+        }
+        sum = 0;
+    }
+
+
 }
 
 void Menu::checkOccupationPer_5() {
@@ -105,6 +124,8 @@ void Menu::showStudentsPer_2() {
     else {cout << "|-- Invalid Input ------------------------|\n";}
     ///hfuyafdwasyteejkguadgu
 }
+
+
 
 void Menu::requestChange_2(){
     cout << "|--[ Request Change ]---------------------|\n"
@@ -182,6 +203,5 @@ void Menu::start() {
         else{
             cout << "|-- Invalid Input ------------------------|\n";
         }
-        //nelinho
     }
 }
