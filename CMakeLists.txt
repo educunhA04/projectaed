@@ -6,4 +6,6 @@ set(CMAKE_CXX_STANDARD 14)
 add_executable(Projeto main.cpp
         readFiles.cpp
         Menu.cpp
-        Classroom.h)
+        Classroom.h
+        Menu.cpp
+        Menu.cpp)
