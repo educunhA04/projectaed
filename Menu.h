@@ -1,16 +1,16 @@
 #ifndef PROJETO_MENU_H
 #define PROJETO_MENU_H
 
-#include "Schedule.h"
+#include "AllData.h"
 
 class Menu{
     private:
-        Schedule sched;
+        AllData sched;
 
     public:
         Menu();
         void start();
-        void setSched(const Schedule& newSched){
+        void setSched(const AllData& newSched){
             this->sched = newSched;
         }
 

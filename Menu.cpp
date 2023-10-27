@@ -127,7 +127,6 @@ void Menu::showStudentsInAtLeastNUCs_3() {
     cout << endl << "Insert the number of UCs:";
     int input;
     cin >> input;
-    int sum = 0;
     set<string> a;
     for (auto element : sched.getStudents()) {
         auto horario = element.getStudentSchedule();
@@ -138,7 +137,6 @@ void Menu::showStudentsInAtLeastNUCs_3() {
         if (a.size() >= input) {
             cout << element.getStudentCode() << " " << element.getStudentCode() << endl;
         }
-        sum = 0;
     }
 }
 

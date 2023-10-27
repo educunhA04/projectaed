@@ -36,7 +36,6 @@ vector<Classes> readClassesData(){
 
             // data hora e tipo de uma aula //
             TimeType time = TimeType(weekday, startHour, duration, type);
-
             // criar aula //
             Classes nclass = Classes(classCode, ucCode, time);
 
