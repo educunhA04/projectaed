@@ -1,2 +1,6 @@
 # ninja log v5
-0	14	1698341413535770970	build.ninja	8f1d4428a0352715
+1	295	1698350123345340438	CMakeFiles/Projeto.dir/Menu.cpp.o	2902c363e11a44ad
+1	392	1698341845691179806	CMakeFiles/Projeto.dir/main.cpp.o	5d1bdc39032a8c73
+1	335	1698353353305930886	CMakeFiles/Projeto.dir/Menu.cpp.o	2902c363e11a44ad
+2	424	1698418162476901946	CMakeFiles/Projeto.dir/Menu.cpp.o	2902c363e11a44ad
+1	339	1698418573956419291	CMakeFiles/Projeto.dir/Menu.cpp.o	2902c363e11a44ad
