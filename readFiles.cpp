@@ -6,6 +6,9 @@
 #include "Student.h"
 #include "TimeType.h"
 #include <utility>
+#include "AllData.h"
+#include "readFiles.h"
+
 using namespace std;
 
 vector<Classes> readClassesData(){ 
@@ -36,7 +39,6 @@ vector<Classes> readClassesData(){
 
             // data hora e tipo de uma aula //
             TimeType time = TimeType(weekday, startHour, duration, type);
-
             // criar aula //
             Classes nclass = Classes(classCode, ucCode, time);
 
@@ -81,7 +83,7 @@ set<Student> readStudentsData(){
             aux.clear();
 
             else {
-                ucclass.push_back(aux[2], aux[3]);
+                ucclass.emplace_back(aux[2], aux[3]);
             }
         }
     }

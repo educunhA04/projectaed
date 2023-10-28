@@ -1,17 +1,19 @@
 #ifndef PROJETO_MENU_H
 #define PROJETO_MENU_H
 
-#include "Schedule.h"
+#include "AllData.h"
+
+using namespace std;
 
 class Menu{
     private:
-        Schedule sched;
+        AllData data;
 
     public:
         Menu();
         void start();
-        void setSched(const Schedule& newSched){
-            this->sched = newSched;
+        void setData(const AllData& newData){
+            this->data = newData;
         }
 
         // 1st Part of the Menu //
@@ -28,17 +30,17 @@ class Menu{
         void checkBiggestUc_6();
 
         // 3rd Part -> requestChange //
-        void addStudent_1();
-        void removeStudent_2();
-        void switchStudent_3();
+        void addStudent_1(); // TODO
+        void removeStudent_2(); // TODO
+        void switchStudent_3(); // TODO
 
         // 4th Part -> accessInfo -> showStudentsPer
-        void showStudentsPerYear_1();
-        void showStudentsPerClass_2();
-        void showStudentsPerUC_3();
+        void showStudentsPerYear_1(); // TODO
+        void showStudentsPerClass_2(); // TODO
+        void showStudentsPerUC_3(); // TODO
 
         // 5th Part -> accessInfo -> checkOccupationPer
-        void checkOccupationPerYear_1();
+        void checkOccupationPerYear_1(); // TODO
         void checkOccupationPerClass_2();
         void checkOccupationPerUC_3();
 };

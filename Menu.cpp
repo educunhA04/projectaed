@@ -1,12 +1,75 @@
 #include "Menu.h"
 #include <iostream>
 #include <string>
+#include <set>
 using namespace std;
+
 
 string toLowerSTR (string str){
     for(auto& elem : str){
         elem = tolower(elem);}
     return str;
+}
+
+Menu::Menu() : data(vector<Classes>(), set<Student>()) {} //contructor
+
+void Menu::checkOccupationPerClass_2() {
+    string inp;
+    cout << "Insert a valid Class code: \n";
+    cin >> inp;
+
+    int count = 0;
+    bool found = false;
+
+    for (auto element : data.getStudents()){
+        bool foundstudent = false;
+        auto horario = element.getStudentSchedule();
+
+        while(!foundstudent){
+            for(auto aula : horario){
+                if (toLowerSTR(aula.getClassCode()) == toLowerSTR(inp)){
+                    count++;
+                    foundstudent = true;
+                    found = true;
+                }
+            }
+
+        }
+    }
+    if(!found){
+        cout << "Class not found.";
+    }
+    else{
+        cout << "The number of students with lessons in class " << inp << " is " << count << ".";
+    }
+}
+
+void Menu::checkOccupationPerUC_3() {
+    string inp;
+    cout << "Insert a valid UC Code: \n";
+    cin >> inp;
+
+    int count = 0;
+    bool found = false;
+
+    for (auto element: data.getStudents()){
+        bool foundstudent = false;
+        auto horario = element.getStudentSchedule();
+
+        while (!foundstudent){
+            for(auto aula : horario){
+                if(toLowerSTR(inp) == toLowerSTR(aula.getUcCode())) {
+                    count++;
+                    found = true;
+                    foundstudent = true;
+                }
+            }
+        }
+    }
+    if(!found){cout << "UC not found.";}
+    else{
+        cout << "The number of students studying the UC " << inp << " is " << count << ".";
+    }
 }
 
 void Menu:: showClassSchedule_4(){
@@ -15,12 +78,12 @@ void Menu:: showClassSchedule_4(){
     cin >> inp;
     bool found = false;
 
-    for(auto element : sched.getUCS()){
+    for(auto element : data.getUCS()){
         if (toLowerSTR(inp) == toLowerSTR(element.getClassCode())) found = true;
     }
     if(found){
         cout << "Showing Schedule for class " << inp << "\n";
-        for(auto element2 : sched.getUCS()){
+        for(auto element2 : data.getUCS()){
             cout << "UCCode: " << element2.getUcCode() << " / "
                  << "Day: " << element2.getTimetable().getDay() << " / "
                  << "Type: " << element2.getTimetable().getTypeOfClass() << " / "
@@ -40,7 +103,7 @@ void Menu::showStudentSchedule_1(){
     cin >> inp;
     bool found = false;
 
-    for(auto element : sched.getStudents()){
+    for(auto element : data.getStudents()){
         if (element.getStudentCode() == inp){
             found = true;
             auto horario = element.getStudentSchedule();
@@ -51,34 +114,81 @@ void Menu::showStudentSchedule_1(){
                      << "Day: " << aula.getTimetable().getDay() << " / "
                      << "Type: " << aula.getTimetable().getTypeOfClass() << " / "
                      << "StartHour: " << aula.getTimetable().getStartHour() << " / "
-                     << "Duration: " << aula.getTimetable().getClassDuration() << "\n";
+                     << "Duration: " << aula.getTimetable().getClassDuration() << "\n\n";
             }
         }
     }
     if (!found){
+        cout << "Student not found.";
+
         cout << "Schedule not found.";
     }
     accessInfo_1();
 }
 
 void Menu::showStudentsInAtLeastNUCs_3() {
-    cout << endl << "Insert a number:";
+    cout << endl << "Insert the number of UCs:";
     int input;
     cin >> input;
-    int sum = 0;
-    for (auto element : sched.getStudents()) {
+    set<string> a;
+    for (auto element : data.getStudents()) {
         auto horario = element.getStudentSchedule();
+
         for (auto aula : horario) {
-            sum++;
+            a.insert(aula.getUcCode());
         }
-        if (sum >= input) {
+        if (a.size() >= input) {
             cout << element.getStudentCode() << " " << element.getStudentCode() << endl;
         }
-        sum = 0;
     }
-
-
 }
+
+void Menu::checkBiggestUc_6() {
+    string t = data.getUCS()[0].getUcCode(); //primeira uc
+    string m; //biggest uc;
+    int count = 0;
+    int max = 0;
+    for (auto aula : data.getUCS()) {
+        if (aula.getUcCode() == t) {
+            count++;
+        }
+        else {
+            if (count > max) {
+                m = aula.getUcCode();
+                max = count;
+            }
+            count = 0;
+            t = aula.getUcCode();
+        }
+    }
+    cout << m << endl;
+}
+
+void Menu::addStudent_1() {
+
+} // TODO
+void Menu::removeStudent_2() {
+
+}; // TODO
+void Menu::switchStudent_3(){
+
+}; // TODO
+
+// 4th Part -> accessInfo -> showStudentsPer
+void Menu::showStudentsPerYear_1() {
+
+}; // TODO
+void Menu::showStudentsPerClass_2(){
+
+}; // TODO
+void Menu::showStudentsPerUC_3(){
+
+}; // TODO
+
+// 5th Part -> accessInfo -> checkOccupationPer
+void Menu::checkOccupationPerYear_1() {
+
+}; // TODO
 
 void Menu::checkOccupationPer_5() {
     cout << "|--[ Access Info ]------------------------|\n"
@@ -122,7 +232,6 @@ void Menu::showStudentsPer_2() {
     else if (inp == "3"){showStudentsPerUC_3();}
     else if (inp == "4" || inp == "B" || inp == "b"){accessInfo_1();}
     else {cout << "|-- Invalid Input ------------------------|\n";}
-    ///hfuyafdwasyteejkguadgu
 }
 
 

@@ -1,22 +1,21 @@
-#ifndef PROJETO_SCHEDULE_H
-#define PROJETO_SCHEDULE_H
+#ifndef PROJETO_ALLDATA_H
+#define PROJETO_ALLDATA_H
 
 #include <vector>
 #include <set>
-
 #include "Student.h"
 #include "Classes.h"
 
 using namespace std;
 
-class Schedule {
+class AllData {
     private:
         vector<Classes> ucInSchedule;
         set<Student> students;
 
     public:
-        Schedule();
-        Schedule(const vector<Classes>& newUcInShedule, const set<Student>& newStudents){
+        AllData(){}
+        AllData(const vector<Classes>& newUcInShedule, const set<Student>& newStudents){
             this->ucInSchedule = newUcInShedule;
             this->students = newStudents;
         }
@@ -32,4 +31,4 @@ class Schedule {
         }
 };
 
-#endif //PROJETO_SCHEDULE_H
+#endif // PROJETO_ALLDATA_H

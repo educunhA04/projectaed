@@ -1,6 +1,8 @@
 #ifndef PROJETO_TIMETYPE_H
 #define PROJETO_TIMETYPE_H
 
+#include <string>
+
 using namespace std;
 
 class TimeType {
