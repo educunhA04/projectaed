@@ -23,7 +23,11 @@
     <list default="true" id="1c68ba40-2ebc-4092-b363-5da56597781d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes.csv" beforeDir="false" afterPath="$PROJECT_DIR$/files/classes.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes_per_uc.csv" beforeDir="false" afterPath="$PROJECT_DIR$/files/classes_per_uc.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readFiles.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/readFiles.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/students_classes.csv" beforeDir="false" afterPath="$PROJECT_DIR$/files/students_classes.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +64,7 @@
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/gg2003/Desktop/AED 23-24/Projeto/projectaed/CMakeLists.txt&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/magui/Documents/AED/proj/projectaed&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -69,6 +73,11 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/files" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Projeto" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="untitled" TARGET_NAME="Projeto" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="untitled" RUN_TARGET_NAME="Projeto">
       <method v="2">
@@ -85,7 +94,9 @@
       <option name="presentableId" value="Default" />
       <updated>1698339495291</updated>
       <workItem from="1698339496301" duration="1264000" />
-      <workItem from="1698413332376" duration="2000" />
+      <workItem from="1698413332376" duration="6911000" />
+      <workItem from="1698425414469" duration="2828000" />
+      <workItem from="1698489821048" duration="589000" />
     </task>
     <servers />
   </component>

@@ -5,7 +5,7 @@
 #include <vector>
 #include "Student.h"
 #include "TimeType.h"
-
+#include <utility>
 using namespace std;
 
 vector<Classes> readClassesData(){ 
@@ -51,17 +51,16 @@ set<Student> readStudentsData(){
     // leitura do ficheiro students_classes.csv //
 
     vector<Classes> allClasses = readClassesData();
-    set<Student> allStudent;
-
+    set<pair<string,string>> allStudent;
+    list<Classes> Uc;
     ifstream file("students_classes.csv");
 
     string line;
     string word;
-    string prevNum;
     string Num;
 
     vector<string> aux;
-    vector<pair<string, string>> ucclass;
+    vector<string,string> ucclass;
 
     if (file.is_open()){
         getline(file, line);
@@ -73,14 +72,13 @@ set<Student> readStudentsData(){
             while (getline(iss, word, ',')) {
                 aux.push_back(word);
             }
+            allStudent.insert({aux[0],aux[1]});
+            if {aux[0],aux[1]}{
 
-            if (aux[0] != prevNum) {
-                ucclass.clear();
-                string studentCode = aux[0];
-                string studentName = aux[1];
-                prevNum = studentCode;
-                aux.clear();
             }
+            Student.lessons.push_back((aux[2],aux[3],get_time));
+
+            aux.clear();
 
             else {
                 ucclass.push_back(aux[2], aux[3]);
