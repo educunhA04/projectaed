@@ -83,6 +83,7 @@ set<Student> readStudentsData(){
                     FoundTime = cl.getTimetable();
                 }
             }
+
             Classes NewClass = Classes(classCode,ucCode,FoundTime);
             Student provStudent = Student(studentCode,studentName);
 

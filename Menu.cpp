@@ -4,7 +4,6 @@
 #include <set>
 using namespace std;
 
-
 string toLowerSTR (string str){
     for(auto& elem : str){
         elem = tolower(elem);}
@@ -37,11 +36,12 @@ void Menu::checkOccupationPerClass_2() {
         }
     }
     if(!found){
-        cout << "Class not found.";
+        cout << "Class not found.\n\n";
     }
     else{
-        cout << "The number of students with lessons in class " << inp << " is " << count << ".";
+        cout << "The number of students with lessons in class " << inp << " is " << count << ".\n\n";
     }
+    checkOccupationPer_5();
 }
 
 void Menu::checkOccupationPerUC_3() {
@@ -66,10 +66,11 @@ void Menu::checkOccupationPerUC_3() {
             }
         }
     }
-    if(!found){cout << "UC not found.";}
+    if(!found){cout << "UC not found.\n\n";}
     else{
-        cout << "The number of students studying the UC " << inp << " is " << count << ".";
+        cout << "The number of students studying the UC " << inp << " is " << count << ".\n\n";
     }
+    checkOccupationPer_5();
 }
 
 void Menu:: showClassSchedule_4(){
@@ -88,11 +89,11 @@ void Menu:: showClassSchedule_4(){
                  << "Day: " << element2.getTimetable().getDay() << " / "
                  << "Type: " << element2.getTimetable().getTypeOfClass() << " / "
                  << "StartHour: " << element2.getTimetable().getStartHour() << " / "
-                 << "Duration: " << element2.getTimetable().getClassDuration() << "\n";
+                 << "Duration: " << element2.getTimetable().getClassDuration() << "\n\n";
         }
     }
     else {
-        cout << "Class not found.";
+        cout << "Class not found.\n\n";
     }
     accessInfo_1();
 }
@@ -119,15 +120,47 @@ void Menu::showStudentSchedule_1(){
         }
     }
     if (!found){
-        cout << "Student not found.";
+        cout << "Student not found.\n\n";
 
-        cout << "Schedule not found.";
     }
     accessInfo_1();
 }
 
+void Menu::showStudentsPerUC_3(){
+    cout << endl <<  "Insert the code of the UC: ";
+    string inp;
+    cin >> inp;
+    set<Student> aux;
+    bool foundUC = false;
+
+    for(auto elem : data.getStudents()){
+        bool foundSTN = false;
+        while (!foundSTN){
+            for(auto elem2 : elem.getStudentSchedule()){
+                if(elem2.getUcCode() == inp) {
+                    foundSTN = true;
+                    foundUC = true;
+                    aux.insert(elem);
+                }
+            }
+        }
+    }
+
+    if (foundUC){
+        cout << "Now showing students studying " << inp << ".\n";
+        for(auto student : aux){
+            cout << "Student Code: "  << student.getStudentCode() << " / Student Name: " << student.getName() << endl;
+        }
+        cout << "\n\n";
+    }
+    else{
+        cout << "UC not found.\n\n";
+    }
+    showStudentsPer_2();
+};
+
 void Menu::showStudentsInAtLeastNUCs_3() {
-    cout << endl << "Insert the number of UCs:";
+    cout << endl << "Insert the number of UCs: ";
     int input;
     cin >> input;
     set<string> a;
@@ -165,6 +198,8 @@ void Menu::checkBiggestUc_6() {
     cout << "The biggest UC in L.EIC is " << m << ".";
 }
 
+//##############################################################//
+
 void Menu::addStudent_1() {
 
 } // TODO
@@ -177,7 +212,6 @@ void Menu::switchStudent_3(){
 
 }; // TODO
 
-// 4th Part -> accessInfo -> showStudentsPer
 void Menu::showStudentsPerYear_1() {
 
 }; // TODO
@@ -185,14 +219,13 @@ void Menu::showStudentsPerYear_1() {
 void Menu::showStudentsPerClass_2(){
 
 }; // TODO
-void Menu::showStudentsPerUC_3(){
 
-}; // TODO
 
-// 5th Part -> accessInfo -> checkOccupationPer
 void Menu::checkOccupationPerYear_1() {
 
 }; // TODO
+
+//###############################################################//
 
 void Menu::checkOccupationPer_5() {
     cout << "|--[ Access Info ]------------------------|\n"
