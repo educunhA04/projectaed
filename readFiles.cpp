@@ -85,19 +85,20 @@ set<Student> readStudentsData(){
             }
 
             Classes NewClass = Classes(classCode,ucCode,FoundTime);
-            Student provStudent = Student(studentCode,studentName);
+            Student provStudent = Student(studentName,studentCode);
 
             auto l = allStudents.find(provStudent);
 
             if(l == allStudents.end()){
                 list<Classes> n = {NewClass};
-                allStudents.insert(Student(studentCode,studentName,n));}
+                allStudents.insert(Student(studentName,studentCode,n));
+            }
 
             else{
                 list<Classes> n = provStudent.getStudentSchedule();
                 n.push_back(NewClass);
                 provStudent.setLessons(n);
-                }
+            }
 
             aux.clear();
         }

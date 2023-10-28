@@ -49,7 +49,6 @@ void Menu::checkOccupationPerUC_3() {
     string inp;
     cout << "Insert a valid UC Code: \n";
     cin >> inp;
-
     int count = 0;
     bool found = false;
 
@@ -228,7 +227,7 @@ void Menu::checkBiggestUc_6() {
             t = aula.getUcCode();
         }
     }
-    cout << "The biggest UC in L.EIC is " << m << ".";
+    cout << "The biggest UC in L.EIC is " << m << "." << endl;
 }
 
 //###############################################################//
