@@ -77,6 +77,7 @@ set<Student> readStudentsData(){
             string studentName = aux[1];
             string ucCode = aux[2];
             string classCode = aux[3];
+
             for (Classes cl: allClasses){
                 if (cl.getUcCode()==aux[2] and cl.getClassCode()==aux[3]){
                     FoundTime=cl.getTimetable();
@@ -98,4 +99,24 @@ set<Student> readStudentsData(){
         }
     }
     return allStudents;
+}
+set<Classes> readucperclass(){
+    string line;
+    string word;
+    string Num;
+    vector<string> aux;
+    ifstream file("classes_per_uc.csv");
+    if (file.is_open()){
+        getline(file, line);
+
+        while (getline(file, line)){
+            aux.clear();
+            istringstream  iss(line);
+
+            while (getline(iss, word, ',')) {
+                aux.push_back(word);
+            }
+        string uccode=aux[0];
+        string ccode=aux[1];
+
 }

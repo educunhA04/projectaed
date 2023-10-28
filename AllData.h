@@ -9,7 +9,9 @@
 using namespace std;
 
 class AllData {
+    //AllData retains all the uc's, students and schedule of a class in specific
     private:
+        string ccode;
         vector<Classes> ucInSchedule;
         set<Student> students;
 
