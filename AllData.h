@@ -16,7 +16,7 @@ class AllData {
         set<Student> students;
 
     public:
-        AllData(){}
+        AllData(){students={};}
         AllData(const vector<Classes>& newUcInShedule, const set<Student>& newStudents){
             this->ucInSchedule = newUcInShedule;
             this->students = newStudents;

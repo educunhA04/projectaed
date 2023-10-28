@@ -25,6 +25,10 @@ class Student{
             this->lessons = newLessons;
         }
 
+        bool operator<(const Student& other) const {
+            return studentCode < other.studentCode;
+        }
+
         string getName(){return name;}
         string getStudentCode(){return studentCode;}
         list<Classes> getStudentSchedule(){return lessons;}
