@@ -156,6 +156,7 @@ void Menu::showStudentsPerClass_2() {
     cout << endl <<  "Insert the code of the UC: ";
     string inp;
     cin >> inp;
+
     set<Student> aux;
     bool foundClass = false;
 
@@ -189,6 +190,7 @@ void Menu::showStudentsInAtLeastNUCs_3() {
     int input;
     cin >> input;
     set<string> a;
+
     cout << "The following students study at least " << input << " UC's:\n";
     for (auto element : data.getStudents()) {
         auto horario = element.getStudentSchedule();
