@@ -162,16 +162,16 @@ void Menu::showStudentsPerClass_2() {
 
     for(auto elem : data.getStudents()){
         bool foundSTN = false;
-        while (!foundSTN){
-            for(auto elem2 : elem.getStudentSchedule()){
-                if(elem2.getClassCode() == inp) {
-                    foundSTN = true;
-                    foundClass = true;
-                    aux.insert(elem);
-                }
+        for(auto elem2 : elem.getStudentSchedule()){
+            if(elem2.getClassCode() == inp) {
+                foundSTN = true;
+                foundClass = true;
+                aux.insert(elem);
+                break;
             }
         }
     }
+
     if (foundClass){
         cout << "Now showing students studying in class " << inp << ".\n";
         for(auto student : aux){
@@ -202,6 +202,7 @@ void Menu::showStudentsInAtLeastNUCs_3() {
             cout << "Student Code: "  << element.getStudentCode() << " / Student Name: " << element.getName() << endl;
         }
     }
+    accessInfo_1();
 }
 
 void Menu::checkBiggestUc_6() {
@@ -222,7 +223,9 @@ void Menu::checkBiggestUc_6() {
             t = aula.getUcCode();
         }
     }
-    cout << "The biggest UC in L.EIC is " << m << "." << endl;
+    cout << "The biggest UC in L.EIC is " << m << ".\n\n" << endl;
+
+    accessInfo_1();
 }
 
 //###############################################################//
