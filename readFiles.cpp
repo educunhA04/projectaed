@@ -2,6 +2,7 @@
 #include <sstream>
 #include <set>
 #include <vector>
+#include <string>
 #include "Student.h"
 #include "TimeType.h"
 #include <utility>
@@ -20,7 +21,7 @@ vector<Classes> readClassesData(){
     vector<Classes> ucInSch;
 
     if (file.is_open()){
-        getline(file, line); //ignorar primeira linha
+        getline(file, line); // ignorar primeira linha //
         while (getline(file, line)){
             aux.clear();
             istringstream  iss(line);
