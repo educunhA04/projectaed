@@ -14,15 +14,14 @@ string toLowerSTR (string str){
 Menu::Menu() : data(vector<Classes>(), set<Student>()) {} //contructor
 
 void Menu::checkOccupationPerClass_2() {
-    string inp;
     cout << "Insert a valid Class code: \n";
+    string inp;
     cin >> inp;
 
     int count = 0;
     bool found = false;
 
     for (auto element : data.getStudents()){
-        bool foundstudent = false;
         auto horario = element.getStudentSchedule();
 
         for(auto aula : horario){
