@@ -60,7 +60,7 @@ set<Student> readStudentsData(){
     string word;
     string Num;
     vector<string> aux;
-    vector<string,string> ucclass;
+
     TimeType FoundTime;
 
     if (file.is_open()){

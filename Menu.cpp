@@ -1,4 +1,5 @@
 #include "Menu.h"
+#include "AllData.h"
 #include <iostream>
 #include <string>
 #include <set>
@@ -365,7 +366,7 @@ void Menu::start() {
              << "|-- C: Close -----------------------------|\n"
              << "|-----------------------------------------|\n";
 
-        cout << endl << "Insert your desired option:";
+        cout << endl << "Insert your desired option:" << endl;
         string inp;
         cin >> inp;
 

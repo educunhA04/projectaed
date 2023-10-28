@@ -2,6 +2,8 @@
 #define PROJETO_MENU_H
 
 #include "AllData.h"
+#include <iostream>
+#include <set>
 #include <string>
 
 using namespace std;
