@@ -131,6 +131,7 @@ void Menu::showStudentsInAtLeastNUCs_3() {
     int input;
     cin >> input;
     set<string> a;
+    cout << "The following students study at least " << input << " UC's:\n";
     for (auto element : data.getStudents()) {
         auto horario = element.getStudentSchedule();
 
@@ -138,7 +139,7 @@ void Menu::showStudentsInAtLeastNUCs_3() {
             a.insert(aula.getUcCode());
         }
         if (a.size() >= input) {
-            cout << element.getStudentCode() << " " << element.getStudentCode() << endl;
+            cout << "Student Code: "  << element.getStudentCode() << " / Student Name: " << element.getName() << endl;
         }
     }
 }
@@ -161,15 +162,17 @@ void Menu::checkBiggestUc_6() {
             t = aula.getUcCode();
         }
     }
-    cout << m << endl;
+    cout << "The biggest UC in L.EIC is " << m << ".";
 }
 
 void Menu::addStudent_1() {
 
 } // TODO
+
 void Menu::removeStudent_2() {
 
 }; // TODO
+
 void Menu::switchStudent_3(){
 
 }; // TODO
@@ -178,6 +181,7 @@ void Menu::switchStudent_3(){
 void Menu::showStudentsPerYear_1() {
 
 }; // TODO
+
 void Menu::showStudentsPerClass_2(){
 
 }; // TODO
@@ -233,7 +237,6 @@ void Menu::showStudentsPer_2() {
     else if (inp == "4" || inp == "B" || inp == "b"){accessInfo_1();}
     else {cout << "|-- Invalid Input ------------------------|\n";}
 }
-
 
 
 void Menu::requestChange_2(){
