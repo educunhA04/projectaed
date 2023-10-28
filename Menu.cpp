@@ -4,11 +4,14 @@
 #include <set>
 using namespace std;
 
+
 string toLowerSTR (string str){
     for(auto& elem : str){
         elem = tolower(elem);}
     return str;
 }
+
+Menu::Menu() : data(vector<Classes>(), set<Student>()) {} //contructor
 
 void Menu::checkOccupationPerClass_2() {
     string inp;
@@ -139,6 +142,53 @@ void Menu::showStudentsInAtLeastNUCs_3() {
         }
     }
 }
+
+void Menu::checkBiggestUc_6() {
+    string t = data.getUCS()[0].getUcCode(); //primeira uc
+    string m; //biggest uc;
+    int count = 0;
+    int max = 0;
+    for (auto aula : data.getUCS()) {
+        if (aula.getUcCode() == t) {
+            count++;
+        }
+        else {
+            if (count > max) {
+                m = aula.getUcCode();
+                max = count;
+            }
+            count = 0;
+            t = aula.getUcCode();
+        }
+    }
+    cout << m << endl;
+}
+
+void Menu::addStudent_1() {
+
+} // TODO
+void Menu::removeStudent_2() {
+
+}; // TODO
+void Menu::switchStudent_3(){
+
+}; // TODO
+
+// 4th Part -> accessInfo -> showStudentsPer
+void Menu::showStudentsPerYear_1() {
+
+}; // TODO
+void Menu::showStudentsPerClass_2(){
+
+}; // TODO
+void Menu::showStudentsPerUC_3(){
+
+}; // TODO
+
+// 5th Part -> accessInfo -> checkOccupationPer
+void Menu::checkOccupationPerYear_1() {
+
+}; // TODO
 
 void Menu::checkOccupationPer_5() {
     cout << "|--[ Access Info ]------------------------|\n"

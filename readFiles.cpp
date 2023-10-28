@@ -1,16 +1,18 @@
-#include <iostream>
 #include <fstream>
 #include <sstream>
 #include <set>
 #include <vector>
-#include "AllData.h"
+#include "Student.h"
+#include "TimeType.h"
+#include <utility>
+#include "readFiles.h"
 
 using namespace std;
 
 vector<Classes> readClassesData(){ 
     // leitura do ficheiro classes.csv //
-    ifstream file("classes.csv");
 
+    ifstream file("classes.csv");
     string line;
     string word;
 
@@ -49,17 +51,16 @@ set<Student> readStudentsData(){
     // leitura do ficheiro students_classes.csv //
 
     vector<Classes> allClasses = readClassesData();
-    set<Student> allStudent;
+    list<Classes> Uc;
+    set<Student> allStudents;
 
     ifstream file("students_classes.csv");
-
     string line;
     string word;
-    string prevNum;
     string Num;
-
     vector<string> aux;
-    vector<pair<string, string>> ucclass;
+    vector<string,string> ucclass;
+    TimeType FoundTime;
 
     if (file.is_open()){
         getline(file, line);
@@ -71,19 +72,31 @@ set<Student> readStudentsData(){
             while (getline(iss, word, ',')) {
                 aux.push_back(word);
             }
-
-            if (aux[0] != prevNum) {
-                ucclass.clear();
-                string studentCode = aux[0];
-                string studentName = aux[1];
-                prevNum = studentCode;
-                aux.clear();
+            string studentCode = aux[0];
+            string studentName = aux[1];
+            string ucCode = aux[2];
+            string classCode = aux[3];
+            for (Classes cl: allClasses){
+                if (cl.getUcCode() == aux[2] and cl.getClassCode() == aux[3]){
+                    FoundTime=cl.getTimetable();
+                }
             }
+            Classes NewClass = Classes(classCode,ucCode,FoundTime);
+            Student provStudent = Student(studentCode,studentName);
 
-            else {
-                ucclass.push_back(aux[2], aux[3]);
-            }
+            auto l = allStudents.find(provStudent);
+
+            if(l == allStudents.end()){
+                list<Classes> n = {NewClass};
+                allStudents.insert(Student(studentCode,studentName,n));}
+
+            else{list<Classes> n=provStudent.getStudentSchedule();
+                n.push_back(NewClass);
+                provStudent.setLessons(n);
+                }
+
+            aux.clear();
         }
     }
-    return allStudent;
+    return allStudents;
 }
