@@ -2,6 +2,7 @@
 #define PROJETO_READFILES_H
 #include <vector>
 #include <set>
+#include <string>
 #include "Classes.h"
 #include "Student.h"
 

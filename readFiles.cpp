@@ -2,6 +2,7 @@
 #include <sstream>
 #include <set>
 #include <vector>
+#include <string>
 #include "Student.h"
 #include "TimeType.h"
 #include <utility>
@@ -12,7 +13,7 @@ using namespace std;
 vector<Classes> readClassesData(){ 
     // leitura do ficheiro classes.csv //
 
-    ifstream file("classes.csv");
+    ifstream file("../files/classes.csv");
     string line;
     string word;
 
@@ -20,7 +21,7 @@ vector<Classes> readClassesData(){
     vector<Classes> ucInSch;
 
     if (file.is_open()){
-        getline(file, line); //ignorar primeira linha
+        getline(file, line); // ignorar primeira linha //
         while (getline(file, line)){
             aux.clear();
             istringstream  iss(line);
@@ -34,6 +35,7 @@ vector<Classes> readClassesData(){
             string startHour = aux[3];
             string duration = aux[4];
             string type = aux[5];
+            type.resize(type.length()-1); //remove the "\r"
 
             // data hora e tipo de uma aula //
             TimeType time = TimeType(weekday, startHour, duration, type);
@@ -54,12 +56,12 @@ set<Student> readStudentsData(){
     list<Classes> Uc;
     set<Student> allStudents;
 
-    ifstream file("students_classes.csv");
+    ifstream file("../files/students_classes.csv");
     string line;
     string word;
     string Num;
     vector<string> aux;
-    vector<string,string> ucclass;
+
     TimeType FoundTime;
 
     if (file.is_open()){
@@ -72,29 +74,34 @@ set<Student> readStudentsData(){
             while (getline(iss, word, ',')) {
                 aux.push_back(word);
             }
+
             string studentCode = aux[0];
             string studentName = aux[1];
             string ucCode = aux[2];
             string classCode = aux[3];
+            classCode.resize(classCode.length()-1); //remove the "\r"
 
-            for (Classes cl: allClasses){
-                if (cl.getUcCode() == aux[2] and cl.getClassCode() == aux[3]){
-                    FoundTime=cl.getTimetable();
+            for (auto cl: allClasses){
+                if (cl.getUcCode() == aux[2] && cl.getClassCode() == aux[3]){
+                    FoundTime = cl.getTimetable();
                 }
             }
+
             Classes NewClass = Classes(classCode,ucCode,FoundTime);
-            Student provStudent = Student(studentCode,studentName);
+            Student provStudent = Student(studentName,studentCode);
 
             auto l = allStudents.find(provStudent);
 
             if(l == allStudents.end()){
                 list<Classes> n = {NewClass};
-                allStudents.insert(Student(studentCode,studentName,n));}
+                allStudents.insert(Student(studentName,studentCode,n));
+            }
 
-            else{list<Classes> n=provStudent.getStudentSchedule();
+            else{
+                list<Classes> n = provStudent.getStudentSchedule();
                 n.push_back(NewClass);
                 provStudent.setLessons(n);
-                }
+            }
 
             aux.clear();
         }
