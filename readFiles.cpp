@@ -53,17 +53,16 @@ set<Student> readStudentsData(){
     // leitura do ficheiro students_classes.csv //
 
     vector<Classes> allClasses = readClassesData();
-    set<pair<string,string>> allStudent;
     list<Classes> Uc;
+    set<Student> allStudents;
     ifstream file("students_classes.csv");
 
     string line;
     string word;
     string Num;
-
     vector<string> aux;
     vector<string,string> ucclass;
-
+    TimeType FoundTime;
     if (file.is_open()){
         getline(file, line);
 
@@ -74,18 +73,29 @@ set<Student> readStudentsData(){
             while (getline(iss, word, ',')) {
                 aux.push_back(word);
             }
-            allStudent.insert({aux[0],aux[1]});
-            if {aux[0],aux[1]}{
-
+            string studentCode = aux[0];
+            string studentName = aux[1];
+            string ucCode = aux[2];
+            string classCode = aux[3];
+            for (Classes cl: allClasses){
+                if (cl.getUcCode()==aux[2] and cl.getClassCode()==aux[3]){
+                    FoundTime=cl.getTimetable();
+                }
             }
-            Student.lessons.push_back((aux[2],aux[3],get_time));
+            Classes NewClass=Classes(classCode,ucCode,FoundTime);
+            Student provStudent=Student(studentCode,studentName);
+            auto l=allStudents.find(provStudent);
+            if(l==allStudents.end()){
+                list<Classes> n={NewClass};
+                allStudents.insert(Student(studentCode,studentName,n));}
+            else{list<Classes> n=provStudent.getStudentSchedule();
+                n.push_back(NewClass);
+                provStudent.setLessons(n);
+                }
 
             aux.clear();
 
-            else {
-                ucclass.emplace_back(aux[2], aux[3]);
-            }
         }
     }
-    return allStudent;
+    return allStudents;
 }
