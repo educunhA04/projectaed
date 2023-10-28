@@ -25,15 +25,12 @@ void Menu::checkOccupationPerClass_2() {
         bool foundstudent = false;
         auto horario = element.getStudentSchedule();
 
-        while(!foundstudent){
-            for(auto aula : horario){
-                if (toLowerSTR(aula.getClassCode()) == toLowerSTR(inp)){
-                    count++;
-                    foundstudent = true;
-                    found = true;
-                }
+        for(auto aula : horario){
+            if (toLowerSTR(aula.getClassCode()) == toLowerSTR(inp)){
+                count++;
+                found = true;
+                break;
             }
-
         }
     }
     if(!found){
@@ -53,16 +50,13 @@ void Menu::checkOccupationPerUC_3() {
     bool found = false;
 
     for (auto element: data.getStudents()){
-        bool foundstudent = false;
         auto horario = element.getStudentSchedule();
 
-        while (!foundstudent){
-            for(auto aula : horario){
-                if(toLowerSTR(inp) == toLowerSTR(aula.getUcCode())) {
-                    count++;
-                    found = true;
-                    foundstudent = true;
-                }
+        for(auto aula : horario){
+            if(toLowerSTR(inp) == toLowerSTR(aula.getUcCode())) {
+                count++;
+                found = true;
+                break;
             }
         }
     }
@@ -365,7 +359,7 @@ void Menu::start() {
              << "|-- C: Close -----------------------------|\n"
              << "|-----------------------------------------|\n";
 
-        cout << endl << "Insert your desired option:";
+        cout << endl << "Insert your desired option:" << endl;
         string inp;
         cin >> inp;
 
