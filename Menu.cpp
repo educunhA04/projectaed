@@ -93,7 +93,7 @@ void Menu:: showClassSchedule_4(){
 
 void Menu::showStudentSchedule_1(){
     string inp;
-    cout << "Insert a valid student Code: \n";
+    cout << "Insert a valid student Code: ";
     cin >> inp;
     bool found = false;
 
