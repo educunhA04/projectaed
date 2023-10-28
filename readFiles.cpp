@@ -77,9 +77,10 @@ set<Student> readStudentsData(){
             string studentName = aux[1];
             string ucCode = aux[2];
             string classCode = aux[3];
+
             for (Classes cl: allClasses){
                 if (cl.getUcCode() == aux[2] and cl.getClassCode() == aux[3]){
-                    FoundTime=cl.getTimetable();
+                    FoundTime = cl.getTimetable();
                 }
             }
             Classes NewClass = Classes(classCode,ucCode,FoundTime);
@@ -91,7 +92,8 @@ set<Student> readStudentsData(){
                 list<Classes> n = {NewClass};
                 allStudents.insert(Student(studentCode,studentName,n));}
 
-            else{list<Classes> n=provStudent.getStudentSchedule();
+            else{
+                list<Classes> n = provStudent.getStudentSchedule();
                 n.push_back(NewClass);
                 provStudent.setLessons(n);
                 }
