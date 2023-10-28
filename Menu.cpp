@@ -159,6 +159,38 @@ void Menu::showStudentsPerUC_3(){
     showStudentsPer_2();
 };
 
+void Menu::showStudentsPerClass_2() {
+    cout << endl <<  "Insert the code of the UC: ";
+    string inp;
+    cin >> inp;
+    set<Student> aux;
+    bool foundClass = false;
+
+    for(auto elem : data.getStudents()){
+        bool foundSTN = false;
+        while (!foundSTN){
+            for(auto elem2 : elem.getStudentSchedule()){
+                if(elem2.getClassCode() == inp) {
+                    foundSTN = true;
+                    foundClass = true;
+                    aux.insert(elem);
+                }
+            }
+        }
+    }
+    if (foundClass){
+        cout << "Now showing students studying in class " << inp << ".\n";
+        for(auto student : aux){
+            cout << "Student Code: "  << student.getStudentCode() << " / Student Name: " << student.getName() << endl;
+        }
+        cout << "\n\n";
+    }
+    else{
+        cout << "Class not found.\n\n";
+    }
+    showStudentsPer_2();
+};
+
 void Menu::showStudentsInAtLeastNUCs_3() {
     cout << endl << "Insert the number of UCs: ";
     int input;
@@ -198,7 +230,7 @@ void Menu::checkBiggestUc_6() {
     cout << "The biggest UC in L.EIC is " << m << ".";
 }
 
-//##############################################################//
+//###############################################################//
 
 void Menu::addStudent_1() {
 
@@ -212,11 +244,9 @@ void Menu::switchStudent_3(){
 
 }; // TODO
 
+//###############################################################//
+
 void Menu::showStudentsPerYear_1() {
-
-}; // TODO
-
-void Menu::showStudentsPerClass_2(){
 
 }; // TODO
 
