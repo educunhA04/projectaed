@@ -354,10 +354,10 @@ void Menu::removeallStudent() {
     string line;
     string word;
     vector<string> aux;
-    set<Student> allstudents=readStudentsData();
 
     if(ifile.is_open() and ofile.is_open()){
         getline(ifile,line);
+        ofile << line << '\n';
         while (getline(ifile,line)){
             aux.clear();
             istringstream  iss(line);
@@ -373,7 +373,7 @@ void Menu::removeallStudent() {
         ofile.close();
 
         remove("../Files/students_classes.csv");
-        rename("students_change.csv", "students_classes.csv");
+        rename("../Files/students_change.csv", "../Files/students_classes.csv");
 
     }
     else{cout<<"file not found";}
