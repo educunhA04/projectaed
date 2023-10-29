@@ -27,7 +27,23 @@ class Classes{
         bool operator<( Classes& other) const {
             return timetable < other.getTimetable();
         }
+        int convertDay(const string& day) const{
+            if (day == "Monday") return 1;
+            if (day == "Tuesday") return 2;
+            if (day == "Wednesday") return 3;
+            if (day == "Thursday") return 4;
+            if (day == "Friday") return 5;
+            else return 0;
+        }
 
+        bool operator<(const Classes& other) const{
+            bool result = false;
+
+            if (convertDay(timetable.getDay()) < convertDay(other.timetable.getDay())) result = true;
+            else if (timetable.getStartHour() < other.timetable.getStartHour()) result = true;
+
+            return result;
+        }
 
         void setClassCode(const string& newCode) {classCode = newCode;}
         void setUcCode(const string& newUcCode) {ucCode = newUcCode;}

@@ -21,21 +21,20 @@ class TimeType {
             this -> classDuration = newClassDuration;
             this -> typeOfClass = newTypeOfClass;
         }
-        bool operator<(const TimeType& notyet) const{
-            if (day< notyet.getDay()) return true;
+        bool operator<(const TimeType& notyet) const {
+            if (day < notyet.getDay()) return true;
             if (day > notyet.getDay()) return false;
-
-            if (startHour< notyet.getStartHour()) return true;
-            if (startHour> notyet.getStartHour()) return false;
-
-            if (classDuration <notyet.getClassDuration()) return true;
-            if (classDuration > notyet.getClassDuration()) return false;
-            return false;}
-
-        string getDay() const{return day;}
+        }
+        string getDay() const {return day;}
         string getStartHour() const {return startHour;}
         string getClassDuration() const {return classDuration;}
         string getTypeOfClass() const {return typeOfClass;}
+
+        string getDay() {return day;}
+        string getStartHour() {return startHour;}
+        string getClassDuration() {return classDuration;}
+        string getTypeOfClass() {return typeOfClass;}
+
 };
 
 #endif //PROJETO_TIMETYPE_H

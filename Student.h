@@ -17,8 +17,7 @@ class Student{
 
     public:
         // Constructors
-        Student(){
-        }
+        Student(){}
         Student(const string& newName, const string& newStudentCode, const list<Classes>& newLessons={}){
             this->name = newName;
             this->studentCode = newStudentCode;
