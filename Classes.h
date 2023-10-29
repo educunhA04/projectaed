@@ -15,7 +15,7 @@ class Classes{
 
     public:
         Classes(){ucCode="";}
-        Classes(const string& cCode, const string& uCode, const TimeType& newTimetable) {
+        Classes( const string& cCode, const string& uCode, TimeType& newTimetable) {
             this -> classCode = cCode;
             this -> ucCode = uCode;
             this -> timetable = newTimetable;
@@ -24,7 +24,9 @@ class Classes{
         string getClassCode() const {return classCode;}
         string getUcCode() const {return ucCode;}
         TimeType getTimetable() const {return timetable;}
-
+        bool operator<( Classes& other) const {
+            return timetable < other.getTimetable();
+        }
         int convertDay(const string& day) const{
             if (day == "Monday") return 1;
             if (day == "Tuesday") return 2;

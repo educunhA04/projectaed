@@ -1,4 +1,5 @@
 #include <fstream>
+#include <iostream>
 #include <sstream>
 #include <set>
 #include <vector>
@@ -13,7 +14,7 @@ using namespace std;
 vector<Classes> readClassesData(){ 
     // leitura do ficheiro classes.csv //
 
-    ifstream file("../files/classes.csv");
+    ifstream file("classes.csv");
     string line;
     string word;
 
@@ -56,7 +57,7 @@ set<Student> readStudentsData(){
     list<Classes> Uc;
     set<Student> allStudents;
 
-    ifstream file("../files/students_classes.csv");
+    ifstream file("students_classes.csv");
     string line;
     string word;
     string Num;
@@ -112,7 +113,7 @@ set<Classes> readucperclass(){
     string word;
     string Num;
     vector<string> aux;
-    set<Classes> classesnucs;
+    set<Classes> ucsclass;
     vector<Classes> allClasses = readClassesData();
     TimeType FoundTime;
     ifstream file("classes_per_uc.csv");
@@ -129,15 +130,15 @@ set<Classes> readucperclass(){
             }
             string uCode = aux[0];
             string cCode = aux[1];
-            for (Classes cl: allClasses) {
-                if (cl.getUcCode() == aux[2] and cl.getClassCode() == aux[3]) {
+            for (auto cl: allClasses) {
+                if (cl.getUcCode() == uCode and cl.getClassCode() == cCode) {
                     FoundTime = cl.getTimetable();
                 }
             }
             Classes newClass = Classes(cCode, uCode, FoundTime);
-            classesnucs.insert(newClass);
+            ucsclass.insert(newClass);
             aux.clear();
         }
     }
-    return classesnucs;
+    return ucsclass;
 }
