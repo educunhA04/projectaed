@@ -153,7 +153,7 @@ void Menu::showStudentsPerUC_3(){
 };
 
 void Menu::showStudentsPerClass_2() {
-    cout << endl <<  "Insert the code of the UC: ";
+    cout << endl <<  "Insert the code of the class: ";
     string inp;
     cin >> inp;
 
@@ -174,8 +174,9 @@ void Menu::showStudentsPerClass_2() {
 
     if (foundClass){
         cout << "Now showing students studying in class " << inp << ".\n";
+        cout << "Student Code"  << " | Student Name" << endl;
         for(auto student : aux){
-            cout << "Student Code: "  << student.getStudentCode() << " / Student Name: " << student.getName() << endl;
+            cout << " " << student.getStudentCode() << "   |   " << student.getName() << endl;
         }
         cout << "\n\n";
     }
