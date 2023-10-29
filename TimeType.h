@@ -25,6 +25,8 @@ class TimeType {
         string getStartHour() {return startHour;}
         string getClassDuration() {return classDuration;}
         string getTypeOfClass() {return typeOfClass;}
+
+
 };
 
 #endif //PROJETO_TIMETYPE_H

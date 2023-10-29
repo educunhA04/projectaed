@@ -81,26 +81,25 @@ set<Student> readStudentsData(){
             string classCode = aux[3];
             classCode.resize(classCode.length()-1); //remove the "\r"
 
-            for (auto cl: allClasses){
-                if (cl.getUcCode() == aux[2] && cl.getClassCode() == aux[3]){
+            for (const Classes& cl : allClasses) {
+                if (cl.getUcCode() == ucCode && cl.getClassCode() == classCode) {
                     FoundTime = cl.getTimetable();
+                    break;
                 }
             }
 
-            Classes NewClass = Classes(classCode,ucCode,FoundTime);
-            Student provStudent = Student(studentName,studentCode);
-
+            Student provStudent = Student(studentName, studentCode);
             auto l = allStudents.find(provStudent);
 
-            if(l == allStudents.end()){
-                list<Classes> n = {NewClass};
-                allStudents.insert(Student(studentName,studentCode,n));
+            if (l == allStudents.end()) {
+                list<Classes> n = {Classes(classCode, ucCode, FoundTime)};
+                allStudents.insert(Student(studentName, studentCode, n));
             }
-
-            else{
-                list<Classes> n = provStudent.getStudentSchedule();
-                n.push_back(NewClass);
-                provStudent.setLessons(n);
+            else {
+                Student& existingStudent = const_cast<Student&>(*l);
+                list<Classes> n = existingStudent.getStudentSchedule();
+                n.push_back(Classes(classCode, ucCode, FoundTime));
+                existingStudent.setLessons(n);
             }
 
             aux.clear();
