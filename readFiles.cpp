@@ -117,6 +117,7 @@ set<Classes> readucperclass(){
     vector<Classes> allClasses = readClassesData();
     TimeType FoundTime;
     ifstream file("classes_per_uc.csv");
+
     if (file.is_open()) {
         getline(file, line);
 

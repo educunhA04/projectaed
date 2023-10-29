@@ -21,10 +21,10 @@ class TimeType {
             this -> typeOfClass = newTypeOfClass;
         }
 
-        string getDay() {return day;}
-        string getStartHour() {return startHour;}
-        string getClassDuration() {return classDuration;}
-        string getTypeOfClass() {return typeOfClass;}
+        string getDay() const {return day;}
+        string getStartHour() const {return startHour;}
+        string getClassDuration() const {return classDuration;}
+        string getTypeOfClass() const {return typeOfClass;}
 };
 
 #endif //PROJETO_TIMETYPE_H

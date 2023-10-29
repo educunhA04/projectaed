@@ -39,8 +39,8 @@ class Menu{
 
         // 4th Part -> accessInfo -> showStudentsPer
         void showStudentsPerYear_1(); // TODO
-        void showStudentsPerClass_2(); // TODO
-        void showStudentsPerUC_3(); // TODO
+        void showStudentsPerClass_2();
+        void showStudentsPerUC_3();
 
         // 5th Part -> accessInfo -> checkOccupationPer
         void checkOccupationPerYear_1(); // TODO
