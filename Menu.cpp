@@ -448,11 +448,52 @@ void Menu::showStudentsPerYear_1() {
     }
 
 
-}; // TODO
+};
 
 
 void Menu::checkOccupationPerYear_1() {
+    int num;
+    int n;
+    cout << "Insert a number correspondent to a year: " << endl;
+    cin >> num;
+    string indicator = "nd";
+    if (num == 1) {
+        indicator = "st";
+    }
+    int sum = 0;
 
+
+    // caso se considere um aluno do ano em que está a fazer a uc de ano mais elevado //
+    int max = 0;
+    for (auto element : data.getStudents()) {
+        max = 0;
+        for (auto aula : element.getStudentSchedule()) {
+            n = aula.getClassCode()[0] - '0';
+            if (n > max) {
+                max = n;
+            }
+        }
+        if (max == num) {
+            sum++;
+        }
+    }
+
+    //caso se considere um aluno inscrito em ucs de vários anos, de todos esses anos //
+
+    /*
+    int sum = 0;
+    for (auto element : data.getStudents()) {
+        for (auto aula : element.getStudentSchedule()) {
+
+            if (aula.getClassCode()[0] - '0' == num) {
+                sum++;
+                break;
+            }
+        }
+    }
+    */
+
+    cout << "There are " << sum << " students enrolled in the " << num << indicator << " year." << endl;
 }; // TODO
 
 //###############################################################//
