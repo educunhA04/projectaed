@@ -11,12 +11,14 @@
 using namespace std;
 
 class AllData {
+    //AllData retains all the uc's, students and schedule of a class in specific
     private:
+        string ccode;
         vector<Classes> ucInSchedule;
         set<Student> students;
 
     public:
-        AllData(){}
+        AllData(){students={};}
         AllData(const vector<Classes>& newUcInShedule, const set<Student>& newStudents){
             this->ucInSchedule = newUcInShedule;
             this->students = newStudents;

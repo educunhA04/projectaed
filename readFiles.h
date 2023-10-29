@@ -10,5 +10,6 @@ using namespace std;
 
 vector<Classes> readClassesData();
 set<Student> readStudentsData();
+set<Classes> readucperclass();
 
 #endif //PROJETO_READFILES_H
