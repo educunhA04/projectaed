@@ -18,6 +18,8 @@ string toLowerSTR (string str){
 
 Menu::Menu() : data(vector<Classes>(), set<Student>()) {} //contructor
 
+
+
 void Menu::checkOccupationPerClass_2() {
     cout << "Insert a valid Class code: \n";
     string inp;
@@ -257,72 +259,137 @@ void Menu::requestChange_2(){
 //#############################  CHANGES  ##################################//
 
 void Menu::addStudent_1() {
-    set<Student> allstudents=readStudentsData();
+    //set<Student> allstudents=readStudentsData();
 
     //interaction//
 
-    cout << endl << "Insert student's code";
-    string studentcode;
-    cin >> studentcode;
-    cout << endl << "Insert the UC code witch you want to change class:";
-    string ucode;
-    cin >> ucode;
-    cout << endl <<"Insert the code of the class you wish to change:";
-    string wtc;
-    cin>> wtc;
+    //cout << endl << "Insert student's code";
+    //string studentcode;
+    //cin >> studentcode;
+    //cout << endl << "Insert the UC code witch you want to change class:";
+    //  string ucode;
+    //cin >> ucode;
+    //cout << endl <<"Insert the code of the class you wish to change:";
+    //string wtc;
+    //cin>> wtc;
     //-----------------------------------------------------------------//
 
 
-    string ccclass;
-    string line;
-    string word;
-    string Num;
-    vector<string> aux;
-    Student student1=Student("",studentcode);
-    for(auto student : allstudents){
-        if (studentcode==student.getStudentCode()){
-            student1=student;
-        }
-    }
-    list<Classes> sch=student1.getStudentSchedule();
-    for (auto cl:sch){
-        if (cl.getUcCode()==ucode){
-            ccclass=cl.getClassCode();
-        }
-    }
+    //string ccclass;
+    //string line;
+    //string word;
+    //string Num;
+    //vector<string> aux;
+    //Student student1=Student("",studentcode);
+    //for(auto student : allstudents){
+    //    if (studentcode==student.getStudentCode()){
+    //        student1=student;
+    //    }
+    //}
+    //list<Classes> sch=student1.getStudentSchedule();
+    //for (auto cl:sch){
+    //    if (cl.getUcCode()==ucode){
+    //        ccclass=cl.getClassCode();
+    //    }
+    //}
 
-    ifstream iFile("students_classes.csv");
-    ofstream oFile("changed_students_classes.csv");
-    oFile.is_open();
-    if(iFile.is_open()) {
-        cout<<"2"<<'\n';
-        getline(iFile, line);
-        oFile << line << "\n";
-        while (getline(iFile, line)) {
-            cout<<"3"<<'\n';
-            aux.clear();
-            istringstream iss(line);
-            while (getline(iss, word, ',')) {
-                aux.push_back(word);
-            }
-            cout<<"4"<<'\n';
-            string stucode = aux[0];
-            string stname = aux[1];
-            string uccode = aux[2];
-            string ccode = aux[3];
-            if (stucode == studentcode and uccode == ucode) {
-                ccode = wtc;
-            }
-            oFile << stucode << "," << stname << "," << uccode << "," << ccode;
-        }
-    }
-    iFile.close();
-    oFile.close();
+    //ifstream iFile("students_classes.csv");
+    //ofstream oFile("changed_students_classes.csv");
+    //oFile.is_open();
+    //if(iFile.is_open()) {
+    //    cout<<"2"<<'\n';
+    //    getline(iFile, line);
+    //    oFile << line << "\n";
+    //   while (getline(iFile, line)) {
+    //       cout<<"3"<<'\n';
+    //        aux.clear();
+    //        istringstream iss(line);
+    //        while (getline(iss, word, ',')) {
+    //            aux.push_back(word);
+    //        }
+    //        cout<<"4"<<'\n';
+    //        string stucode = aux[0];
+    //        string stname = aux[1];
+    //        string uccode = aux[2];
+    //        string ccode = aux[3];
+    //        if (stucode == studentcode and uccode == ucode) {
+    //           ccode = wtc;
+    //        }
+//        oFile << stucode << "," << stname << "," << uccode << "," << ccode;
+    //    }
+    //}
+    //iFile.close();
+    //oFile.close();
 } // TODO
 
 void Menu::removeStudent_2() {
-
+    int n;
+    cout << "|------------[ Remove student ]-----------|\n"
+         << "|-----------------------------------------|\n"
+         << "|--[ You wish to remove the student of ]--|\n"
+            "|---[ every class or one in specific ]----|\n"
+         << "|-----------------------------------------|\n"
+         << "|-- 1: Every class--------- --------------|\n"
+         << "|-- 2: Only one ------------------------- |\n"
+         << "|-- B: Go Back to Menu -------------------|\n"
+         << "|-----------------------------------------|\n";
+    cout << endl << "Insert your desired option:";
+    string inp;
+    cin >> inp;
+    if (inp=="1"){
+        removeallStudent();
+    }
+    if (inp=="2"){
+        removeltlStudent();
+    }
+    else if (inp == "3" || inp == "B" || inp == "b"){requestChange_2();}
 }; // TODO
+
+void Menu::removeallStudent() {
+    cout<<endl<<"Insert the student's code:";
+    string studentscode;
+    cin>>studentscode;
+    ifstream ifile("../Files/students_classes.csv");
+    ofstream ofile("../Files/students_change.csv");
+    string line;
+    string word;
+    vector<string> aux;
+    set<Student> allstudents=readStudentsData();
+
+    if(ifile.is_open() and ofile.is_open()){
+        getline(ifile,line);
+        while (getline(ifile,line)){
+            aux.clear();
+            istringstream  iss(line);
+            while (getline(iss, word, ',')) {
+                aux.push_back(word);
+            }
+            string stuCode = aux[0];
+            if(stuCode!=studentscode){
+                ofile<<aux[0]<<","<<aux[1]<<","<<aux[2]<<","<<aux[3]<<'\n';
+            }
+        }
+        ifile.close();
+        ofile.close();
+
+        remove("../Files/students_classes.csv");
+        rename("students_change.csv", "students_classes.csv");
+
+    }
+    else{cout<<"file not found";}
+}; //TODO
+
+void Menu::removeltlStudent() {
+    cout<<endl<<"Insert the student's code:";
+    string studetscode;
+    cin>>studetscode;
+    cout<<endl<<"Insert the UC's code:";
+    string ucscode;
+    cin>>ucscode;
+}
+
+
+
 
 void Menu::switchStudent_3(){
 
