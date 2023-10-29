@@ -380,16 +380,44 @@ void Menu::removeallStudent() {
 }; //TODO
 
 void Menu::removeltlStudent() {
+    int n;
     cout<<endl<<"Insert the student's code:";
-    string studetscode;
-    cin>>studetscode;
+    string studentscode;
+    cin>>studentscode;
     cout<<endl<<"Insert the UC's code:";
     string ucscode;
     cin>>ucscode;
-}
+    ifstream ifile("../Files/students_classes.csv");
+    ofstream ofile("../Files/students_change.csv");
+    string line;
+    string word;
+    vector<string> aux;
 
+    if(ifile.is_open() and ofile.is_open()){
+        getline(ifile,line);
+        ofile << line << '\n';
+        while (getline(ifile,line)){
+            aux.clear();
+            istringstream  iss(line);
+            while (getline(iss, word, ',')) {
+                aux.push_back(word);
+            }
+            string stuCode = aux[0];
+            string uccode =aux[2];
+            if(stuCode==studentscode and ucscode==uccode){
+                n=1;
+            }
+            else{ofile<<aux[0]<<","<<aux[1]<<","<<aux[2]<<","<<aux[3]<<'\n';}
+        }
+        ifile.close();
+        ofile.close();
 
+        remove("../Files/students_classes.csv");
+        rename("../Files/students_change.csv", "../Files/students_classes.csv");
 
+    }
+    else{cout<<"file not found";}
+}; //TODO
 
 void Menu::switchStudent_3(){
 
