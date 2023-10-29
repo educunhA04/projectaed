@@ -1,4 +1,5 @@
 #include <fstream>
+#include <iostream>
 #include <sstream>
 #include <set>
 #include <vector>
@@ -13,7 +14,7 @@ using namespace std;
 vector<Classes> readClassesData(){ 
     // leitura do ficheiro classes.csv //
 
-    ifstream file("../files/classes.csv");
+    ifstream file("classes.csv");
     string line;
     string word;
 
@@ -56,7 +57,7 @@ set<Student> readStudentsData(){
     list<Classes> Uc;
     set<Student> allStudents;
 
-    ifstream file("../files/students_classes.csv");
+    ifstream file("students_classes.csv");
     string line;
     string word;
     string Num;
