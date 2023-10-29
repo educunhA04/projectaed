@@ -2,6 +2,7 @@
 #define PROJETO_TIMETYPE_H
 
 #include <string>
+#include "Classes.h"
 
 using namespace std;
 
@@ -20,11 +21,21 @@ class TimeType {
             this -> classDuration = newClassDuration;
             this -> typeOfClass = newTypeOfClass;
         }
+        bool operator<(const TimeType& notyet) const{
+            if (day< notyet.getDay()) return true;
+            if (day > notyet.getDay()) return false;
 
-        string getDay() {return day;}
-        string getStartHour() {return startHour;}
-        string getClassDuration() {return classDuration;}
-        string getTypeOfClass() {return typeOfClass;}
+            if (startHour< notyet.getStartHour()) return true;
+            if (startHour> notyet.getStartHour()) return false;
+
+            if (classDuration <notyet.getClassDuration()) return true;
+            if (classDuration > notyet.getClassDuration()) return false;
+            return false;}
+
+        string getDay() const{return day;}
+        string getStartHour() const {return startHour;}
+        string getClassDuration() const {return classDuration;}
+        string getTypeOfClass() const {return typeOfClass;}
 };
 
 #endif //PROJETO_TIMETYPE_H

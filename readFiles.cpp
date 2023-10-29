@@ -113,7 +113,7 @@ set<Classes> readucperclass(){
     string word;
     string Num;
     vector<string> aux;
-    set<Classes> classesnucs;
+    set<Classes> ucsclass;
     vector<Classes> allClasses = readClassesData();
     TimeType FoundTime;
     ifstream file("classes_per_uc.csv");
@@ -129,15 +129,15 @@ set<Classes> readucperclass(){
             }
             string uCode = aux[0];
             string cCode = aux[1];
-            for (Classes cl: allClasses) {
-                if (cl.getUcCode() == aux[2] and cl.getClassCode() == aux[3]) {
+            for (auto cl: allClasses) {
+                if (cl.getUcCode() == uCode and cl.getClassCode() == cCode) {
                     FoundTime = cl.getTimetable();
                 }
             }
             Classes newClass = Classes(cCode, uCode, FoundTime);
-            classesnucs.insert(newClass);
+            ucsclass.insert(newClass);
             aux.clear();
         }
     }
-    return classesnucs;
+    return ucsclass;
 }
