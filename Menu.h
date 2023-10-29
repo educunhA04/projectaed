@@ -37,8 +37,8 @@ class Menu{
         void removeStudent_2(); // TODO
         void switchStudent_3(); // TODO
         // Subs
-        void removeallStudent();
-        void removeltlStudent();
+        void removeucStudent();
+        void removeclStudent();
         // 4th Part -> accessInfo -> showStudentsPer
         void showStudentsPerYear_1(); // TODO
         void showStudentsPerClass_2();
