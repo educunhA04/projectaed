@@ -16,7 +16,7 @@ string toLowerSTR (string str){
     return str;
 }
 
-Menu::Menu() : data(vector<Classes>(), set<Student>()) {} //contructor
+Menu::Menu() : data(string ccode, vector<Classes>(), set<Student>()) {} //contructor
 
 
 
@@ -265,17 +265,30 @@ void Menu::addStudent_1() {
     string studentcode;
     cin >> studentcode;
     string studentname;
-    cout << endl << "Insert the UC code of the class you wish the student to be:";
+    int n=1;
     string ucode;
+    set<UC> ucsnclasses = readucperclass();
+    while(n==1){
+    cout << endl << "Insert the UC code of the class you wish the student to be:";
     cin >> ucode;
-    set<Classes> ucsnclasses = readucperclass();
+    for (auto cl:ucsnclasses){
+        //cout<<cl.getUC();
+        if(cl.getUC()==ucode){
+
+            n=0;
+        }}
+    if(n==1){cout<<"Uc code not valid.";}
+    }
+
     cout << "|-----------[ Request Change ]------------|\n"
          << "|-----------------------------------------|\n"
          << "|-[ This are the classes of the " << ucode << "]----|\n"
          << "|-----------------------------------------|\n";
-    for (Classes cl: ucsnclasses) {
-        if (cl.getUcCode() == ucode) {
-            cout << "|---" << cl.getClassCode() << "---|\n";
+    for (auto cl: ucsnclasses) {
+        if (cl.getUC() == ucode) {
+            auto ccodes=cl.getclassesofuc();
+            for(auto n: ccodes)
+            cout<< n << '\n';
         }
     }
     cout << endl << "Insert the code of the class you wish to change:";

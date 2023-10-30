@@ -8,6 +8,7 @@
 #include "TimeType.h"
 #include <utility>
 #include "readFiles.h"
+#include "UC.h"
 
 using namespace std;
 
@@ -108,14 +109,15 @@ set<Student> readStudentsData(){
     }
     return allStudents;
 }
-set<Classes> readucperclass(){
+set<UC> readucperclass(){
+    set<UC> ucsclass;
+
+    TimeType FoundTime;
     string line;
     string word;
     string Num;
     vector<string> aux;
-    set<Classes> ucsclass;
-    vector<Classes> allClasses = readClassesData();
-    TimeType FoundTime;
+
     ifstream file("../Files/classes_per_uc.csv");
 
     if (file.is_open()) {
@@ -130,13 +132,16 @@ set<Classes> readucperclass(){
             }
             string uCode = aux[0];
             string cCode = aux[1];
-            for (auto cl: allClasses) {
-                if (cl.getUcCode() == uCode and cl.getClassCode() == cCode) {
-                    FoundTime = cl.getTimetable();
-                }
+            UC newuc=UC(uCode,{cCode});
+            auto l = ucsclass.find(newuc);
+            if(l==ucsclass.end()){
+                ucsclass.insert(newuc);
             }
-            Classes newClass = Classes(cCode, uCode, FoundTime);
-            ucsclass.insert(newClass);
+            else{
+                UC& exuc = const_cast<UC&>(*l);
+                set<string> accodes=exuc.getclassesofuc();
+                accodes.insert(cCode);
+            }
             aux.clear();
         }
     }

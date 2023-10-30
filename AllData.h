@@ -19,10 +19,10 @@ class AllData {
 
     public:
         AllData(){students={};}
-        AllData( const vector<Classes>& newUcInShedule, const set<Student>& newStudents){
+        AllData(const vector<Classes>& newUcInShedule, const set<Student>& newStudents){
+            //->ccode=newccode;
             this->ucInSchedule = newUcInShedule;
             this->students = newStudents;
-            //this->ccode=ccode;
         }
 
         vector<Classes> getUCS() const {return ucInSchedule;}
