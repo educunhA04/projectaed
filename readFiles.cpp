@@ -57,7 +57,6 @@ set<Student> readStudentsData(){
     vector<Classes> allClasses = readClassesData();
     list<Classes> Uc;
     set<Student> allStudents;
-
     ifstream file("../Files/students_classes.csv");
     string line;
     string word;

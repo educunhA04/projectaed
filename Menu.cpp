@@ -80,7 +80,9 @@ void Menu:: showClassSchedule_4(){
     bool found = false;
 
     for(auto element : data.getUCS()){
-        if (toLowerSTR(inp) == toLowerSTR(element.getClassCode())) found = true;
+        if (toLowerSTR(inp) == toLowerSTR(element.getClassCode())) {
+            found = true;
+        }
     }
     if(found){
         cout << "Showing Schedule for class " << inp << "\n";
@@ -108,7 +110,7 @@ void Menu::showStudentSchedule_1(){
         if (element.getStudentCode() == inp){
             found = true;
             auto horario = element.getStudentSchedule();
-            cout << "Showing " << element.getName() << "'s Schedule";
+            cout << "Showing " << element.getName() << "'s Schedule" << endl << endl;
             for(auto aula : horario){
                 cout << "UCCode: " << aula.getUcCode() << " / "
                      << "ClassCode: " << aula.getClassCode() << " / "
@@ -438,12 +440,72 @@ void Menu::switchStudent_3(){
 //############################# SHOW ##################################//
 
 void Menu::showStudentsPerYear_1() {
+    int input;
+    cout << "Insert a number correspondent to a year: " << endl;
 
-}; // TODO
+    cin >> input;
+    cout << "Student Code   |   Student Name" << endl;
+    set<char> anos;
+
+    for (auto element : data.getStudents()) {
+        for (auto aula : element.getStudentSchedule()) {
+            anos.insert(aula.getClassCode()[0]);
+        }
+
+        for (char num : anos) {
+            if (num - '0' == input) {
+                cout << " " << element.getStudentCode() << "     |   " << element.getName() << endl;
+            }
+        }
+    }
+
+
+};
 
 
 void Menu::checkOccupationPerYear_1() {
+    int num;
+    int n;
+    cout << "Insert a number correspondent to a year: " << endl;
+    cin >> num;
+    string indicator = "nd";
+    if (num == 1) {
+        indicator = "st";
+    }
+    int sum = 0;
 
+
+    // caso se considere um aluno do ano em que está a fazer a uc de ano mais elevado //
+    int max = 0;
+    for (auto element : data.getStudents()) {
+        max = 0;
+        for (auto aula : element.getStudentSchedule()) {
+            n = aula.getClassCode()[0] - '0';
+            if (n > max) {
+                max = n;
+            }
+        }
+        if (max == num) {
+            sum++;
+        }
+    }
+
+    //caso se considere um aluno inscrito em ucs de vários anos, de todos esses anos //
+
+    /*
+    int sum = 0;
+    for (auto element : data.getStudents()) {
+        for (auto aula : element.getStudentSchedule()) {
+
+            if (aula.getClassCode()[0] - '0' == num) {
+                sum++;
+                break;
+            }
+        }
+    }
+    */
+
+    cout << "There are " << sum << " students enrolled in the " << num << indicator << " year." << endl;
 }; // TODO
 
 //###############################################################//
