@@ -24,7 +24,7 @@ class Menu{
         void requestChange_2();
 
         // 2nd Part -> accessInfo //
-        void showStudentSchedule_1();
+        void showStudentSchedule_1(); //DONE
         void showStudentsPer_2();
         void showStudentsInAtLeastNUCs_3();
 
@@ -33,19 +33,19 @@ class Menu{
         void checkBiggestUc_6();
 
         // 3rd Part -> requestChange //
-        void addStudent_1(); // TODO
-        void removeStudent_2(); // TODO
+        void addStudent_1(); // TODO +-
+        void removeStudent_2();
         void switchStudent_3(); // TODO
         // Subs
         void removeucStudent();
         void removeclStudent();
         // 4th Part -> accessInfo -> showStudentsPer
-        void showStudentsPerYear_1(); // TODO
+        void showStudentsPerYear_1();
         void showStudentsPerClass_2();
         void showStudentsPerUC_3();
 
         // 5th Part -> accessInfo -> checkOccupationPer
-        void checkOccupationPerYear_1(); // TODO
+        void checkOccupationPerYear_1();
         void checkOccupationPerClass_2();
         void checkOccupationPerUC_3();
 };

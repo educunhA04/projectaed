@@ -16,9 +16,56 @@ string toLowerSTR (string str){
     return str;
 }
 
+<<<<<<< HEAD
 Menu::Menu() : data(string ccode, vector<Classes>(), set<Student>()) {} //contructor
+=======
+
+Menu::Menu() : data(vector<Classes>(), set<Student>()) {} //contructor
+>>>>>>> 63dc7486ef47ebd8eaf84c7c31b5d20592c5ff59
 
 
+void Menu::showStudentSchedule_1(){
+    string inp;
+    cout << "Insert a valid student Code: ";
+    cin >> inp;
+    bool found = false;
+
+    for(auto element : data.getStudents()){
+        if (element.getStudentCode() == inp){
+            found = true;
+
+            cout << "Showing " << element.getName() << "'s Schedule" << endl << endl;
+            for(auto aula : element.getStudentSchedule()){
+                cout << "UCCode: " << aula.getUcCode() << " / "
+                     << "ClassCode: " << aula.getClassCode() << " / "
+                     << "Day: " << aula.getTimetable().getDay() << " / "
+                     << "Type: " << aula.getTimetable().getTypeOfClass() << " / "
+                     << "StartHour: " << aula.getTimetable().getStartHour() << " / "
+                     << "Duration: " << aula.getTimetable().getClassDuration() << endl;
+            }
+        }
+    }
+    if (!found){
+        cout << "Student not found.\n\n";
+
+    }
+
+
+    char what;
+
+    cout << "insert 'R' to RETURN" << endl;
+    cout << "insert 'Q' to QUIT" << endl;
+
+    cin >> what;
+
+    if (what == 'R') {
+        accessInfo_1();
+    }
+    else {
+        cout << "Program will now exit" << endl;
+        exit(0);
+    }
+}
 
 void Menu::checkOccupationPerClass_2() {
     cout << "Insert a valid Class code: \n";
@@ -46,6 +93,20 @@ void Menu::checkOccupationPerClass_2() {
         cout << "The number of students with lessons in class " << inp << " is " << count << ".\n\n";
     }
     checkOccupationPer_5();
+    char what;
+
+    cout << "insert 'R' to RETURN" << endl;
+    cout << "insert 'Q' to QUIT" << endl;
+
+    cin >> what;
+
+    if (what == 'R') {
+        accessInfo_1();
+    }
+    else {
+        cout << "Program will now exit" << endl;
+        exit(0);
+    }
 }
 
 void Menu::checkOccupationPerUC_3() {
@@ -70,7 +131,20 @@ void Menu::checkOccupationPerUC_3() {
     else{
         cout << "The number of students studying the UC " << inp << " is " << count << ".\n\n";
     }
-    checkOccupationPer_5();
+    char what;
+
+    cout << "insert 'R' to RETURN" << endl;
+    cout << "insert 'Q' to QUIT" << endl;
+
+    cin >> what;
+
+    if (what == 'R') {
+        checkOccupationPer_5();
+    }
+    else {
+        cout << "Program will now exit" << endl;
+        exit(0);
+    }
 }
 
 void Menu:: showClassSchedule_4(){
@@ -97,36 +171,23 @@ void Menu:: showClassSchedule_4(){
     else {
         cout << "Class not found.\n\n";
     }
-    accessInfo_1();
+    char what;
+
+    cout << "insert 'R' to RETURN" << endl;
+    cout << "insert 'Q' to QUIT" << endl;
+
+    cin >> what;
+
+    if (what == 'R') {
+        accessInfo_1();
+    }
+    else {
+        cout << "Program will now exit" << endl;
+        exit(0);
+    }
 }
 
-void Menu::showStudentSchedule_1(){
-    string inp;
-    cout << "Insert a valid student Code: ";
-    cin >> inp;
-    bool found = false;
 
-    for(auto element : data.getStudents()){
-        if (element.getStudentCode() == inp){
-            found = true;
-            auto horario = element.getStudentSchedule();
-            cout << "Showing " << element.getName() << "'s Schedule" << endl << endl;
-            for(auto aula : horario){
-                cout << "UCCode: " << aula.getUcCode() << " / "
-                     << "ClassCode: " << aula.getClassCode() << " / "
-                     << "Day: " << aula.getTimetable().getDay() << " / "
-                     << "Type: " << aula.getTimetable().getTypeOfClass() << " / "
-                     << "StartHour: " << aula.getTimetable().getStartHour() << " / "
-                     << "Duration: " << aula.getTimetable().getClassDuration() << "\n\n";
-            }
-        }
-    }
-    if (!found){
-        cout << "Student not found.\n\n";
-
-    }
-    accessInfo_1();
-}
 
 void Menu::showStudentsPerUC_3(){
     cout << endl <<  "Insert the code of the UC: ";
@@ -158,7 +219,21 @@ void Menu::showStudentsPerUC_3(){
     else{
         cout << "UC not found.\n\n";
     }
-    showStudentsPer_2();
+    char what;
+
+    cout << "insert 'R' to RETURN" << endl;
+    cout << "insert 'Q' to quit" << endl;
+
+    cin >> what;
+
+    if (what == 'R') {
+        showStudentsPer_2();
+    }
+    else {
+        cout << "Program will now exit" << endl;
+        exit(0);
+    }
+
 };
 
 void Menu::showStudentsPerClass_2() {
@@ -192,8 +267,21 @@ void Menu::showStudentsPerClass_2() {
     else{
         cout << "Class not found.\n\n";
     }
-    showStudentsPer_2();
-};
+    char what;
+
+    cout << "insert 'R' to RETURN" << endl;
+    cout << "insert 'Q' to QUIT" << endl;
+
+    cin >> what;
+
+    if (what == 'R') {
+        showStudentsPer_2();
+    }
+    else {
+        cout << "Program will now exit" << endl;
+        exit(0);
+    }
+}
 
 void Menu::showStudentsInAtLeastNUCs_3() {
     cout << endl << "Insert the number of UCs: ";
@@ -212,7 +300,20 @@ void Menu::showStudentsInAtLeastNUCs_3() {
             cout << "Student Code: "  << element.getStudentCode() << " / Student Name: " << element.getName() << endl;
         }
     }
-    accessInfo_1();
+    char what;
+
+    cout << "insert 'R' to RETURN" << endl;
+    cout << "insert 'Q' to QUIT" << endl;
+
+    cin >> what;
+
+    if (what == 'R') {
+        accessInfo_1();
+    }
+    else {
+        cout << "Program will now exit" << endl;
+        exit(0);
+    }
 }
 
 void Menu::checkBiggestUc_6() {
@@ -235,7 +336,20 @@ void Menu::checkBiggestUc_6() {
     }
     cout << "The biggest UC in L.EIC is " << m << ".\n\n" << endl;
 
-    accessInfo_1();
+    char what;
+
+    cout << "insert 'R' to RETURN" << endl;
+    cout << "insert 'Q' to QUIT" << endl;
+
+    cin >> what;
+
+    if (what == 'R') {
+        accessInfo_1();
+    }
+    else {
+        cout << "Program will now exit" << endl;
+        exit(0);
+    }
 }
 void Menu::requestChange_2(){
     cout << "|--[ Request Change ]---------------------|\n"
@@ -440,7 +554,7 @@ void Menu::switchStudent_3(){
 //############################# SHOW ##################################//
 
 void Menu::showStudentsPerYear_1() {
-    int input;
+    /*int input;
     cout << "Insert a number correspondent to a year: " << endl;
 
     cin >> input;
@@ -456,6 +570,28 @@ void Menu::showStudentsPerYear_1() {
             if (num - '0' == input) {
                 cout << " " << element.getStudentCode() << "     |   " << element.getName() << endl;
             }
+        }
+    }*/
+
+
+    int num;
+    int n;
+    cout << "Insert a number correspondent to a year: " << endl;
+    cin >> num;
+
+
+    // caso se considere um aluno do ano em que está a fazer a uc de ano mais elevado //
+    int max = 0;
+    for (auto element : data.getStudents()) {
+        max = 0;
+        for (auto aula : element.getStudentSchedule()) {
+            n = aula.getClassCode()[0] - '0';
+            if (n > max) {
+                max = n;
+            }
+        }
+        if (max == num) {
+            cout << " " << element.getStudentCode() << "     |   " << element.getName() << endl;
         }
     }
 
