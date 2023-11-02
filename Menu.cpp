@@ -16,6 +16,8 @@ string toLowerSTR (string str){
         elem = tolower(elem);}
     return str;
 }
+
+
 vector <Classes> UCINSCH=readClassesData();
 set<Student> ALLSTUDENTS=readStudentsData();
 
