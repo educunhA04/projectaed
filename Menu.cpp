@@ -25,6 +25,7 @@ Menu::Menu() : data(UCINSCH, ALLSTUDENTS) {} //contructor
 
 //############################# MENUS ##################################//
 void Menu::start() {
+    system("clear");
     bool isOpen = true;
 
     while (isOpen){
@@ -53,13 +54,37 @@ void Menu::start() {
     }
 }
 
+void Menu::requestChange_2(){
+    system("clear");
+    cout << "|--[ Request Change ]---------------------|\n"
+         << "|-----------------------------------------|\n"
+         << "|-[ What Change request do you have? ]----|\n"
+         << "|-----------------------------------------|\n"
+         << "|-- 1: Add Student -----------------------|\n"
+         << "|-- 2: Remove Student --------------------|\n"
+         << "|-- 3: Switch Student --------------------|\n"
+         << "|-- B: Go Back to Menu -------------------|\n"
+         << "|-----------------------------------------|\n";
+
+    cout << endl << "Insert your desired option:";
+    string inp;
+    cin >> inp;
+
+    if (inp == "1"){addStudent_1();}
+    else if (inp == "2"){removeStudent_2();}
+    else if (inp == "3"){switchStudent_3();}
+    else if (inp == "4" || inp == "B" || inp == "b"){start();}
+    else {cout << "|-- Invalid Input ------------------------|\n";}
+}
+
 void Menu::accessInfo_1() {
+    system("clear");
     cout << "|--[ Access Info ]------------------------|\n"
          << "|-----------------------------------------|\n"
          << "|-[ What Info do you wish to access? ]----|\n"
          << "|-----------------------------------------|\n"
          << "|-- 1: A Student's Schedule --------------|\n"
-         << "|-- 2: Student's per Year/UC/Class ------ |\n"
+         << "|-- 2: Students per Year/UC/Class ------ |\n"
          << "|-- 3: Students in at Least n UC's ------ |\n"
          << "|-- 4: A Class Schedule ----------------- |\n"
          << "|-- 5: The Occupation per Year/Class/UC --|\n"
@@ -84,6 +109,7 @@ void Menu::accessInfo_1() {
 }
 
 void Menu::checkOccupationPer_5() {
+    system("clear");
     cout << "|--[ Access Info ]------------------------|\n"
          << "|-----------------------------------------|\n"
          << "|-[ Check Occupation Per ]----------------|\n"
@@ -106,6 +132,7 @@ void Menu::checkOccupationPer_5() {
 }
 
 void Menu::showStudentsPer_2() {
+    system("clear");
     cout << "|--[ Access Info ]------------------------|\n"
          << "|-----------------------------------------|\n"
          << "|-[ Show Students Per ]-------------------|\n"
@@ -132,6 +159,7 @@ void Menu::showStudentsPer_2() {
 //############################## FUNCTIONS INFO #################################//
 
 void Menu::showStudentSchedule_1(){
+    system("clear");
     string inp;
     cout << "Insert a valid student Code: ";
     cin >> inp;
@@ -194,7 +222,7 @@ void Menu::showStudentsPerYear_1() {
         }
     }*/
 
-
+    system("clear");
     int num;
     int n;
     cout << "Insert a number correspondent to a year: " << endl;
@@ -235,6 +263,7 @@ void Menu::showStudentsPerYear_1() {
 }
 
 void Menu::showStudentsPerUC_3(){
+    system("clear");
     cout << endl <<  "Insert the code of the UC: ";
     string inp;
     cin >> inp;
@@ -282,6 +311,7 @@ void Menu::showStudentsPerUC_3(){
 }
 
 void Menu::showStudentsPerClass_2() {
+    system("clear");
     cout << endl <<  "Insert the code of the class: ";
     string inp;
     cin >> inp;
@@ -329,6 +359,7 @@ void Menu::showStudentsPerClass_2() {
 }
 
 void Menu::showStudentsInAtLeastNUCs_3() {
+    system("clear");
     cout << endl << "Insert the number of UCs: ";
     int input;
     cin >> input;
@@ -362,6 +393,7 @@ void Menu::showStudentsInAtLeastNUCs_3() {
 }
 
 void Menu:: showClassSchedule_4(){
+    system("clear");
     string inp;
     cout << "Insert a valid Class Code: \n";
     cin >> inp;
@@ -403,6 +435,7 @@ void Menu:: showClassSchedule_4(){
 
 
 void Menu::checkOccupationPerYear_1() {
+    system("clear");
     int num;
     int n;
     cout << "Insert a number correspondent to a year: " << endl;
@@ -463,6 +496,7 @@ void Menu::checkOccupationPerYear_1() {
 }; // TODO
 
 void Menu::checkOccupationPerClass_2() {
+    system("clear");
     cout << "Insert a valid Class code: \n";
     string inp;
     cin >> inp;
@@ -505,6 +539,7 @@ void Menu::checkOccupationPerClass_2() {
 }
 
 void Menu::checkOccupationPerUC_3() {
+    system("clear");
     string inp;
     cout << "Insert a valid UC Code: \n";
     cin >> inp;
@@ -544,6 +579,7 @@ void Menu::checkOccupationPerUC_3() {
 
 
 void Menu::checkBiggestUc_6() {
+    system("clear");
     string t = data.getUCS()[0].getUcCode(); //primeira uc
     string m; //biggest uc;
     int count = 0;
@@ -582,6 +618,7 @@ void Menu::checkBiggestUc_6() {
 //############################## FUNCTIONS CHANGE #################################//
 
 void Menu::addStudent_1() {
+    system("clear");
     cout << "|--[ Request Change ]---------------------|\n"
          << "|-----------------------------------------|\n"
          << "|--[ Do you wish to add the student to ]--|\n"
@@ -600,17 +637,17 @@ void Menu::addStudent_1() {
     else if (inp == "2") { i = 2; }
     else if (inp == "3" || inp == "B" || inp == "b") { start(); }
     else { cout << "|-- Invalid Input ------------------------|\n"; }
-
-    cout << endl << "Insert student's code";
+    system("clear");
+    cout << endl << "Insert student's code: " << endl;
     string studentcode;
     cin >> studentcode;
     string wtc;
     string ccode;
     string ucode;
     if (i == 1) {
-        cout << endl << "Insert the UC code witch you want student to be added:";
+        cout << endl << "Insert the UC code witch you want student to be added: " << endl;
         cin >> ucode;
-        cout << "This are the classes of the " << ucode << '\n';
+        cout << "This are the classes of " << ucode << '\n';
         for (auto n: UCINSCH) {
             if (n.getUcCode() == ucode) {
                 cout << n.getClassCode() << '\n';
@@ -788,40 +825,3 @@ void Menu::switchStudent_3(){
         }
     }
 }
-
-//###############################################################//
-//###############################################################//
-//###############################################################//
-//###############################################################//
-
-
-
-
-void Menu::requestChange_2(){
-    cout << "|--[ Request Change ]---------------------|\n"
-         << "|-----------------------------------------|\n"
-         << "|-[ What Change request do you have? ]----|\n"
-         << "|-----------------------------------------|\n"
-         << "|-- 1: Add Student -----------------------|\n"
-         << "|-- 2: Remove Student --------------------|\n"
-         << "|-- 3: Switch Student --------------------|\n"
-         << "|-- B: Go Back to Menu -------------------|\n"
-         << "|-----------------------------------------|\n";
-
-    cout << endl << "Insert your desired option:";
-    string inp;
-    cin >> inp;
-
-    if (inp == "1"){addStudent_1();}
-    else if (inp == "2"){removeStudent_2();}
-    else if (inp == "3"){switchStudent_3();}
-    else if (inp == "4" || inp == "B" || inp == "b"){start();}
-    else {cout << "|-- Invalid Input ------------------------|\n";}
-}
-
-
-
-
-
-
-
