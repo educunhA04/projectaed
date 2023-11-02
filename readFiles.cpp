@@ -8,14 +8,13 @@
 #include "TimeType.h"
 #include <utility>
 #include "readFiles.h"
-#include "UC.h"
 
 using namespace std;
 
-vector<Classes> readClassesData(){ 
+vector<Classes> readClassesData(){
     // leitura do ficheiro classes.csv //
 
-    ifstream file("../Files/classes.csv");
+    ifstream file("../classes.csv");
     string line;
     string word;
 
@@ -48,16 +47,25 @@ vector<Classes> readClassesData(){
             ucInSch.push_back(nclass);
         }
     }
+    else{cout<<"The function is not working properly";}
     return ucInSch;
 }
+int okay(){
+    vector<Classes> allclasses=readClassesData();
+    for (const auto cl:allclasses){
+        cout<< cl.getClassCode()<<","<< cl.getUcCode()<<'\n';
+    }
 
+    return 1;
+};
 set<Student> readStudentsData(){
     // leitura do ficheiro students_classes.csv //
 
     vector<Classes> allClasses = readClassesData();
     list<Classes> Uc;
     set<Student> allStudents;
-    ifstream file("../Files/students_classes.csv");
+
+    ifstream file("../students_classes.csv");
     string line;
     string word;
     string Num;
@@ -108,16 +116,15 @@ set<Student> readStudentsData(){
     }
     return allStudents;
 }
-set<UC> readucperclass(){
-    set<UC> ucsclass;
-
-    TimeType FoundTime;
+set<Classes> readucperclass(){
     string line;
     string word;
     string Num;
     vector<string> aux;
-
-    ifstream file("../Files/classes_per_uc.csv");
+    set<Classes> ucsclass;
+    vector<Classes> allClasses = readClassesData();
+    TimeType FoundTime;
+    ifstream file("../classes_per_uc.csv");
 
     if (file.is_open()) {
         getline(file, line);
@@ -131,16 +138,13 @@ set<UC> readucperclass(){
             }
             string uCode = aux[0];
             string cCode = aux[1];
-            UC newuc=UC(uCode,{cCode});
-            auto l = ucsclass.find(newuc);
-            if(l==ucsclass.end()){
-                ucsclass.insert(newuc);
+            for (auto cl: allClasses) {
+                if (cl.getUcCode() == uCode and cl.getClassCode() == cCode) {
+                    FoundTime = cl.getTimetable();
+                }
             }
-            else{
-                UC& exuc = const_cast<UC&>(*l);
-                set<string> accodes=exuc.getclassesofuc();
-                accodes.insert(cCode);
-            }
+            Classes newClass = Classes(cCode, uCode, FoundTime);
+            ucsclass.insert(newClass);
             aux.clear();
         }
     }

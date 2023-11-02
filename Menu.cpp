@@ -7,7 +7,8 @@
 #include <sstream>
 #include <cstdio>
 #include "readFiles.h"
-
+#include <list>
+#include <algorithm>
 using namespace std;
 
 string toLowerSTR (string str){
@@ -15,57 +16,68 @@ string toLowerSTR (string str){
         elem = tolower(elem);}
     return str;
 }
+vector <Classes> UCINSCH=readClassesData();
+set<Student> ALLSTUDENTS=readStudentsData();
 
-<<<<<<< HEAD
-Menu::Menu() : data(string ccode, vector<Classes>(), set<Student>()) {} //contructor
-=======
+Menu::Menu() : data(UCINSCH, ALLSTUDENTS) {} //contructor
 
-Menu::Menu() : data(vector<Classes>(), set<Student>()) {} //contructor
->>>>>>> 63dc7486ef47ebd8eaf84c7c31b5d20592c5ff59
+void Menu::start() {
+    bool isOpen = true;
 
+    while (isOpen){
+        cout << "|--[ Menu ]-------------------------------|\n"
+             << "|-----------------------------------------|\n"
+             << "|-[ What action do you wish to perform? ]-|\n"
+             << "|-----------------------------------------|\n"
+             << "|-- 1: Access Info -----------------------|\n"
+             << "|-- 2: Request a change ------------------|\n"
+             << "|-- C: Close -----------------------------|\n"
+             << "|-----------------------------------------|\n";
 
-void Menu::showStudentSchedule_1(){
-    string inp;
-    cout << "Insert a valid student Code: ";
-    cin >> inp;
-    bool found = false;
+        cout << endl << "Insert your desired option:" << endl;
+        string inp;
+        cin >> inp;
 
-    for(auto element : data.getStudents()){
-        if (element.getStudentCode() == inp){
-            found = true;
-
-            cout << "Showing " << element.getName() << "'s Schedule" << endl << endl;
-            for(auto aula : element.getStudentSchedule()){
-                cout << "UCCode: " << aula.getUcCode() << " / "
-                     << "ClassCode: " << aula.getClassCode() << " / "
-                     << "Day: " << aula.getTimetable().getDay() << " / "
-                     << "Type: " << aula.getTimetable().getTypeOfClass() << " / "
-                     << "StartHour: " << aula.getTimetable().getStartHour() << " / "
-                     << "Duration: " << aula.getTimetable().getClassDuration() << endl;
-            }
+        if(inp == "1") accessInfo_1();
+        else if(inp == "2") requestChange_2();
+        else if(inp == "3" || inp == "c" || inp == "C"){
+            cout << "|-- The program will now close -----------|\n";
+            isOpen = false;
+        }
+        else{
+            cout << "|-- Invalid Input ------------------------|\n";
         }
     }
-    if (!found){
-        cout << "Student not found.\n\n";
-
-    }
-
-
-    char what;
-
-    cout << "insert 'R' to RETURN" << endl;
-    cout << "insert 'Q' to QUIT" << endl;
-
-    cin >> what;
-
-    if (what == 'R') {
-        accessInfo_1();
-    }
-    else {
-        cout << "Program will now exit" << endl;
-        exit(0);
-    }
 }
+
+void Menu::accessInfo_1() {
+    cout << "|--[ Access Info ]------------------------|\n"
+         << "|-----------------------------------------|\n"
+         << "|-[ What Info do you wish to access? ]----|\n"
+         << "|-----------------------------------------|\n"
+         << "|-- 1: A Student's Schedule --------------|\n"
+         << "|-- 2: Student's per Year/UC/Class ------ |\n"
+         << "|-- 3: Students in at Least n UC's ------ |\n"
+         << "|-- 4: A Class Schedule ----------------- |\n"
+         << "|-- 5: The Occupation per Year/Class/UC --|\n"
+         << "|-- 6: The UC with the most students -----|\n"
+         << "|-- B: Go Back to Menu -------------------|\n"
+         << "|-----------------------------------------|\n";
+
+    cout << endl << "Insert your desired option:";
+    string inp;
+    cin >> inp;
+
+    if (inp == "1"){showStudentSchedule_1();}
+    else if (inp == "2"){showStudentsPer_2();}
+    else if (inp == "3"){showStudentsInAtLeastNUCs_3();}
+    else if (inp == "4"){showClassSchedule_4();}
+    else if (inp == "5"){checkOccupationPer_5();}
+    else if (inp == "6"){checkBiggestUc_6();}
+    else if (inp == "7" || inp == "B" || inp == "b"){start();}
+    else {cout << "|-- Invalid Input ------------------------|\n";}
+}
+
 
 void Menu::checkOccupationPerClass_2() {
     cout << "Insert a valid Class code: \n";
@@ -93,20 +105,6 @@ void Menu::checkOccupationPerClass_2() {
         cout << "The number of students with lessons in class " << inp << " is " << count << ".\n\n";
     }
     checkOccupationPer_5();
-    char what;
-
-    cout << "insert 'R' to RETURN" << endl;
-    cout << "insert 'Q' to QUIT" << endl;
-
-    cin >> what;
-
-    if (what == 'R') {
-        accessInfo_1();
-    }
-    else {
-        cout << "Program will now exit" << endl;
-        exit(0);
-    }
 }
 
 void Menu::checkOccupationPerUC_3() {
@@ -131,20 +129,7 @@ void Menu::checkOccupationPerUC_3() {
     else{
         cout << "The number of students studying the UC " << inp << " is " << count << ".\n\n";
     }
-    char what;
-
-    cout << "insert 'R' to RETURN" << endl;
-    cout << "insert 'Q' to QUIT" << endl;
-
-    cin >> what;
-
-    if (what == 'R') {
-        checkOccupationPer_5();
-    }
-    else {
-        cout << "Program will now exit" << endl;
-        exit(0);
-    }
+    checkOccupationPer_5();
 }
 
 void Menu:: showClassSchedule_4(){
@@ -154,9 +139,7 @@ void Menu:: showClassSchedule_4(){
     bool found = false;
 
     for(auto element : data.getUCS()){
-        if (toLowerSTR(inp) == toLowerSTR(element.getClassCode())) {
-            found = true;
-        }
+        if (toLowerSTR(inp) == toLowerSTR(element.getClassCode())) found = true;
     }
     if(found){
         cout << "Showing Schedule for class " << inp << "\n";
@@ -171,23 +154,36 @@ void Menu:: showClassSchedule_4(){
     else {
         cout << "Class not found.\n\n";
     }
-    char what;
-
-    cout << "insert 'R' to RETURN" << endl;
-    cout << "insert 'Q' to QUIT" << endl;
-
-    cin >> what;
-
-    if (what == 'R') {
-        accessInfo_1();
-    }
-    else {
-        cout << "Program will now exit" << endl;
-        exit(0);
-    }
+    accessInfo_1();
 }
 
+void Menu::showStudentSchedule_1(){
+    string inp;
+    cout << "Insert a valid student Code: ";
+    cin >> inp;
+    bool found = false;
 
+    for(auto element : data.getStudents()){
+        if (element.getStudentCode() == inp){
+            found = true;
+            auto horario = element.getStudentSchedule();
+            cout << "Showing " << element.getName() << "'s Schedule";
+            for(auto aula : horario){
+                cout << "UCCode: " << aula.getUcCode() << " / "
+                     << "ClassCode: " << aula.getClassCode() << " / "
+                     << "Day: " << aula.getTimetable().getDay() << " / "
+                     << "Type: " << aula.getTimetable().getTypeOfClass() << " / "
+                     << "StartHour: " << aula.getTimetable().getStartHour() << " / "
+                     << "Duration: " << aula.getTimetable().getClassDuration() << "\n\n";
+            }
+        }
+    }
+    if (!found){
+        cout << "Student not found.\n\n";
+
+    }
+    accessInfo_1();
+}
 
 void Menu::showStudentsPerUC_3(){
     cout << endl <<  "Insert the code of the UC: ";
@@ -219,21 +215,7 @@ void Menu::showStudentsPerUC_3(){
     else{
         cout << "UC not found.\n\n";
     }
-    char what;
-
-    cout << "insert 'R' to RETURN" << endl;
-    cout << "insert 'Q' to quit" << endl;
-
-    cin >> what;
-
-    if (what == 'R') {
-        showStudentsPer_2();
-    }
-    else {
-        cout << "Program will now exit" << endl;
-        exit(0);
-    }
-
+    showStudentsPer_2();
 };
 
 void Menu::showStudentsPerClass_2() {
@@ -267,21 +249,8 @@ void Menu::showStudentsPerClass_2() {
     else{
         cout << "Class not found.\n\n";
     }
-    char what;
-
-    cout << "insert 'R' to RETURN" << endl;
-    cout << "insert 'Q' to QUIT" << endl;
-
-    cin >> what;
-
-    if (what == 'R') {
-        showStudentsPer_2();
-    }
-    else {
-        cout << "Program will now exit" << endl;
-        exit(0);
-    }
-}
+    showStudentsPer_2();
+};
 
 void Menu::showStudentsInAtLeastNUCs_3() {
     cout << endl << "Insert the number of UCs: ";
@@ -300,20 +269,7 @@ void Menu::showStudentsInAtLeastNUCs_3() {
             cout << "Student Code: "  << element.getStudentCode() << " / Student Name: " << element.getName() << endl;
         }
     }
-    char what;
-
-    cout << "insert 'R' to RETURN" << endl;
-    cout << "insert 'Q' to QUIT" << endl;
-
-    cin >> what;
-
-    if (what == 'R') {
-        accessInfo_1();
-    }
-    else {
-        cout << "Program will now exit" << endl;
-        exit(0);
-    }
+    accessInfo_1();
 }
 
 void Menu::checkBiggestUc_6() {
@@ -336,29 +292,16 @@ void Menu::checkBiggestUc_6() {
     }
     cout << "The biggest UC in L.EIC is " << m << ".\n\n" << endl;
 
-    char what;
-
-    cout << "insert 'R' to RETURN" << endl;
-    cout << "insert 'Q' to QUIT" << endl;
-
-    cin >> what;
-
-    if (what == 'R') {
-        accessInfo_1();
-    }
-    else {
-        cout << "Program will now exit" << endl;
-        exit(0);
-    }
+    accessInfo_1();
 }
 void Menu::requestChange_2(){
     cout << "|--[ Request Change ]---------------------|\n"
          << "|-----------------------------------------|\n"
          << "|-[ What Change request do you have? ]----|\n"
          << "|-----------------------------------------|\n"
-         << "|-- 1: Add Student to a Class ------------|\n"
-         << "|-- 2: Remove Student from a Class -------|\n"
-         << "|-- 3: Switch Student from UC ------------|\n"
+         << "|-- 1: Add Student -----------------------|\n"
+         << "|-- 2: Remove Student --------------------|\n"
+         << "|-- 3: Switch Student --------------------|\n"
          << "|-- B: Go Back to Menu -------------------|\n"
          << "|-----------------------------------------|\n";
 
@@ -375,273 +318,270 @@ void Menu::requestChange_2(){
 //#############################  CHANGES  ##################################//
 
 void Menu::addStudent_1() {
-    set<Student> allstudents = readStudentsData();
-    //-----------------------------Interaction-------------------------//
-    cout << endl << "Insert student's code";
-    string studentcode;
-    cin >> studentcode;
-    string studentname;
-    int n=1;
-    string ucode;
-    set<UC> ucsnclasses = readucperclass();
-    while(n==1){
-    cout << endl << "Insert the UC code of the class you wish the student to be:";
-    cin >> ucode;
-    for (auto cl:ucsnclasses){
-        //cout<<cl.getUC();
-        if(cl.getUC()==ucode){
-
-            n=0;
-        }}
-    if(n==1){cout<<"Uc code not valid.";}
-    }
-
-    cout << "|-----------[ Request Change ]------------|\n"
+    cout << "|--[ Request Change ]---------------------|\n"
          << "|-----------------------------------------|\n"
-         << "|-[ This are the classes of the " << ucode << "]----|\n"
-         << "|-----------------------------------------|\n";
-    for (auto cl: ucsnclasses) {
-        if (cl.getUC() == ucode) {
-            auto ccodes=cl.getclassesofuc();
-            for(auto n: ccodes)
-            cout<< n << '\n';
-        }
-    }
-    cout << endl << "Insert the code of the class you wish to change:";
-    string wtc;
-    cin >> wtc;
-    //-----------------------------------------------------------------//
-
-    string line;
-    string word;
-    string Num;
-    vector<string> aux;
-    Student student1 = Student("", studentcode);
-
-    ifstream iFile("../File/students_classes.csv");
-    ofstream oFile("../File/changed_students_classes.csv");
-    if (iFile.is_open() and oFile.is_open()) {
-        while (!iFile.eof()) {
-            getline(iFile, line);
-            oFile << line << "\n";
-        }
-        for (Student stu: allstudents) {
-            if (stu.getStudentCode() == studentcode) {
-                studentname = stu.getName();
-            }
-            oFile << studentcode << "," << studentname << "," << ucode << "," << wtc;
-
-            remove("../File/students_classes.csc");
-            rename("../File/changed_students_classes.csv", "../File/students_classes.csv");
-        }
-        iFile.close();
-        oFile.close();
-    }
-};// TODO
-
-void Menu::removeStudent_2() {
-    int n;
-    cout << "|-----------[ Remove student ]------------|\n"
-         << "|-----------------------------------------|\n"
-         << "|----[ You wish to remove the student ]---|\n"
-            "|--------[ from a class or an UC]---------|\n"
-         << "|-----------------------------------------|\n"
-         << "|-- 1: Class------------------------------|\n"
-         << "|-- 2: UC ------------------------------- |\n"
+         << "|--[ Do you wish to add the student to ]--|\n"
+         << "|----------[ a Class or a UC? ]-----------|\n"
+         << "|-- 1: UC --------------------------------|\n"
+         << "|-- 3: Class -----------------------------|\n"
          << "|-- B: Go Back to Menu -------------------|\n"
          << "|-----------------------------------------|\n";
+
     cout << endl << "Insert your desired option:";
     string inp;
     cin >> inp;
-    if (inp=="1"){
-        removeclStudent();
-    }
-    if (inp=="2"){
-        removeucStudent();
-    }
-    else if (inp == "3" || inp == "B" || inp == "b"){requestChange_2();}
-}; // TODO
+    int i = 0;
+    //interaction//
+    if (inp == "1") { i = 1; }
+    else if (inp == "2") { i = 2; }
+    else if (inp == "3" || inp == "B" || inp == "b") { start(); }
+    else { cout << "|-- Invalid Input ------------------------|\n"; }
 
-void Menu::removeclStudent() {
-    int n;
-    //-----------------------------Interaction-------------------------//
-    cout<<endl<<"Insert the student's code:";
-    string studentscode;
-    cin>>studentscode;
-    cout<<endl<<"Insert the Class code:";
-    string pccode;
-    cin>>pccode;
-    //----------------------------------------------------------------//
-    ifstream ifile("../Files/students_classes.csv");
-    ofstream ofile("../Files/students_change.csv");
-    string line;
-    string word;
-    vector<string> aux;
-
-    if(ifile.is_open() and ofile.is_open()){
-        getline(ifile,line);
-        ofile << line << '\n';
-        while (getline(ifile,line)){
-            aux.clear();
-            istringstream  iss(line);
-            while (getline(iss, word, ',')) {
-                aux.push_back(word);
+    cout << endl << "Insert student's code";
+    string studentcode;
+    cin >> studentcode;
+    string wtc;
+    string ccode;
+    string ucode;
+    if (i == 1) {
+        cout << endl << "Insert the UC code witch you want student to be added:";
+        cin >> ucode;
+        cout << "This are the classes of the " << ucode << '\n';
+        for (auto n: UCINSCH) {
+            if (n.getUcCode() == ucode) {
+                cout << n.getClassCode() << '\n';
             }
-            string stuCode = aux[0];
-            string ccode =aux[3];
-            if(stuCode==studentscode and ccode==pccode){
-                n=1;
-            }
-            else{ofile<<aux[0]<<","<<aux[1]<<","<<aux[2]<<","<<aux[3]<<'\n';}
         }
-        ifile.close();
-        ofile.close();
 
-        remove("../Files/students_classes.csv");
-        rename("../Files/students_change.csv", "../Files/students_classes.csv");
-
+        cout << endl << "Insert the code of the class you wish to change:";
+        cin >> wtc;
     }
-    else{cout<<"file not found";}
-};  //TODO
-
-void Menu::removeucStudent() {
-    //-----------------------------Interaction-------------------------//
-    int n;
-    cout<<endl<<"Insert the student's code:";
-    string studentscode;
-    cin>>studentscode;
-    cout<<endl<<"Insert the UC's code:";
-    string ucscode;
-    cin>>ucscode;
-    //--------------------------------------------------------------//
-
-    ifstream ifile("../Files/students_classes.csv");
-    ofstream ofile("../Files/students_change.csv");
-    string line;
-    string word;
-    vector<string> aux;
-
-    if(ifile.is_open() and ofile.is_open()){
-        getline(ifile,line);
-        ofile << line << '\n';
-        while (getline(ifile,line)){
-            aux.clear();
-            istringstream  iss(line);
-            while (getline(iss, word, ',')) {
-                aux.push_back(word);
+    if (i == 2) {
+        cout << endl << "Insert the class code witch you want student to be added:";
+        cin >> ccode;
+        cout << "This are the UC's of the " << ccode << '\n';
+        for (auto n: UCINSCH) {
+            if (n.getClassCode() == ccode) {
+                cout << n.getUcCode() << '\n';
             }
-            string stuCode = aux[0];
-            string uccode =aux[2];
-            if(stuCode==studentscode and ucscode==uccode){
-                n=1;
-            }
-            else{ofile<<aux[0]<<","<<aux[1]<<","<<aux[2]<<","<<aux[3]<<'\n';}
         }
-        ifile.close();
-        ofile.close();
 
-        remove("../Files/students_classes.csv");
-        rename("../Files/students_change.csv", "../Files/students_classes.csv");
-
+        cout << endl << "Insert the code of the UC you wish to change:";
+        cin >> wtc;
     }
-    else{cout<<"file not found";}
-}; //TODO
+    //-----------------------------------------------------------------//
+
+    Student student1=Student("",studentcode);
+    for(auto stu : ALLSTUDENTS){
+        if (studentcode==stu.getStudentCode()){
+            student1=stu;
+        }
+    }
+    list<Classes> sch=student1.getStudentSchedule();
+    TimeType FoudTime;
+    for (auto cl: UCINSCH){
+        if(cl.getUcCode()==ucode and cl.getClassCode()==ccode){
+            FoudTime=cl.getTimetable();} }
+    Classes newclass=Classes(ccode,ucode,FoudTime);
+    sch.push_back(newclass);
+    student1.setLessons(sch);
+}
+// TODO
+
+void Menu::removeStudent_2() {
+    cout << "|--[ Request Change ]---------------------|\n"
+         << "|-----------------------------------------|\n"
+         << "|--[ Do you wish to remove the student  ]-|\n"
+         << "|--------[ from a Class or a UC? ]--------|\n"
+         << "|-- 1: UC --------------------------------|\n"
+         << "|-- 3: Class -----------------------------|\n"
+         << "|-- B: Go Back to Menu -------------------|\n"
+         << "|-----------------------------------------|\n";
+
+    cout << endl << "Insert your desired option:";
+    string inp;
+    cin >> inp;
+    int i = 0;
+    //interaction//
+    if (inp == "1") { i = 1; }
+    else if (inp == "2") { i = 2; }
+    else if (inp == "3" || inp == "B" || inp == "b") { start(); }
+    else { cout << "|-- Invalid Input ------------------------|\n"; }
+
+    cout << endl << "Insert student's code";
+    string studentcode;
+    cin >> studentcode;
+    string wtc;
+    string ccode;
+    string ucode;
+    Student Studentprov;
+    list <Classes> sch;
+    for(auto stu : ALLSTUDENTS){
+        if(stu.getStudentCode()==studentcode){
+            Studentprov=stu;
+        }
+    }
+    if(i==1){
+        for(auto cl: Studentprov.getStudentSchedule()){
+            if(cl.getUcCode()!=ucode){
+                sch.push_back(cl);
+            }
+        }
+        Studentprov.setLessons(sch);
+    }
+    if(i==2){
+        for(auto cl: Studentprov.getStudentSchedule()){
+            if(cl.getClassCode()!=ccode){
+                sch.push_back(cl);
+            }
+        }
+        Studentprov.setLessons(sch);
+    }
+
+};
 
 void Menu::switchStudent_3(){
+    cout << "|--[ Request Change ]---------------------|\n"
+         << "|-----------------------------------------|\n"
+         << "|--[ Do you wish to switch the student ]--|\n"
+         << "|----------[ a Class or a UC? ]-----------|\n"
+         << "|-- 1: UC --------------------------------|\n"
+         << "|-- 3: Class -----------------------------|\n"
+         << "|-- B: Go Back to Menu -------------------|\n"
+         << "|-----------------------------------------|\n";
 
-}; // TODO
+    cout << endl << "Insert your desired option: ";
+    string inp;
+    cin >> inp;
+    int i = 0;
+    //interaction//
+    if (inp == "1") { i = 1; }
+    else if (inp == "2") { i = 2; }
+    else if (inp == "3" || inp == "B" || inp == "b") { start(); }
+    else { cout << "|-- Invalid Input ------------------------|\n"; }
+
+    cout<<"Insert the student code: ";
+    string studentcode;
+    cin>> studentcode;
+    Student Student1;
+    for(auto stu : ALLSTUDENTS){
+        if(stu.getStudentCode()==studentcode){
+            Student1=stu;
+        }
+    }
+
+    string uccode1;
+    string uccode2;
+    string ccode1;
+    string ccode2;
+    list <Classes> sch;
+    if(i==1){
+        cout<<"What is Student's currently UC code that you wish to change? ";
+        cin>>uccode1;
+        cout<<"What is the UC code you want Student to be? ";
+        cin>>uccode2;
+        Classes n;
+
+        for(auto cl:Student1.getStudentSchedule()){
+
+            if(cl.getUcCode()==uccode1){
+                n.setClassCode(cl.getClassCode());
+                n.setUcCode(uccode2);
+
+                TimeType FoudTime;
+                for (auto cl1: UCINSCH){
+                    if(cl1.getUcCode()==uccode2 and cl1.getClassCode()==n.getClassCode()){
+                        FoudTime=cl1.getTimetable();}
+                }
+                n.setTimetable(FoudTime);
+                sch.push_back(n);
+            }
+            else{sch.push_back(cl);}
+        }
+    }
+    else{
+        cout<<"What is Student's currently class code that you wish to change? ";
+        cin>>ccode1;
+        cout<<"What is the class code you want Student to be? ";
+        cin>>ccode2;
+        Classes n;
+
+        for(auto cl:Student1.getStudentSchedule()){
+
+            if(cl.getClassCode()==ccode1){
+                n.setUcCode(cl.getUcCode());
+                n.setClassCode(ccode2);
+
+                TimeType FoudTime;
+                for (auto cl1: UCINSCH){
+                    if(cl1.getUcCode()==n.getUcCode() and cl1.getClassCode()==n.getClassCode()){
+                        FoudTime=cl1.getTimetable();}
+                }
+                n.setTimetable(FoudTime);
+                sch.push_back(n);
+            }
+            else{sch.push_back(cl);}
+        }}
+}
 
 //############################# SHOW ##################################//
 
 void Menu::showStudentsPerYear_1() {
-    /*int input;
-    cout << "Insert a number correspondent to a year: " << endl;
+    cout<<"Insert the Year you want to consult: "<<'\n';
+    string inp;
+    cin>>inp;
+    int c1;
+    int c2;
+    int c3;
+    for (auto stu : ALLSTUDENTS){
+        auto schedule = stu.getStudentSchedule();
 
-    cin >> input;
-    cout << "Student Code   |   Student Name" << endl;
-    set<char> anos;
-
-    for (auto element : data.getStudents()) {
-        for (auto aula : element.getStudentSchedule()) {
-            anos.insert(aula.getClassCode()[0]);
+        for(auto cl : schedule){
+            string ccode=cl.getClassCode();
+            if (ccode.substr(0,1)=="1"){c1++;}
+            else if (ccode.substr(0,1)=="2"){  c2++;}
+            else if (ccode.substr(0,1)=="3"){  c3++;}
         }
-
-        for (char num : anos) {
-            if (num - '0' == input) {
-                cout << " " << element.getStudentCode() << "     |   " << element.getName() << endl;
-            }
-        }
-    }*/
-
-
-    int num;
-    int n;
-    cout << "Insert a number correspondent to a year: " << endl;
-    cin >> num;
-
-
-    // caso se considere um aluno do ano em que está a fazer a uc de ano mais elevado //
-    int max = 0;
-    for (auto element : data.getStudents()) {
-        max = 0;
-        for (auto aula : element.getStudentSchedule()) {
-            n = aula.getClassCode()[0] - '0';
-            if (n > max) {
-                max = n;
-            }
-        }
-        if (max == num) {
-            cout << " " << element.getStudentCode() << "     |   " << element.getName() << endl;
-        }
+        list<int> maxi={c1,c2,c3};
+        int count=*max_element(maxi.begin(),maxi.end());
+        if (c1==count and "1"==inp){cout<<stu.getStudentCode()<<","<<stu.getName()<<'\n';}
+        else if (c2==count and inp=="2"){cout << stu.getStudentCode() << "," << stu.getName() << '\n';}
+        else if (c3==count and inp=="3"){cout<<stu.getStudentCode()<<","<<stu.getName()<<'\n';}
+        c1 = 0;
+        c2 = 0;
+        c3 = 0;
     }
 
-
-};
+}; // TODO
 
 
 void Menu::checkOccupationPerYear_1() {
-    int num;
-    int n;
-    cout << "Insert a number correspondent to a year: " << endl;
-    cin >> num;
-    string indicator = "nd";
-    if (num == 1) {
-        indicator = "st";
-    }
-    int sum = 0;
+    cout<<"Insert the Year you want to consult occupation: "<<'\n';
+    string inp;
+    cin>>inp;
+    int c1;
+    int c2;
+    int c3;
+    int counttotal=0;
+    for (auto stu : ALLSTUDENTS){
+        auto schedule = stu.getStudentSchedule();
 
-
-    // caso se considere um aluno do ano em que está a fazer a uc de ano mais elevado //
-    int max = 0;
-    for (auto element : data.getStudents()) {
-        max = 0;
-        for (auto aula : element.getStudentSchedule()) {
-            n = aula.getClassCode()[0] - '0';
-            if (n > max) {
-                max = n;
-            }
+        for(auto cl : schedule){
+            string ccode=cl.getClassCode();
+            if (ccode.substr(0,1)=="1"){c1++;}
+            else if (ccode.substr(0,1)=="2"){  c2++;}
+            else if (ccode.substr(0,1)=="3"){  c3++;}
         }
-        if (max == num) {
-            sum++;
-        }
+        list<int> maxi={c1,c2,c3};
+        int count=*max_element(maxi.begin(),maxi.end());
+        if (c1==count and "1"==inp){counttotal++;}
+        else if (c2==count and inp=="2"){counttotal++;}
+        else if (c3==count and inp=="3"){counttotal++;}
+        c1 = 0;
+        c2 = 0;
+        c3 = 0;
     }
-
-    //caso se considere um aluno inscrito em ucs de vários anos, de todos esses anos //
-
-    /*
-    int sum = 0;
-    for (auto element : data.getStudents()) {
-        for (auto aula : element.getStudentSchedule()) {
-
-            if (aula.getClassCode()[0] - '0' == num) {
-                sum++;
-                break;
-            }
-        }
-    }
-    */
-
-    cout << "There are " << sum << " students enrolled in the " << num << indicator << " year." << endl;
+    cout<<"The "<<inp<<" of LEIC has"<<counttotal;
 }; // TODO
 
 //###############################################################//
@@ -693,59 +633,3 @@ void Menu::showStudentsPer_2() {
 
 
 
-void Menu::accessInfo_1() {
-    cout << "|--[ Access Info ]------------------------|\n"
-         << "|-----------------------------------------|\n"
-         << "|-[ What Info do you wish to access? ]----|\n"
-         << "|-----------------------------------------|\n"
-         << "|-- 1: A Student's Schedule --------------|\n"
-         << "|-- 2: Student's per Year/UC/Class ------ |\n"
-         << "|-- 3: Students in at Least n UC's ------ |\n"
-         << "|-- 4: A Class Schedule ----------------- |\n"
-         << "|-- 5: The Occupation per Year/Class/UC --|\n"
-         << "|-- 6: The UC with the most students -----|\n"
-         << "|-- B: Go Back to Menu -------------------|\n"
-         << "|-----------------------------------------|\n";
-
-    cout << endl << "Insert your desired option:";
-    string inp;
-    cin >> inp;
-
-    if (inp == "1"){showStudentSchedule_1();}
-    else if (inp == "2"){showStudentsPer_2();}
-    else if (inp == "3"){showStudentsInAtLeastNUCs_3();}
-    else if (inp == "4"){showClassSchedule_4();}
-    else if (inp == "5"){checkOccupationPer_5();}
-    else if (inp == "6"){checkBiggestUc_6();}
-    else if (inp == "7" || inp == "B" || inp == "b"){start();}
-    else {cout << "|-- Invalid Input ------------------------|\n";}
-}
-
-void Menu::start() {
-    bool isOpen = true;
-
-    while (isOpen){
-        cout << "|--[ Menu ]-------------------------------|\n"
-             << "|-----------------------------------------|\n"
-             << "|-[ What action do you wish to perform? ]-|\n"
-             << "|-----------------------------------------|\n"
-             << "|-- 1: Access Info -----------------------|\n"
-             << "|-- 2: Request a change ------------------|\n"
-             << "|-- C: Close -----------------------------|\n"
-             << "|-----------------------------------------|\n";
-
-        cout << endl << "Insert your desired option:" << endl;
-        string inp;
-        cin >> inp;
-
-        if(inp == "1") accessInfo_1();
-        else if(inp == "2") requestChange_2();
-        else if(inp == "3" || inp == "c" || inp == "C"){
-            cout << "|-- The program will now close -----------|\n";
-            isOpen = false;
-        }
-        else{
-            cout << "|-- Invalid Input ------------------------|\n";
-        }
-    }
-}
