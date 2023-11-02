@@ -14,7 +14,7 @@ using namespace std;
 vector<Classes> readClassesData(){
     // leitura do ficheiro classes.csv //
 
-    ifstream file("../classes.csv");
+    ifstream file("../Files/classes.csv");
     string line;
     string word;
 
@@ -65,7 +65,7 @@ set<Student> readStudentsData(){
     list<Classes> Uc;
     set<Student> allStudents;
 
-    ifstream file("../students_classes.csv");
+    ifstream file("../Files/students_classes.csv");
     string line;
     string word;
     string Num;
@@ -124,7 +124,7 @@ set<Classes> readucperclass(){
     set<Classes> ucsclass;
     vector<Classes> allClasses = readClassesData();
     TimeType FoundTime;
-    ifstream file("../classes_per_uc.csv");
+    ifstream file("../Files/classes_per_uc.csv");
 
     if (file.is_open()) {
         getline(file, line);
