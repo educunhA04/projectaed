@@ -5,14 +5,18 @@
 #include <iostream>
 #include <set>
 #include <string>
+#include <stack>
+
 
 using namespace std;
 
 class Menu{
     private:
         AllData data;
+        std::stack<std::string> changeHistory;
 
-    public:
+
+public:
         Menu();
         void start();
         void setData(const AllData& newData){
@@ -34,11 +38,16 @@ class Menu{
 
         // 3rd Part -> requestChange //
         void addStudent_1(); // TODO +-
-        bool helperclasses(vector <pair<string,int>> original);//TODO
+        //Helper functions of the ADDREQUEST//
+        vector<pair<Classes,int>> checkocu();
+        bool helperclasses(vector <pair<Classes,int>> original);
+        //---------------------------------//
         void removeStudent_2();
         void switchStudent_3(); // TODO
         // Subs
         void activity();
+        void addToHistory();
+        void showHistory();
         // 4th Part -> accessInfo -> showStudentsPer
         void showStudentsPerYear_1();
         void showStudentsPerClass_2();
@@ -48,6 +57,8 @@ class Menu{
         void checkOccupationPerYear_1();
         void checkOccupationPerClass_2();
         void checkOccupationPerUC_3();
+
+    void addToHistory(const string &change);
 };
 
 #endif //PROJETO_MENU_H

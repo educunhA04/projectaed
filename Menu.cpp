@@ -16,10 +16,9 @@ string toLowerSTR (string str){
         elem = tolower(elem);}
     return str;
 }
-
+set<Classes> UCSNCL=readucperclass();
 vector <Classes> UCINSCH=readClassesData();
 set<Student> ALLSTUDENTS=readStudentsData();
-vector<string> changes;
 
 Menu::Menu() : data(UCINSCH, ALLSTUDENTS) {} //contructor
 
@@ -36,6 +35,7 @@ void Menu::start() {
              << "|-----------------------------------------|\n"
              << "|-- 1: Access Info -----------------------|\n"
              << "|-- 2: Request a change ------------------|\n"
+             << "|-- 3: Changes Historic ------------------|\n"
              << "|-- C: Close -----------------------------|\n"
              << "|-----------------------------------------|\n";
 
@@ -45,7 +45,8 @@ void Menu::start() {
 
         if(inp == "1") accessInfo_1();
         else if(inp == "2") requestChange_2();
-        else if(inp == "3" || inp == "c" || inp == "C"){
+        else if (inp == "3") showHistory();
+        else if(inp == "c" || inp == "C"){
             cout << "|-- The program will now close -----------|\n";
             isOpen = false;
         }
@@ -64,7 +65,6 @@ void Menu::requestChange_2(){
          << "|-- 1: Add Student -----------------------|\n"
          << "|-- 2: Remove Student --------------------|\n"
          << "|-- 3: Switch Student --------------------|\n"
-         << "|-- 4: Changes Historic ------------------|\n"
          << "|-- B: Go Back to Menu -------------------|\n"
          << "|-----------------------------------------|\n";
 
@@ -75,7 +75,7 @@ void Menu::requestChange_2(){
     if (inp == "1"){addStudent_1();}
     else if (inp == "2"){removeStudent_2();}
     else if (inp == "3"){switchStudent_3();}
-    else if (inp == "4"){activity();}
+
     else if (inp == "B" || inp == "b"){start();}
     else {cout << "|-- Invalid Input ------------------------|\n";}
 }
@@ -698,138 +698,159 @@ void Menu::addStudent_1() {
     string studentcode;
     cin >> studentcode;
 
+
     string wtc;
     string ccode;
     string ucode;
     string change;
-
+    bool afile;
     bool flag = false;
 
 
     Student Student1;
-    for (auto element : data.getStudents()) {
+    for (auto element: data.getStudents()) {
         if (element.getStudentCode() == studentcode) {
-            Student1=element;
+            Student1 = element;
             flag = true;
             break;
         }
     }
+
     if (!flag) {
         cout << endl << "The student code is invalid. " << endl;
-    }
-    if (!flag) {
         addStudent_1();
     }
+
     int count;
+
     //Student restriction
-    if (Student1.getStudentSchedule().size()==7 and i==1){
-        cout<<"Student is already in 7 UC's.";
-    }
-    //
-    else if (i == 1) {
+    if (Student1.getStudentSchedule().size() == 7 and i == 1) {
+        cout << "Student is already in 7 UC's.";
+    } else if (i == 1) {
         cout << endl << "Insert the UC code witch you want student to be added: " << endl;
         cin >> ucode;
-        for (auto cl:Student1.getStudentSchedule()){
-            if(cl.getUcCode()==ucode){
-                cout<<"Student is already in this UC."<<'\n';
+
+        for (auto cl: Student1.getStudentSchedule()) {
+            if (cl.getUcCode() == ucode) {
+                cout << "Student is already in this UC." << '\n';
                 addStudent_1();
             }
         }
-        cout << "These are the classes of " << ucode << '\n';
+
+        cout << "These are the classes of " << ucode << ":" << '\n';
         for (auto n: UCINSCH) {
             if (n.getUcCode() == ucode) {
                 cout << n.getClassCode() << '\n';
             }
         }
 
-        cout << endl << "Insert the code of the class you wish to change: ";
-        cin >> wtc;
+        cout << endl << "Insert the code of the class you wish to be add: ";
+        cin >> ccode;
 
-        //------------------Checking if the class has the occupation---------------//
-        set<string> classes;
-        vector<pair<string,int>> ocupation;
-        for(auto cl:UCINSCH){
-            classes.insert(cl.getClassCode());
+//-----------------------------Checking if the class has the occupation----------------------------------------------------//
+
+        vector<pair<Classes, int>> ocupation = checkocu();
+
+        for (auto p: ocupation) {
+            if (p.first.getUcCode() == ucode and p.first.getClassCode() == ccode) { p.second = p.second + 1; }
         }
-        for(auto cl :classes){
-            int a=0;
-            for(auto stu :ALLSTUDENTS){
-                for(auto cl1: stu.getStudentSchedule()){
-                    if (cl1.getClassCode()==cl){
-                        a++;
-                    }
-                }
-            }
-        }
-        for (auto p:ocupation){if (p.first==wtc){p.second=p.second+1;}}
-        if (helperclasses(ocupation)==false){
-            cout<<"This class if full, please choose another one."<<'\n';
+        if (helperclasses(ocupation) == false) {
+            cout << "This class if full, please choose another one." << '\n';
             addStudent_1();
-        }
-        //--------------------------------------------------------------//
+        } else { afile = true; }
+//----------------------------------------------------------------------------------------------------------------------------//
     }
+
+
     if (i == 2) {
         cout << endl << "Insert the class code in witch you want student to be added: ";
         cin >> ccode;
+        cout << "These are the UC of the " << ccode << ":" << '\n';
 
-        cout << "This are the UC's of the " << ccode << '\n';
         for (auto n: UCINSCH) {
             if (n.getClassCode() == ccode) {
                 cout << n.getUcCode() << '\n';
             }
         }
-        cout << endl << "Insert the code of the UC you wish to change: ";
-        cin >> wtc;
+        cout << endl << "Insert the code of the UC you wish to be added: ";
+        cin >> ucode;
 
-        //------------------Checking if the class has the occupation---------------//
+//-----------------------------Checking if the class has the occupation----------------------------------------------------//
 
-        set<string> classes;
-        vector<pair<string,int>> ocupation;
-        for(auto cl:UCINSCH){
-            classes.insert(cl.getClassCode());
+        vector<pair<Classes, int>> ocupation = checkocu();
+
+        for (auto p: ocupation) {
+            if (p.first.getUcCode() == ucode and p.first.getClassCode() == ccode) { p.second = p.second + 1; }
         }
-        for(auto cl :classes){
-            int a=0;
-            for(auto stu :ALLSTUDENTS){
-                for(auto cl1: stu.getStudentSchedule()){
-                    if (cl1.getClassCode()==cl){
-                        a++;
-                    }
-                }
-            }
-        }
-        for (auto p:ocupation){if (p.first==wtc){p.second=p.second+1;}}
-        if (helperclasses(ocupation)==false){
-            cout<<"This class if full, please choose another one."<<'\n';
+        if (helperclasses(ocupation) == false) {
+            cout << "This class if full, please choose another one." << '\n';
             addStudent_1();
-        }
-        //--------------------------------------------------------------//
+        } else { afile = true; }
+//----------------------------------------------------------------------------------------------------------------------------//
     }
-    //-----------------------------------------------------------------//
-
+//-------------------------adding the changes to the Student-----------------------------------------------------------------//
     list<Classes> sch = Student1.getStudentSchedule();
     TimeType FoudTime;
-    for (auto cl: UCINSCH){
-        if(cl.getUcCode()==ucode and cl.getClassCode()==ccode){
-            FoudTime=cl.getTimetable();} }
-    Classes newclass=Classes(ccode,ucode,FoudTime);
+    for (auto cl: UCINSCH) {
+        if (cl.getUcCode() == ucode and cl.getClassCode() == ccode) {
+            FoudTime = cl.getTimetable();
+        }
+    }
+    Classes newclass = Classes(ccode, ucode, FoudTime);
     sch.push_back(newclass);
     Student1.setLessons(sch);
 
-    if (i == 1) {
-        change = "The student " + Student1.getName() + " whose student code is " + Student1.getStudentCode()
-                 + " was added to the UC " + ucode + " at " + ccode + " class.";
-        changes.push_back(change);
+
+//---------------------------------------------Alterações no ficheiro--------------------------------------------------------//
+    ofstream file("../Files/students_classes.csv", std::ios::app);
+
+    if (file.is_open()) {
+        if (i == 1) {
+            string line = studentcode + "," + Student1.getName() + "," + ucode + "," + ccode;
+            file << line;
+            file << endl;
+            change = "The student " + Student1.getName() + " whose student code is " + Student1.getStudentCode()
+                     + " was added to the UC " + ucode + " at " + ccode + " class.";
+            addToHistory(change);
+        }
+        if (i == 2) {
+
+            string line = studentcode + "," + Student1.getName() + "," + ucode + "," + ccode;
+            file << line;
+            file << endl;
+            change = "The student " + Student1.getName() + " whose student code is " + Student1.getStudentCode()
+                     + " was added to the class " + ccode + " at " + ucode + " UC.";
+            addToHistory(change);
+        }
+
     }
-    if (i == 2) {
-        change = "The student " + Student1.getName() + " whose student code is " + Student1.getStudentCode()
-                 + " was added to the class " + ccode + " at " + ucode + " UC.";
-        changes.push_back(change);
-    }
+
+    file.close();
+//-------------------------------------------------------------------------------------------------------------------------//
 
 }
 
-bool Menu::helperclasses(vector <pair<string,int>> original) {
+vector<pair<Classes,int>> Menu::checkocu(){
+    vector<pair<Classes, int>> ocupation;
+    for (auto cl: UCSNCL) {
+        pair<Classes,int> pair;
+        pair.first=cl;
+        int a = 0;
+        for (auto stu: ALLSTUDENTS) {
+            for (auto cl1: stu.getStudentSchedule()) {
+                if (cl1.getClassCode() == cl.getClassCode() and cl1.getUcCode()==cl.getUcCode()) {
+                    a++;
+                }
+            }
+        }
+        pair.second=a;
+        ocupation.push_back(pair);
+    }
+    return ocupation;
+}
+
+
+bool Menu::helperclasses(vector <pair<Classes,int>> original) {
     for (int l = 0; l < original.size(); l++) {
         for (int l1 = 0; l1 < original.size(); l1++) {
             int d = original[l].second - original[l1].second;
@@ -840,6 +861,7 @@ bool Menu::helperclasses(vector <pair<string,int>> original) {
     }
     return true;
 }
+
 
 
 void Menu::removeStudent_2() {
@@ -887,7 +909,7 @@ void Menu::removeStudent_2() {
         Studentprov.setLessons(sch);
         change = "The student " + Studentprov.getName() + " whose student code is " + Studentprov.getStudentCode()
                 + " was removed from " + ucode + " UC.";
-        changes.push_back(change);
+        addToHistory(change);
     }
     if (i == 2){
         cout << endl << "Insert the class code: " << endl;
@@ -900,7 +922,7 @@ void Menu::removeStudent_2() {
         Studentprov.setLessons(sch);
         change = "The student " + Studentprov.getName() + " whose student code is " + Studentprov.getStudentCode()
                  + " was removed from " + ccode + " class.";
-        changes.push_back(change);
+        addToHistory(change);
     }
 
 };
@@ -1050,9 +1072,24 @@ void Menu::switchStudent_3(){
         }
     }
 }
-
-void Menu::activity() {
-    for (auto activ : changes) {
-        cout << activ << endl;
-    }
+void Menu::addToHistory(const string& change) {
+    changeHistory.push(change);
 }
+
+void Menu::showHistory() {
+    std::cout << "|--[ Change History ]--------------------|\n";
+
+    if (changeHistory.empty()) {
+        std::cout << "|-- No changes in the history -----------|\n";
+    } else {
+        int changeCount = 1;
+        while (!changeHistory.empty()) {
+            std::cout << "|-- " << changeCount << ": " << changeHistory.top() << "|\n";
+            changeHistory.pop();
+            changeCount++;
+        }
+    }
+
+    std::cout << "|-----------------------------------------|\n";
+}
+
