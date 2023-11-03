@@ -19,7 +19,6 @@ string toLowerSTR (string str){
 
 vector <Classes> UCINSCH=readClassesData();
 set<Student> ALLSTUDENTS=readStudentsData();
-vector<string> changes;
 
 Menu::Menu() : data(UCINSCH, ALLSTUDENTS) {} //contructor
 
@@ -36,6 +35,7 @@ void Menu::start() {
              << "|-----------------------------------------|\n"
              << "|-- 1: Access Info -----------------------|\n"
              << "|-- 2: Request a change ------------------|\n"
+             << "|-- 3: Changes Historic ------------------|\n"
              << "|-- C: Close -----------------------------|\n"
              << "|-----------------------------------------|\n";
 
@@ -45,7 +45,8 @@ void Menu::start() {
 
         if(inp == "1") accessInfo_1();
         else if(inp == "2") requestChange_2();
-        else if(inp == "3" || inp == "c" || inp == "C"){
+        else if (inp == "3") showHistory();
+        else if(inp == "c" || inp == "C"){
             cout << "|-- The program will now close -----------|\n";
             isOpen = false;
         }
@@ -64,7 +65,6 @@ void Menu::requestChange_2(){
          << "|-- 1: Add Student -----------------------|\n"
          << "|-- 2: Remove Student --------------------|\n"
          << "|-- 3: Switch Student --------------------|\n"
-         << "|-- 4: Changes Historic ------------------|\n"
          << "|-- B: Go Back to Menu -------------------|\n"
          << "|-----------------------------------------|\n";
 
@@ -75,7 +75,7 @@ void Menu::requestChange_2(){
     if (inp == "1"){addStudent_1();}
     else if (inp == "2"){removeStudent_2();}
     else if (inp == "3"){switchStudent_3();}
-    else if (inp == "4"){activity();}
+
     else if (inp == "B" || inp == "b"){start();}
     else {cout << "|-- Invalid Input ------------------------|\n";}
 }
@@ -642,7 +642,6 @@ void Menu::addStudent_1() {
     cout << endl << "Insert student's code: " << endl;
     string studentcode;
     cin >> studentcode;
-    string wtc;
     string ccode;
     string ucode;
     string change;
@@ -672,13 +671,13 @@ void Menu::addStudent_1() {
         }
 
         cout << endl << "Insert the code of the class you wish to change: ";
-        cin >> wtc;
+        cin >> ccode;
 
     }
     if (i == 2) {
         cout << endl << "Insert the class code in witch you want student to be added: ";
         cin >> ccode;
-        cout << "This are the UC's of the " << ccode << '\n';
+        cout << "These are the UC's of the " << ccode << '\n';
         for (auto n: UCINSCH) {
             if (n.getClassCode() == ccode) {
                 cout << n.getUcCode() << '\n';
@@ -686,7 +685,7 @@ void Menu::addStudent_1() {
         }
 
         cout << endl << "Insert the code of the UC you wish to change: ";
-        cin >> wtc;
+        cin >> ucode;
     }
     //-----------------------------------------------------------------//
 
@@ -696,16 +695,35 @@ void Menu::addStudent_1() {
             student1 = element;
         }
     }
-    if (i == 1) {
-        change = "The student " + student1.getName() + " whose student code is " + student1.getStudentCode()
-                + " was added to the UC " + ucode + " at " + ccode + " class.";
-        changes.push_back(change);
+
+    //Alterações no ficheiro//
+    ofstream file("../Files/students_classes.csv", std::ios::app);
+
+    if (file.is_open()) {
+        if (i == 1) {
+            string line = studentcode + "," + student1.getName() + "," + ucode + "," + ccode;
+            file << line;
+            file << endl;
+            change = "The student " + student1.getName() + " whose student code is " + student1.getStudentCode()
+                     + " was added to the UC " + ucode + " at " + ccode + " class.";
+            addToHistory(change);
+        }
+        if (i == 2) {
+
+            string line = studentcode + "," + student1.getName() + "," + ucode + "," + ccode;
+            file << line;
+            file << endl;
+            change = "The student " + student1.getName() + " whose student code is " + student1.getStudentCode()
+                     + " was added to the class " + ccode + " at " + ucode + " UC.";
+            addToHistory(change);
+        }
+
     }
-    if (i == 2) {
-        change = "The student " + student1.getName() + " whose student code is " + student1.getStudentCode()
-                 + " was added to the class " + ccode + " at " + ucode + " UC.";
-        changes.push_back(change);
-    }
+
+
+
+    file.close();
+
     list<Classes> sch = student1.getStudentSchedule();
     TimeType FoudTime;
     for (auto cl: UCINSCH){
@@ -762,7 +780,7 @@ void Menu::removeStudent_2() {
         Studentprov.setLessons(sch);
         change = "The student " + Studentprov.getName() + " whose student code is " + Studentprov.getStudentCode()
                 + " was removed from " + ucode + " UC.";
-        changes.push_back(change);
+        addToHistory(change);
     }
     if (i == 2){
         cout << endl << "Insert the class code: " << endl;
@@ -775,7 +793,7 @@ void Menu::removeStudent_2() {
         Studentprov.setLessons(sch);
         change = "The student " + Studentprov.getName() + " whose student code is " + Studentprov.getStudentCode()
                  + " was removed from " + ccode + " class.";
-        changes.push_back(change);
+        addToHistory(change);
     }
 
 };
@@ -864,9 +882,24 @@ void Menu::switchStudent_3(){
         }
     }
 }
-
-void Menu::activity() {
-    for (auto activ : changes) {
-        cout << activ << endl;
-    }
+void Menu::addToHistory(const string& change) {
+    changeHistory.push(change);
 }
+
+void Menu::showHistory() {
+    std::cout << "|--[ Change History ]--------------------|\n";
+
+    if (changeHistory.empty()) {
+        std::cout << "|-- No changes in the history -----------|\n";
+    } else {
+        int changeCount = 1;
+        while (!changeHistory.empty()) {
+            std::cout << "|-- " << changeCount << ": " << changeHistory.top() << "|\n";
+            changeHistory.pop();
+            changeCount++;
+        }
+    }
+
+    std::cout << "|-----------------------------------------|\n";
+}
+
