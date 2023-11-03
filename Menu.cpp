@@ -759,8 +759,8 @@ void Menu::addStudent_1() {
             addStudent_1();
         } else { afile = true; }
 //----------------------------------------------------------------------------------------------------------------------------//
-    }
 
+    }
 
     if (i == 2) {
         cout << endl << "Insert the class code in witch you want student to be added: ";
@@ -785,7 +785,8 @@ void Menu::addStudent_1() {
         if (helperclasses(ocupation) == false) {
             cout << "This class if full, please choose another one." << '\n';
             addStudent_1();
-        } else { afile = true; }
+        }
+        else { afile = true; }
 //----------------------------------------------------------------------------------------------------------------------------//
     }
 //-------------------------adding the changes to the Student-----------------------------------------------------------------//
@@ -796,7 +797,14 @@ void Menu::addStudent_1() {
             FoudTime = cl.getTimetable();
         }
     }
+
     Classes newclass = Classes(ccode, ucode, FoudTime);
+//---------------------------------------Checking if they overlap------------------------------------------------------------//
+    if(overlap(sch,newclass)==true){
+        cout<<"You already have a TP or a PL class at the time of the class you want the student to be."<<'\n'
+            <<"Please choose another one."<<'\n';
+            addStudent_1();}
+    else{afile=true;}
     sch.push_back(newclass);
     Student1.setLessons(sch);
 
@@ -862,6 +870,42 @@ bool Menu::helperclasses(vector <pair<Classes,int>> original) {
     return true;
 }
 
+bool Menu::overlap(list<Classes> Sch, Classes clwantchange){
+    int TC =0;
+    int ov=0;
+    double CLstartHour,wtcstartHour;
+    double CLduration,wtcduration;
+    double CLendHour,wtcendHour;
+    for (auto cl:Sch){
+        TimeType Tcl=cl.getTimetable();
+        TimeType Twtc=clwantchange.getTimetable();
+        if (Tcl.getDay()==Twtc.getDay()) {
+            CLstartHour = stod(Tcl.getStartHour());
+            CLduration=stod(Tcl.getClassDuration());
+            CLendHour=CLstartHour+CLduration;
+            wtcstartHour = stod(Twtc.getStartHour());
+            wtcduration=stod(Twtc.getClassDuration());
+            wtcendHour=wtcstartHour+wtcduration;
+
+            //------------------------"Checking the types of the classes"-----------------------------//
+
+            if(Tcl.getTypeOfClass()=="TP" and Twtc.getTypeOfClass()=="TP"){TC=1;}
+            else if ((Tcl.getTypeOfClass()=="TP" and Twtc.getTypeOfClass()=="PL")||(Tcl.getTypeOfClass()=="PL" and Twtc.getTypeOfClass()=="TP")){TC=1;}
+            else if (Tcl.getTypeOfClass()=="PL" and Twtc.getTypeOfClass()=="PL"){TC=1;}
+            else{TC=0;}
+
+            //-----------------------"Checking if they overlap"----------------------------------//
+
+            if (CLstartHour<=wtcstartHour and CLendHour>=wtcendHour){ov=1;}
+            else if (CLstartHour<wtcstartHour and CLendHour<wtcendHour and wtcstartHour<CLendHour){ov=1;}
+            else if(wtcstartHour<CLstartHour and CLstartHour<wtcendHour and CLendHour>wtcendHour){ov=1;}
+
+            //-----------------------------------------------------------------------------------//
+            if (ov==1 and TC==1){return true;}
+        }
+    }
+    return false;
+}
 
 
 void Menu::removeStudent_2() {

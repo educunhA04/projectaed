@@ -41,6 +41,7 @@ public:
         //Helper functions of the ADDREQUEST//
         vector<pair<Classes,int>> checkocu();
         bool helperclasses(vector <pair<Classes,int>> original);
+        bool overlap(list<Classes> Sch, Classes clwantchange);
         //---------------------------------//
         void removeStudent_2();
         void switchStudent_3(); // TODO
