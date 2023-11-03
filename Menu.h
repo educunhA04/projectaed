@@ -34,6 +34,7 @@ class Menu{
 
         // 3rd Part -> requestChange //
         void addStudent_1(); // TODO +-
+        bool helperclasses(vector <pair<string,int>> original);//TODO
         void removeStudent_2();
         void switchStudent_3(); // TODO
         // Subs

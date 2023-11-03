@@ -116,7 +116,7 @@ set<Student> readStudentsData(){
     }
     return allStudents;
 }
-set<Classes> readucperclass(){
+/*set<Classes> readucperclass(){
     string line;
     string word;
     string Num;
@@ -149,4 +149,4 @@ set<Classes> readucperclass(){
         }
     }
     return ucsclass;
-}
+}*/
