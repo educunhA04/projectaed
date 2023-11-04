@@ -40,7 +40,7 @@ public:
         void addStudent_1(); // TODO +-
         //Helper functions of the ADDREQUEST//
         vector<pair<Classes,int>> checkocu();
-        bool helperclasses(vector <pair<Classes,int>> original);
+        bool balanceclasses(vector <pair<Classes,int>> original);
         bool overlap(list<Classes> Sch, Classes clwantchange);
         //---------------------------------//
         void removeStudent_2();
