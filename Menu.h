@@ -46,9 +46,9 @@ public:
         void removeStudent_2();
         void switchStudent_3(); // TODO
         // Subs
-        void activity();
         void addToHistory();
         void showHistory();
+        void showHistoryfirst();
         // 4th Part -> accessInfo -> showStudentsPer
         void showStudentsPerYear_1();
         void showStudentsPerClass_2();
