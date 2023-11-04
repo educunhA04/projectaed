@@ -6,27 +6,37 @@
 #include "TimeType.h"
 
 using namespace std;
+//This class organize define every lesson by their UC, Classcode and Timetable
 
-class Classes{
-private:
-    string classCode;
-    string ucCode;
-    TimeType timetable;
+class Classes {
+    private:
+        string classCode;   // Private member variable for class code
+        string ucCode;      // Private member variable for UC code
+        TimeType timetable; // Private member variable for timetable
 
-public:
-    Classes(){ucCode="";}
-    Classes( const string& cCode, const string& uCode, TimeType& newTimetable) {
-        this -> classCode = cCode;
-        this -> ucCode = uCode;
-        this -> timetable = newTimetable;
+    public:
+        Classes(){          // Default constructor
+            ucCode = "";    // Initialize ucCode with an empty string
+        }
+
+    Classes(const string& cCode, const string& uCode, TimeType& newTimetable) {
+        // Constructor with parameters
+        this->classCode = cCode;             // Initialize classCode with cCode
+        this->ucCode = uCode;                // Initialize ucCode with uCode
+        this->timetable = newTimetable;      // Initialize timetable with newTimetable
     }
 
+    // Getter functions to retrieve classCode, ucCode, and timetable
     string getClassCode() const {return classCode;}
     string getUcCode() const {return ucCode;}
-    TimeType getTimetable() const {return timetable;}
+    TimeType getTimetable() const {return timetable;}    //Time when the class occur
+
+    // Overloaded less-than operator for comparing Classes objects based on timetable
     bool operator<( Classes& other) const {
         return timetable < other.getTimetable();
     }
+
+    // Helper function to convert day string to an integer representation
     int convertDay(const string& day) const{
         if (day == "Monday") return 1;
         if (day == "Tuesday") return 2;
@@ -35,8 +45,8 @@ public:
         if (day == "Friday") return 5;
         else return 0;
     }
-
-    bool operator<(const Classes& other) const{
+    // Overloaded less-than operator for comparing Classes objects based on timetable
+    bool operator<(const Classes& other) const{     //The classes are organized by the timetable
         bool result = false;
 
         if (convertDay(timetable.getDay()) < convertDay(other.timetable.getDay())) result = true;
@@ -44,7 +54,7 @@ public:
 
         return result;
     }
-
+    // Setter functions to update classCode, ucCode, and timetable
     void setClassCode(const string& newCode) {classCode = newCode;}
     void setUcCode(const string& newUcCode) {ucCode = newUcCode;}
     void setTimetable( TimeType newTimetable){timetable =newTimetable;}

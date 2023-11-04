@@ -11,142 +11,167 @@
 
 using namespace std;
 
+
 vector<Classes> readClassesData(){
-    // leitura do ficheiro classes.csv //
+// Function to read class data from the classes.csv
+    ifstream file("../Files/classes.csv");   // Open file for reading
+    string line;                             // Store each line of the file
+    string word;                             // Store each word in a line
 
-    ifstream file("../Files/classes.csv");
-    string line;
-    string word;
-
-    vector<string> aux;
-    vector<Classes> ucInSch;
+    vector<string> aux;                      // Temporary storage for data
+    vector<Classes> ucInSch;                 // Vector to store Classes of the schedule
 
     if (file.is_open()){
-        getline(file, line); // ignorar primeira linha //
+        getline(file, line); // Ignore first line (header)
+
+        // Read lines from the file
         while (getline(file, line)){
-            aux.clear();
-            istringstream  iss(line);
+            aux.clear();                   // Clear temporary storage
+            istringstream iss(line);       // Create a string stream from the line
+
+            // Tokenize the line by commas and store in aux vector
             while (getline(iss, word, ',')) {
                 aux.push_back(word);
             }
 
+            // Extract class attributes from aux
             string classCode = aux[0];
             string ucCode = aux[1];
             string weekday = aux[2];
             string startHour = aux[3];
             string duration = aux[4];
             string type = aux[5];
-            type.resize(type.length()-1); //remove the "\r"
 
-            // data hora e tipo de uma aula //
+            type.resize(type.length()-1);  // Remove the "\r"
+
+            // Create a TimeType object
             TimeType time = TimeType(weekday, startHour, duration, type);
-            // criar aula //
-            Classes nclass = Classes(classCode, ucCode, time);
 
-            // adicionar nclass a um vetor de classes // (adicionar aulas ao vetor com as aulas) //
-            ucInSch.push_back(nclass);
+            // Create a Classes object and add to ucInSch vector
+            Classes newclass = Classes(classCode, ucCode, time);
+            ucInSch.push_back(newclass);
         }
     }
-    else{cout<<"The function is not working properly";}
-    return ucInSch;
-}
-int okay(){
-    vector<Classes> allclasses=readClassesData();
-    for (const auto cl:allclasses){
-        cout<< cl.getClassCode()<<","<< cl.getUcCode()<<'\n';
+    else{
+        cout << "The function is not working properly";  // Error message if file not open
     }
+    return ucInSch;  // Return vector of Classes objects
+}
 
+// Function to print class codes and UC codes from the readClassesData function
+int okay(){
+    vector<Classes> allclasses = readClassesData();  // Get all classes data
+    for (const auto cl:allclasses){
+        cout << cl.getClassCode() << "," << cl.getUcCode() << '\n';  // Print class code and UC code
+    }
     return 1;
 };
+
+
 set<Student> readStudentsData(){
-    // leitura do ficheiro students_classes.csv //
+// read the students_classes.csv
 
-    vector<Classes> allClasses = readClassesData();
-    list<Classes> Uc;
-    set<Student> allStudents;
+    vector<Classes> allClasses = readClassesData();  // Get all class data from the CSV file
+    list<Classes> Uc;                                // Create a list of Classes
+    set<Student> allStudents;                        // Create a set of Students
 
-    ifstream file("../Files/students_classes.csv");
-    string line;
-    string word;
+    ifstream file("../Files/students_classes.csv");  // Open file for reading
+    string line;                                     // Store each line of the file
+    string word;                                     // Store each word in a line
     string Num;
-    vector<string> aux;
+    vector<string> aux;                              // Temporary storage for data
 
-    TimeType FoundTime;
+    TimeType FoundTime;                              // Store found time
 
     if (file.is_open()){
-        getline(file, line);
+        getline(file, line);  // Ignore first line (header)
 
+        // Read lines from the file
         while (getline(file, line)){
-            aux.clear();
-            istringstream  iss(line);
+            aux.clear();            // Clear temporary storage
+            istringstream  iss(line);  // Create a string stream from the line
 
+            // Tokenize the line by commas and store in aux vector
             while (getline(iss, word, ',')) {
                 aux.push_back(word);
             }
 
-            string studentCode = aux[0];
-            string studentName = aux[1];
-            string ucCode = aux[2];
-            string classCode = aux[3];
-            classCode.resize(classCode.length()-1); //remove the "\r"
+            string studentCode = aux[0];   // Extract student code
+            string studentName = aux[1];   // Extract student name
+            string ucCode = aux[2];         // Extract UC code
+            string classCode = aux[3];      // Extract class code
+            classCode.resize(classCode.length()-1); // Remove the "\r"
 
+            // Search for the corresponding TimeType based on UC code and class code
             for (const Classes& cl : allClasses) {
                 if (cl.getUcCode() == ucCode && cl.getClassCode() == classCode) {
-                    FoundTime = cl.getTimetable();
+                    FoundTime = cl.getTimetable();  // Assign found TimeType to FoundTime
                     break;
                 }
             }
 
+            // Create a provisional Student object
             Student provStudent = Student(studentName, studentCode);
-            auto l = allStudents.find(provStudent);
+            auto l = allStudents.find(provStudent);  // Search for the Student in the set
 
             if (l == allStudents.end()) {
-                list<Classes> n = {Classes(classCode, ucCode, FoundTime)};
-                allStudents.insert(Student(studentName, studentCode, n));
+                list<Classes> n = {Classes(classCode, ucCode, FoundTime)};  // Create a list with one class
+                allStudents.insert(Student(studentName, studentCode, n));   // Insert new Student with class list
             }
             else {
-                Student& existingStudent = const_cast<Student&>(*l);
-                list<Classes> n = existingStudent.getStudentSchedule();
-                n.push_back(Classes(classCode, ucCode, FoundTime));
-                existingStudent.setLessons(n);
+                Student& existingStudent = const_cast<Student&>(*l);  // Get reference to existing Student
+                list<Classes> n = existingStudent.getStudentSchedule();  // Get existing class list
+                n.push_back(Classes(classCode, ucCode, FoundTime));      // Add new class
+                existingStudent.setLessons(n);                           // Set updated class list
             }
 
-            aux.clear();
+            aux.clear();  // Clear temporary storage
         }
     }
-    return allStudents;
+    return allStudents;  // Return set with all the Students
 }
+
 set<Classes> readucperclass(){
+    //read the classes.csv
     string line;
     string word;
     string Num;
-    vector<string> aux;
-    set<Classes> ucsclass;
-    vector<Classes> allClasses = readClassesData();
-    TimeType FoundTime;
-    ifstream file("../Files/classes_per_uc.csv");
+    vector<string> aux;      // Temporary storage for data
+    set<Classes> ucsclass;   // Set to store all the Classes with UC code and Class code
+    vector<Classes> allClasses = readClassesData();  // Get all classes data
+    TimeType FoundTime;      // Store found time
+    ifstream file("../Files/classes_per_uc.csv");  // Open file for reading
 
     if (file.is_open()) {
-        getline(file, line);
+        getline(file, line);  // Ignore first line (header)
 
+        // Read lines from the file
         while (getline(file, line)) {
-            aux.clear();
-            istringstream iss(line);
+            aux.clear();            // Clear temporary storage
+            istringstream iss(line);  // Create a string stream from the line
 
+            // Tokenize the line by commas and store in aux vector
             while (getline(iss, word, ',')) {
                 aux.push_back(word);
             }
-            string uCode = aux[0];
-            string cCode = aux[1];
+
+            string uCode = aux[0];   // Extract UC code
+            string cCode = aux[1];   // Extract class code
+
+            // Find the corresponding TimeType based on UC code and class code
             for (auto cl: allClasses) {
                 if (cl.getUcCode() == uCode and cl.getClassCode() == cCode) {
-                    FoundTime = cl.getTimetable();
+                    FoundTime = cl.getTimetable();  // Assign found TimeType to FoundTime
                 }
             }
+
+            // Create a new Classes object with the found information
             Classes newClass = Classes(cCode, uCode, FoundTime);
-            ucsclass.insert(newClass);
-            aux.clear();
+            ucsclass.insert(newClass);  // Insert the new Classes object into the set
+
+            aux.clear();  // Clear temporary storage
         }
     }
-    return ucsclass;
+
+    return ucsclass;  // Return the set of the Classes their UC code and class code
 }

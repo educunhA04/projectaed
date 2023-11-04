@@ -208,25 +208,6 @@ void Menu::showStudentSchedule_1(){
 }
 
 void Menu::showStudentsPerYear_1() {
-    /*int input;
-    cout << "Insert a number correspondent to a year: " << endl;
-
-    cin >> input;
-    cout << "Student Code   |   Student Name" << endl;
-    set<char> anos;
-
-    for (auto element : data.getStudents()) {
-        for (auto aula : element.getStudentSchedule()) {
-            anos.insert(aula.getClassCode()[0]);
-        }
-
-        for (char num : anos) {
-            if (num - '0' == input) {
-                cout << " " << element.getStudentCode() << "     |   " << element.getName() << endl;
-            }
-        }
-    }*/
-
     system("clear");
     int num;
     int n;
