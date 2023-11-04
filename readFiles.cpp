@@ -170,7 +170,7 @@ set<Classes> readucperclass(){
             ucsclass.insert(newClass);  // Insert the new Classes object into the set
 
             aux.clear();  // Clear temporary storage
-        }
+        } 
     }
 
     return ucsclass;  // Return the set of the Classes their UC code and class code
