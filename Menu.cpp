@@ -19,7 +19,8 @@ string toLowerSTR (string str){
 set<Classes> UCSNCL=readucperclass();
 vector <Classes> UCINSCH=readClassesData();
 set<Student> ALLSTUDENTS=readStudentsData();
-AllData allData;
+
+
 
 
 Menu::Menu() : data(UCINSCH, ALLSTUDENTS) {} //contructor
@@ -826,7 +827,7 @@ void Menu::addStudent_1() {
             file << endl;
             file << line;
             change = "ADDED(+):  The student " + Student1.getName() + " whose student code is " + Student1.getStudentCode()
-                     + " was added to the UC " + ucode + " at " + ccode + " class.";
+                     + " was added to the UC " + ucode + " in " + ccode + " class.";
             addToHistory(change);
         }
         if (i == 2) {
@@ -842,6 +843,9 @@ void Menu::addStudent_1() {
     }
 
     file.close();
+
+    data.setClasses(readClassesData());
+    data.setStudents(readStudentsData());
 //-------------------------------------------------------------------------------------------------------------------------//
 
 }
@@ -1053,7 +1057,7 @@ void Menu::switchStudent_3() {
          << "|-- B: Go Back to Menu -------------------|\n"
          << "|-----------------------------------------|\n";
 
-    cout << endl << "Insert your desired option: ";
+    cout << endl << "Insert your desired option: " << endl;
     string inp;
     cin >> inp;
     int i = 0;
@@ -1065,7 +1069,7 @@ void Menu::switchStudent_3() {
 
 
 //----------------------------finding student------------------------------------------------------//
-    cout << "Insert the student code: ";
+    cout << "Insert the student code: " << endl;
     string studentcode;
     cin >> studentcode;
     Student Student1;
@@ -1088,9 +1092,9 @@ void Menu::switchStudent_3() {
 
     if (i == 1) {
 
-        cout << "What is Student's currently UC code that you wish to change? ";
+        cout << "What is Student's currently UC code that you wish to change? " << endl;
         cin >> uccode1;
-        cout << "What is the UC code you want Student to be? ";
+        cout << "What is the UC code you want Student to be? " << endl;
         cin >> uccode2;
         cout << "These are the classes of " << uccode2 << ":" << '\n';
         for (auto n: UCINSCH) {
@@ -1099,7 +1103,7 @@ void Menu::switchStudent_3() {
             }
         }
 
-        cout << endl << "Insert the code of the class you wish to change: ";
+        cout << endl << "Insert the code of the class you wish to change: " << endl;
         cin >> wtc;
 
         for (auto cl: Student1.getStudentSchedule()) {
@@ -1108,9 +1112,9 @@ void Menu::switchStudent_3() {
     }
     else {
 
-        cout << "What is Student's currently class code that you wish to change? ";
+        cout << "What is Student's currently class code that you wish to change? " << endl;
         cin >> ccbefore;
-        cout << "What is the UC code of that class? ";
+        cout << "What is the UC code of that class? " << endl;
         cin >> uccode1;
         cout << "These are the classes of " << uccode1 << '\n';
         for (auto n: UCINSCH) {
@@ -1118,7 +1122,7 @@ void Menu::switchStudent_3() {
                 cout << n.getClassCode() << '\n';
             }
         }
-        cout << endl << "Insert the code of the class you wish to change: ";
+        cout << endl << "Insert the code of the class you wish to change: " << endl;
         cin >> wtc;
         uccode2 = uccode1;
     }
@@ -1208,6 +1212,8 @@ void Menu::switchStudent_3() {
         ofile.close();
         remove("../Files/students_classes.csv");
         rename("../Files/students_change.csv", "../Files/students_classes.csv");
+        data.setClasses(readClassesData());
+        data.setStudents(readStudentsData());
 
     } else { cout << "file not found"; }
 //----------------------------------------------------------------------------------------------------------------------//
@@ -1216,11 +1222,11 @@ void Menu::switchStudent_3() {
 
 void Menu::addToHistory(const string &change) {
     ofstream out("../Files/history.txt", ios::app);
-
     if (out.is_open()) {
-
         out << change << endl;
     }
+
+
 }
 
 void Menu::showHistory() {
@@ -1249,6 +1255,3 @@ void Menu::showHistory() {
     }
 }
 
-void Menu::showHistoryfirst() {
-
-}

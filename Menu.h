@@ -48,7 +48,6 @@ public:
         // Subs
         void addToHistory();
         void showHistory();
-        void showHistoryfirst();
         // 4th Part -> accessInfo -> showStudentsPer
         void showStudentsPerYear_1();
         void showStudentsPerClass_2();
