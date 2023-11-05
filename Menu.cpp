@@ -10,11 +10,19 @@
 #include <list> // Include the list library
 #include <algorithm> // Include the algorithm library
 using namespace std; // Use the standard namespace
+/**
+ * @file
+ * @brief Contains the implementation of the Menu class and related functions.
+ */
 
 /**
-     * @brief Functions used in the creation of the menu in the terminal and functions that either show information requested by the user, or that make a change also requested by the user;
-     */
-
+ * @brief Converts a string to lowercase.
+ *
+ * This function takes a string as input and converts it to lowercase.
+ *
+ * @param str The string to be converted to lowercase.
+ * @return The input string in lowercase.
+ */
 string toLowerSTR(string str) {
     /// Function to convert a string to lowercase
     for (auto& elem : str) {
@@ -29,6 +37,11 @@ set<Student> ALLSTUDENTS = readStudentsData(); /// Create a set of Students by c
 
 Menu::Menu() : data(UCINSCH, ALLSTUDENTS) {} // Constructor for the Menu class
 
+/**
+ * @brief Displays and handles the main menu.
+ *
+ * This function displays the main menu and handles user options.
+ */
 ///############################# MENUS ##################################///
 void Menu::start() {
     /// Main menu function to display and handle user options
@@ -63,7 +76,7 @@ void Menu::start() {
     }
 }
 
-void Menu::requestChange_2() {
+    void Menu::requestChange_2() {
     /// Function to handle change requests
     system("clear");
     cout << "|--[ Request Change ]---------------------|\n"
@@ -97,6 +110,11 @@ void Menu::requestChange_2() {
     }
 }
 
+/**
+ * @brief Handles access to various types of information.
+ *
+ * This function displays the access information menu and handles user requests for accessing information.
+ */
 void Menu::accessInfo_1() {
     /// Function to access different types of information
     system("clear");
@@ -143,6 +161,11 @@ void Menu::accessInfo_1() {
     }
 }
 
+/**
+ * @brief Displays options for checking occupation per year, class, or UC.
+ *
+ * This function displays a menu for checking the occupation of students per year, class, or UC.
+ */
 void Menu::checkOccupationPer_5() {
     /// Function to check the occupation per year, class, or UC
     system("clear");
@@ -176,7 +199,11 @@ void Menu::checkOccupationPer_5() {
         cout << "|-- Invalid Input ------------------------|\n";
     }
 }
-
+/**
+ * @brief Displays options for showing students per year, class, or UC.
+ *
+ * This function displays a menu for showing the number of students per year, class, or UC.
+ */
 void Menu::showStudentsPer_2() {
     /// Function to display options to show students per year, class, or UC
     system("clear");
@@ -407,7 +434,11 @@ void Menu::showStudentsPerClass_2() {
     }
 }
 
-
+/**
+ * @brief Displays students enrolled in at least a specified number of UCs.
+ *
+ * This function allows the user to input a number, and it displays students who are enrolled in at least that number of UCs.
+ */
 void Menu::showStudentsInAtLeastNUCs_3() {
     /// Clear the console screen
     system("clear");
@@ -464,7 +495,11 @@ void Menu::showStudentsInAtLeastNUCs_3() {
         exit(0);
     }
 }
-
+/**
+ * @brief Displays the schedule for a specific class.
+ *
+ * This function allows the user to input a valid class code and displays the schedule for the specified class.
+ */
 void Menu::showClassSchedule_4() {
     /// Clear the console screen
     system("clear");
@@ -511,7 +546,11 @@ void Menu::showClassSchedule_4() {
         exit(0);
     }
 }
-
+/**
+ * @brief Displays the number of students in a specified year.
+ *
+ * This function allows the user to input a year number and displays the count of students enrolled in that year.
+ */
 void Menu::checkOccupationPerYear_1() {
     /// Clear the console screen
     system("clear");
@@ -569,6 +608,11 @@ void Menu::checkOccupationPerYear_1() {
     }
 }
 
+/**
+ * @brief Checks the occupation of a specific class.
+ *
+ * This function prompts the user to input a valid Class code and then provides the option to check the occupation of the class within a specific UC. The user can choose whether they want to check the class's occupation within a specific UC or without specifying a UC.
+ */
 void Menu::checkOccupationPerClass_2() {
     /// Prompt the user to input a valid Class code
     cout << "Insert a valid Class code: \n";
@@ -650,7 +694,11 @@ void Menu::checkOccupationPerClass_2() {
     }
 }
 
-
+/**
+ * @brief Checks the occupation of a specific UC.
+ *
+ * This function prompts the user to input a valid UC Code and provides the option to check the occupation of the UC within a specific class. The user can choose whether they want to check the UC's occupation within a specific class or without specifying a class.
+ */
 void Menu::checkOccupationPerUC_3() {
     /// Clear the console screen
     system("clear");
@@ -738,7 +786,11 @@ void Menu::checkOccupationPerUC_3() {
 }
 
 
-
+/**
+ * @brief Checks the biggest UC in the list.
+ *
+ * This function finds and displays the biggest UC based on the number of occurrences in the list of classes.
+ */
 void Menu::checkBiggestUc_6() {
     /// Clear the console screen
     system("clear");
@@ -784,6 +836,11 @@ void Menu::checkBiggestUc_6() {
 
 ///############################## FUNCTIONS CHANGE #################################///
 
+/**
+ * @brief Add a student to a class or a UC.
+ *
+ * This function allows the user to add a student to either a specific class or a UC based on their choice. It prompts the user for the student's code, class code or UC code, and handles various scenarios such as checking the class's occupancy, student schedule, and overlapping classes. The function updates the student's schedule and records the changes in a history file.
+ */
 void Menu::addStudent_1() {
     /// Clear the console screen
     system("clear");
@@ -999,7 +1056,13 @@ void Menu::addStudent_1() {
     data.setStudents(readStudentsData());
 }
 
-
+/**
+ * @brief Check the occupation of classes.
+ *
+ * This function calculates the current occupation of classes by iterating through all available classes and counting how many students are enrolled in each class. It returns a vector of pairs, where each pair contains a class and the corresponding count of enrolled students.
+ *
+ * @return A vector of pairs where each pair contains a class and its occupancy count.
+ */
 vector<pair<Classes, int>> Menu::checkocu() {
     /// Function to check the occupation of classes
 
@@ -1027,6 +1090,15 @@ vector<pair<Classes, int>> Menu::checkocu() {
     return ocupation;
 }
 
+/**
+ * @brief Check if class occupancy is balanced.
+ *
+ * This function checks if the occupancy of classes is balanced. It compares the occupancy of each class with all other classes to ensure that the difference in occupancy is not more than 4 or less than -4. If any class's occupancy deviates beyond this range, the function returns false, indicating that the class occupancy is not balanced.
+ *
+ * @param original A vector of pairs where each pair contains a class and its occupancy count.
+ * @return True if the class occupancy is balanced; false if it's unbalanced.
+ */
+
 /// Function to check if the class occupancy is balanced
 bool Menu::balanceclasses(vector<pair<Classes, int>> original) {
     for (int l = 0; l < original.size(); l++) {
@@ -1043,6 +1115,16 @@ bool Menu::balanceclasses(vector<pair<Classes, int>> original) {
 }
 
 /// Function to check if a class overlaps with the student's existing schedule
+
+/**
+ * @brief Check if a class overlaps with the student's existing schedule.
+ *
+ * This function checks if adding a class to a student's schedule would result in a schedule overlap. It compares the day, start time, and duration of the class to be added with the existing classes in the student's schedule. If there's an overlap in the schedule, the function returns true; otherwise, it returns false.
+
+ * @param Sch A list of classes representing the student's existing schedule.
+ * @param clwantchange The class that the student wants to add to their schedule.
+ * @return True if the class overlaps with the student's existing schedule; false if there is no overlap.
+ */
 bool Menu::overlap(list<Classes> Sch, Classes clwantchange) {
     int TC = 0;
     int ov = 0;
@@ -1094,6 +1176,16 @@ bool Menu::overlap(list<Classes> Sch, Classes clwantchange) {
 
 
 
+/**
+ * @brief Remove a student from a class or UC.
+ *
+ * This function allows the removal of a student from a specific class or UC based on user input. It prompts the user to choose between removing from a class or a UC, then takes the student's code and the code of the class or UC to perform the removal. The function updates the student's schedule accordingly, removes the corresponding entry in the data file, and logs the removal action in the history.
+
+ * @note The function also handles scenarios where the student's code or the specified class or UC is not found, and it provides the option to return to the previous menu or exit the program.
+
+ * @warning This function performs actual removal operations and may affect the data and history.
+
+ */
 
 void Menu::removeStudent_2() {
     /// Function to remove a student from a class or UC
@@ -1296,6 +1388,17 @@ void Menu::removeStudent_2() {
 
 
 /// Function to switch a student from one class/UC to another
+/**
+ * @brief Switch a student from one class or UC to another.
+ *
+ * This function allows the user to switch a student from their current class or UC to another class or UC. It prompts the user to choose between switching within UCs or within classes, takes the student's code, current UC or class code, and the target UC or class code for the switch. It validates the availability and occupancy of the target class, checks for class overlaps, and updates the student's schedule accordingly. It also updates the class information in the data file and logs the switch action in the history.
+
+ * @note The function provides error handling for various scenarios, including class availability, class occupancy, and class overlaps, and allows the user to return to the previous menu or exit the program.
+
+ * @warning This function performs actual class switches, modifies data, and may affect the student's schedule, class occupancy, and history.
+
+ */
+
 void Menu::switchStudent_3() {
     /// Display menu for choosing class or UC
     cout << "|--[ Request Change ]---------------------|\n"
@@ -1474,6 +1577,16 @@ void Menu::switchStudent_3() {
     }
 }
 /// Function to add a change to the history file
+/**
+ * @brief Add a change to the history file.
+ *
+ * This function appends the provided change description to the history file. The history file is used to log various changes and actions performed in the program, allowing users to review past actions.
+
+ * @param change A string describing the change or action to be added to the history.
+
+ * @note If the history file cannot be opened, this function will silently fail without any error handling.
+
+ */
 void Menu::addToHistory(const string &change) {
     ofstream out("../Files/history.txt", ios::app);  // Open the history file for appending
     if (out.is_open()) {
@@ -1483,6 +1596,14 @@ void Menu::addToHistory(const string &change) {
 }
 
 /// Function to display the history from the history file
+
+/**
+ * @brief Display the program's history from the history file.
+ *
+ * This function reads and displays the contents of the history file, allowing users to review past changes and actions. After displaying the history, it provides an option for the user to either return to the main menu or exit the program.
+
+ */
+
 void Menu::showHistory() {
     cout << endl;
     ifstream hist("../Files/history.txt");  /// Open the history file for reading

@@ -1,0 +1,66 @@
+\hypertarget{Menu_8cpp}{}\doxysection{Menu.\+cpp File Reference}
+\label{Menu_8cpp}\index{Menu.cpp@{Menu.cpp}}
+
+
+Contains the implementation of the \mbox{\hyperlink{classMenu}{Menu}} class and related functions.  
+
+
+{\ttfamily \#include \char`\"{}Menu.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}All\+Data.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$set$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include $<$cstdio$>$}\newline
+{\ttfamily \#include \char`\"{}read\+Files.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$list$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+Include dependency graph for Menu.\+cpp\+:
+% FIG 0
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{Menu_8cpp_aa3fc29b2a14d32f215c0d0d5716778fb}{to\+Lower\+STR}} (string str)
+\begin{DoxyCompactList}\small\item\em Converts a string to lowercase. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{Menu_8cpp_ad606ee758e4269b0c98bc7546923e0c6}\label{Menu_8cpp_ad606ee758e4269b0c98bc7546923e0c6}} 
+set$<$ \mbox{\hyperlink{classClasses}{Classes}} $>$ {\bfseries UCSNCL} = \mbox{\hyperlink{readFiles_8h_a77d143263c1da4ea233603f815f76c6d}{readucperclass}}()
+\item 
+\mbox{\Hypertarget{Menu_8cpp_aceba54fe5b9df047fa880bf1102656f3}\label{Menu_8cpp_aceba54fe5b9df047fa880bf1102656f3}} 
+vector$<$ \mbox{\hyperlink{classClasses}{Classes}} $>$ \mbox{\hyperlink{Menu_8cpp_aceba54fe5b9df047fa880bf1102656f3}{UCINSCH}} = \mbox{\hyperlink{readFiles_8h_a86e10799b3323ec422245100981a9a36}{read\+Classes\+Data}}()
+\begin{DoxyCompactList}\small\item\em Create a set of \mbox{\hyperlink{classClasses}{Classes}} by calling the readucperclass function. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{Menu_8cpp_ab562f711cec6711e551f0c411f1b8b7b}\label{Menu_8cpp_ab562f711cec6711e551f0c411f1b8b7b}} 
+set$<$ \mbox{\hyperlink{classStudent}{Student}} $>$ \mbox{\hyperlink{Menu_8cpp_ab562f711cec6711e551f0c411f1b8b7b}{ALLSTUDENTS}} = \mbox{\hyperlink{readFiles_8h_a6a42e22cc794a5aea3846eb4d368fcb0}{read\+Students\+Data}}()
+\begin{DoxyCompactList}\small\item\em Create a vector of \mbox{\hyperlink{classClasses}{Classes}} by calling the read\+Classes\+Data function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Contains the implementation of the \mbox{\hyperlink{classMenu}{Menu}} class and related functions. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{Menu_8cpp_aa3fc29b2a14d32f215c0d0d5716778fb}\label{Menu_8cpp_aa3fc29b2a14d32f215c0d0d5716778fb}} 
+\index{Menu.cpp@{Menu.cpp}!toLowerSTR@{toLowerSTR}}
+\index{toLowerSTR@{toLowerSTR}!Menu.cpp@{Menu.cpp}}
+\doxysubsubsection{\texorpdfstring{toLowerSTR()}{toLowerSTR()}}
+{\footnotesize\ttfamily string to\+Lower\+STR (\begin{DoxyParamCaption}\item[{string}]{str }\end{DoxyParamCaption})}
+
+
+
+Converts a string to lowercase. 
+
+This function takes a string as input and converts it to lowercase.
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & The string to be converted to lowercase. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The input string in lowercase. 
+\end{DoxyReturn}
+Function to convert a string to lowercase

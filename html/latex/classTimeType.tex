@@ -1,0 +1,134 @@
+\hypertarget{classTimeType}{}\doxysection{Time\+Type Class Reference}
+\label{classTimeType}\index{TimeType@{TimeType}}
+
+
+Represents a time for a class.  
+
+
+
+
+{\ttfamily \#include $<$Time\+Type.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classTimeType_a06c2d905bb31f27af46532d71b74ea9d}\label{classTimeType_a06c2d905bb31f27af46532d71b74ea9d}} 
+\mbox{\hyperlink{classTimeType_a06c2d905bb31f27af46532d71b74ea9d}{Time\+Type}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \mbox{\hyperlink{classTimeType}{Time\+Type}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classTimeType_a0216c7011ed533edece1a1ed87d72953}{Time\+Type}} (const string \&new\+Day, const string \&new\+Start\+Hour, const string \&new\+Class\+Duration, const string \&new\+Type\+Of\+Class)
+\begin{DoxyCompactList}\small\item\em Constructor with parameters for \mbox{\hyperlink{classTimeType}{Time\+Type}}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classTimeType_aaa01faccd6767c4a34c3087a1868a9a8}{operator$<$}} (const \mbox{\hyperlink{classTimeType}{Time\+Type}} \&notyet) const
+\begin{DoxyCompactList}\small\item\em Overloaded less-\/than operator for comparing \mbox{\hyperlink{classTimeType}{Time\+Type}} objects based on day. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{classTimeType_a08053f346b239a5b597df7781c3a5263}{get\+Day}} () const
+\begin{DoxyCompactList}\small\item\em Getter function to retrieve the day. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{classTimeType_ac4a780281c428b38385d5a6d1a8c1034}{get\+Start\+Hour}} () const
+\begin{DoxyCompactList}\small\item\em Getter function to retrieve the start hour. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{classTimeType_ae5503e303bab05a8a7cbe34d32a9f191}{get\+Class\+Duration}} ()
+\begin{DoxyCompactList}\small\item\em Getter function to retrieve the class duration. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{classTimeType_ac588c522f822eb5111fbf207c788c1c5}{get\+Type\+Of\+Class}} ()
+\begin{DoxyCompactList}\small\item\em Getter function to retrieve the type of class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a time for a class. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classTimeType_a0216c7011ed533edece1a1ed87d72953}\label{classTimeType_a0216c7011ed533edece1a1ed87d72953}} 
+\index{TimeType@{TimeType}!TimeType@{TimeType}}
+\index{TimeType@{TimeType}!TimeType@{TimeType}}
+\doxysubsubsection{\texorpdfstring{TimeType()}{TimeType()}}
+{\footnotesize\ttfamily Time\+Type\+::\+Time\+Type (\begin{DoxyParamCaption}\item[{const string \&}]{new\+Day,  }\item[{const string \&}]{new\+Start\+Hour,  }\item[{const string \&}]{new\+Class\+Duration,  }\item[{const string \&}]{new\+Type\+Of\+Class }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor with parameters for \mbox{\hyperlink{classTimeType}{Time\+Type}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Day} & The day of the class. \\
+\hline
+{\em new\+Start\+Hour} & The start hour of the class. \\
+\hline
+{\em new\+Class\+Duration} & The duration of the class. \\
+\hline
+{\em new\+Type\+Of\+Class} & The type of class. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classTimeType_ae5503e303bab05a8a7cbe34d32a9f191}\label{classTimeType_ae5503e303bab05a8a7cbe34d32a9f191}} 
+\index{TimeType@{TimeType}!getClassDuration@{getClassDuration}}
+\index{getClassDuration@{getClassDuration}!TimeType@{TimeType}}
+\doxysubsubsection{\texorpdfstring{getClassDuration()}{getClassDuration()}}
+{\footnotesize\ttfamily string Time\+Type\+::get\+Class\+Duration (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Getter function to retrieve the class duration. 
+
+\begin{DoxyReturn}{Returns}
+The duration of the class. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTimeType_a08053f346b239a5b597df7781c3a5263}\label{classTimeType_a08053f346b239a5b597df7781c3a5263}} 
+\index{TimeType@{TimeType}!getDay@{getDay}}
+\index{getDay@{getDay}!TimeType@{TimeType}}
+\doxysubsubsection{\texorpdfstring{getDay()}{getDay()}}
+{\footnotesize\ttfamily string Time\+Type\+::get\+Day (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Getter function to retrieve the day. 
+
+\begin{DoxyReturn}{Returns}
+The day of the class. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTimeType_ac4a780281c428b38385d5a6d1a8c1034}\label{classTimeType_ac4a780281c428b38385d5a6d1a8c1034}} 
+\index{TimeType@{TimeType}!getStartHour@{getStartHour}}
+\index{getStartHour@{getStartHour}!TimeType@{TimeType}}
+\doxysubsubsection{\texorpdfstring{getStartHour()}{getStartHour()}}
+{\footnotesize\ttfamily string Time\+Type\+::get\+Start\+Hour (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Getter function to retrieve the start hour. 
+
+\begin{DoxyReturn}{Returns}
+The start hour of the class. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTimeType_ac588c522f822eb5111fbf207c788c1c5}\label{classTimeType_ac588c522f822eb5111fbf207c788c1c5}} 
+\index{TimeType@{TimeType}!getTypeOfClass@{getTypeOfClass}}
+\index{getTypeOfClass@{getTypeOfClass}!TimeType@{TimeType}}
+\doxysubsubsection{\texorpdfstring{getTypeOfClass()}{getTypeOfClass()}}
+{\footnotesize\ttfamily string Time\+Type\+::get\+Type\+Of\+Class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Getter function to retrieve the type of class. 
+
+\begin{DoxyReturn}{Returns}
+The type of class. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTimeType_aaa01faccd6767c4a34c3087a1868a9a8}\label{classTimeType_aaa01faccd6767c4a34c3087a1868a9a8}} 
+\index{TimeType@{TimeType}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!TimeType@{TimeType}}
+\doxysubsubsection{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily bool Time\+Type\+::operator$<$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classTimeType}{Time\+Type}} \&}]{notyet }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Overloaded less-\/than operator for comparing \mbox{\hyperlink{classTimeType}{Time\+Type}} objects based on day. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em notyet} & The \mbox{\hyperlink{classTimeType}{Time\+Type}} object to compare with. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if this \mbox{\hyperlink{classTimeType}{Time\+Type}} is less than \textquotesingle{}notyet\textquotesingle{}, otherwise false. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Time\+Type.\+h\end{DoxyCompactItemize}

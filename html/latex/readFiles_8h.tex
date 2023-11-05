@@ -1,0 +1,207 @@
+\hypertarget{readFiles_8h}{}\doxysection{read\+Files.\+h File Reference}
+\label{readFiles_8h}\index{readFiles.h@{readFiles.h}}
+
+
+Header file for reading data from files.  
+
+
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$set$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include \char`\"{}Classes.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Student.\+h\char`\"{}}\newline
+Include dependency graph for read\+Files.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+vector$<$ \mbox{\hyperlink{classClasses}{Classes}} $>$ \mbox{\hyperlink{readFiles_8h_a86e10799b3323ec422245100981a9a36}{read\+Classes\+Data}} ()
+\begin{DoxyCompactList}\small\item\em Reads data for classes from a file. \end{DoxyCompactList}\item 
+set$<$ \mbox{\hyperlink{classStudent}{Student}} $>$ \mbox{\hyperlink{readFiles_8h_a6a42e22cc794a5aea3846eb4d368fcb0}{read\+Students\+Data}} ()
+\begin{DoxyCompactList}\small\item\em Reads data for students from a file. \end{DoxyCompactList}\item 
+set$<$ \mbox{\hyperlink{classClasses}{Classes}} $>$ \mbox{\hyperlink{readFiles_8h_a77d143263c1da4ea233603f815f76c6d}{readucperclass}} ()
+\begin{DoxyCompactList}\small\item\em Reads data for classes and their corresponding students from a file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header file for reading data from files. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{readFiles_8h_a86e10799b3323ec422245100981a9a36}\label{readFiles_8h_a86e10799b3323ec422245100981a9a36}} 
+\index{readFiles.h@{readFiles.h}!readClassesData@{readClassesData}}
+\index{readClassesData@{readClassesData}!readFiles.h@{readFiles.h}}
+\doxysubsubsection{\texorpdfstring{readClassesData()}{readClassesData()}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{classClasses}{Classes}}$>$ read\+Classes\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Reads data for classes from a file. 
+
+This function reads data for classes from a file and returns a vector of \mbox{\hyperlink{classClasses}{Classes}} objects.
+
+\begin{DoxyReturn}{Returns}
+A vector of \mbox{\hyperlink{classClasses}{Classes}} objects containing the class data.
+\end{DoxyReturn}
+Reads data for classes from a file. Function to read class data from the classes.\+csv
+
+Open file for reading
+
+Store each line of the file
+
+Store each word in a line
+
+Temporary storage for data
+
+Vector to store \mbox{\hyperlink{classClasses}{Classes}} of the schedule
+
+Ignore first line (header)
+
+Read lines from the file
+
+Clear temporary storage
+
+Create a string stream from the line
+
+Tokenize the line by commas and store in aux vector
+
+Extract class attributes from aux
+
+Remove the \char`\"{}\textbackslash{}r\char`\"{}
+
+Create a \mbox{\hyperlink{classTimeType}{Time\+Type}} object
+
+Create a \mbox{\hyperlink{classClasses}{Classes}} object and add to uc\+In\+Sch vector
+
+Error message if file not open
+
+Return vector of \mbox{\hyperlink{classClasses}{Classes}} objects\mbox{\Hypertarget{readFiles_8h_a6a42e22cc794a5aea3846eb4d368fcb0}\label{readFiles_8h_a6a42e22cc794a5aea3846eb4d368fcb0}} 
+\index{readFiles.h@{readFiles.h}!readStudentsData@{readStudentsData}}
+\index{readStudentsData@{readStudentsData}!readFiles.h@{readFiles.h}}
+\doxysubsubsection{\texorpdfstring{readStudentsData()}{readStudentsData()}}
+{\footnotesize\ttfamily set$<$\mbox{\hyperlink{classStudent}{Student}}$>$ read\+Students\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Reads data for students from a file. 
+
+This function reads data for students from a file and returns a set of \mbox{\hyperlink{classStudent}{Student}} objects.
+
+\begin{DoxyReturn}{Returns}
+A set of \mbox{\hyperlink{classStudent}{Student}} objects containing the student data. 
+\end{DoxyReturn}
+read the students\+\_\+classes.\+csv
+
+Get all class data from the CSV file
+
+Create a list of \mbox{\hyperlink{classClasses}{Classes}}
+
+Create a set of Students
+
+Open file for reading
+
+Store each line of the file
+
+Store each word in a line
+
+Temporary storage for data
+
+Store found time
+
+Ignore first line (header)
+
+Read lines from the file
+
+Clear temporary storage
+
+Create a string stream from the line
+
+Tokenize the line by commas and store in aux vector
+
+Extract student code
+
+Extract student name
+
+Extract UC code
+
+Extract class code
+
+Remove the \char`\"{}\textbackslash{}r\char`\"{}
+
+Search for the corresponding \mbox{\hyperlink{classTimeType}{Time\+Type}} based on UC code and class code
+
+Assign found \mbox{\hyperlink{classTimeType}{Time\+Type}} to Found\+Time
+
+Create a provisional \mbox{\hyperlink{classStudent}{Student}} object
+
+Search for the \mbox{\hyperlink{classStudent}{Student}} in the set
+
+Create a list with one class
+
+Insert new \mbox{\hyperlink{classStudent}{Student}} with class list
+
+Get reference to existing \mbox{\hyperlink{classStudent}{Student}}
+
+Get existing class list
+
+Add new class
+
+Set updated class list
+
+Clear temporary storage
+
+Return set with all the Students\mbox{\Hypertarget{readFiles_8h_a77d143263c1da4ea233603f815f76c6d}\label{readFiles_8h_a77d143263c1da4ea233603f815f76c6d}} 
+\index{readFiles.h@{readFiles.h}!readucperclass@{readucperclass}}
+\index{readucperclass@{readucperclass}!readFiles.h@{readFiles.h}}
+\doxysubsubsection{\texorpdfstring{readucperclass()}{readucperclass()}}
+{\footnotesize\ttfamily set$<$\mbox{\hyperlink{classClasses}{Classes}}$>$ readucperclass (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Reads data for classes and their corresponding students from a file. 
+
+This function reads data for classes and their corresponding students from a file and returns a set of \mbox{\hyperlink{classClasses}{Classes}} objects.
+
+\begin{DoxyReturn}{Returns}
+A set of \mbox{\hyperlink{classClasses}{Classes}} objects containing class data with associated students. 
+\end{DoxyReturn}
+read the classes.\+csv
+
+Temporary storage for data
+
+Set to store all the \mbox{\hyperlink{classClasses}{Classes}} with UC code and Class code
+
+Get all classes data
+
+Store found time
+
+Open file for reading
+
+Ignore first line (header)
+
+Read lines from the file
+
+Clear temporary storage
+
+Create a string stream from the line
+
+Tokenize the line by commas and store in aux vector
+
+Extract UC code
+
+Extract class code
+
+Find the corresponding \mbox{\hyperlink{classTimeType}{Time\+Type}} based on UC code and class code
+
+Assign found \mbox{\hyperlink{classTimeType}{Time\+Type}} to Found\+Time
+
+Create a new \mbox{\hyperlink{classClasses}{Classes}} object with the found information
+
+Insert the new \mbox{\hyperlink{classClasses}{Classes}} object into the set
+
+Clear temporary storage
+
+Return the set of the \mbox{\hyperlink{classClasses}{Classes}} their UC code and class code

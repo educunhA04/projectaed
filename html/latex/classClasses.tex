@@ -1,0 +1,141 @@
+\hypertarget{classClasses}{}\doxysection{Classes Class Reference}
+\label{classClasses}\index{Classes@{Classes}}
+
+
+Represents a class with its Class Code, UC Code, Day, Start Hour, Duration, and Type.  
+
+
+
+
+{\ttfamily \#include $<$Classes.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classClasses_ae62aaf5d976500a0104dfe6262525455}{Classes}} ()
+\item 
+\mbox{\hyperlink{classClasses_a4f29781ba05274461298ab533f0bb122}{Classes}} (const string \&c\+Code, const string \&u\+Code, \mbox{\hyperlink{classTimeType}{Time\+Type}} \&new\+Timetable)
+\begin{DoxyCompactList}\small\item\em Constructor with parameters. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classClasses_a0e3775575bcb8f61706244d000ffa81c}\label{classClasses_a0e3775575bcb8f61706244d000ffa81c}} 
+string \mbox{\hyperlink{classClasses_a0e3775575bcb8f61706244d000ffa81c}{get\+Class\+Code}} () const
+\begin{DoxyCompactList}\small\item\em Getter functions to retrieve class\+Code, uc\+Code, and timetable. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classClasses_a9ac5c936b991344fc5314b5079d2a370}\label{classClasses_a9ac5c936b991344fc5314b5079d2a370}} 
+string {\bfseries get\+Uc\+Code} () const
+\item 
+\mbox{\Hypertarget{classClasses_a86fabd1ee582eaac38f5cd1448752dcb}\label{classClasses_a86fabd1ee582eaac38f5cd1448752dcb}} 
+\mbox{\hyperlink{classTimeType}{Time\+Type}} \mbox{\hyperlink{classClasses_a86fabd1ee582eaac38f5cd1448752dcb}{get\+Timetable}} () const
+\begin{DoxyCompactList}\small\item\em Time when the class occurs. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classClasses_a8539e50fa84445de304a99594bb15157}{operator$<$}} (\mbox{\hyperlink{classClasses}{Classes}} \&other) const
+\begin{DoxyCompactList}\small\item\em Overloaded less-\/than operator for comparing \mbox{\hyperlink{classClasses}{Classes}} objects based on timetable. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classClasses_abae35e843901c550689216ea343447e9}{convert\+Day}} (const string \&day) const
+\begin{DoxyCompactList}\small\item\em Helper function to convert day string to an integer representation. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classClasses_a7ed4ae65270d60f58e678f8903b7999c}{operator$<$}} (const \mbox{\hyperlink{classClasses}{Classes}} \&other) const
+\begin{DoxyCompactList}\small\item\em Overloaded less-\/than operator for comparing \mbox{\hyperlink{classClasses}{Classes}} objects based on timetable. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classClasses_aa858523346abd37cdfcfbdc0108530de}\label{classClasses_aa858523346abd37cdfcfbdc0108530de}} 
+void \mbox{\hyperlink{classClasses_aa858523346abd37cdfcfbdc0108530de}{set\+Class\+Code}} (const string \&new\+Code)
+\begin{DoxyCompactList}\small\item\em Setter functions to update class\+Code, uc\+Code, and timetable. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classClasses_a25a49f57fbb6da0ad0f1c5ec29704489}\label{classClasses_a25a49f57fbb6da0ad0f1c5ec29704489}} 
+void {\bfseries set\+Uc\+Code} (const string \&new\+Uc\+Code)
+\item 
+\mbox{\Hypertarget{classClasses_a6576d937e812c840ff538c8632f1ec0b}\label{classClasses_a6576d937e812c840ff538c8632f1ec0b}} 
+void {\bfseries set\+Timetable} (\mbox{\hyperlink{classTimeType}{Time\+Type}} new\+Timetable)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a class with its Class Code, UC Code, Day, Start Hour, Duration, and Type. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classClasses_ae62aaf5d976500a0104dfe6262525455}\label{classClasses_ae62aaf5d976500a0104dfe6262525455}} 
+\index{Classes@{Classes}!Classes@{Classes}}
+\index{Classes@{Classes}!Classes@{Classes}}
+\doxysubsubsection{\texorpdfstring{Classes()}{Classes()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Classes\+::\+Classes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+$<$ Default constructor
+
+$<$ Initialize uc\+Code with an empty string\mbox{\Hypertarget{classClasses_a4f29781ba05274461298ab533f0bb122}\label{classClasses_a4f29781ba05274461298ab533f0bb122}} 
+\index{Classes@{Classes}!Classes@{Classes}}
+\index{Classes@{Classes}!Classes@{Classes}}
+\doxysubsubsection{\texorpdfstring{Classes()}{Classes()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Classes\+::\+Classes (\begin{DoxyParamCaption}\item[{const string \&}]{c\+Code,  }\item[{const string \&}]{u\+Code,  }\item[{\mbox{\hyperlink{classTimeType}{Time\+Type}} \&}]{new\+Timetable }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor with parameters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c\+Code} & Class Code \\
+\hline
+{\em u\+Code} & UC Code \\
+\hline
+{\em new\+Timetable} & \mbox{\hyperlink{classTimeType}{Time\+Type}} object representing the class timetable \\
+\hline
+\end{DoxyParams}
+$<$ Initialize class\+Code with c\+Code
+
+$<$ Initialize uc\+Code with u\+Code
+
+$<$ Initialize timetable with new\+Timetable
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classClasses_abae35e843901c550689216ea343447e9}\label{classClasses_abae35e843901c550689216ea343447e9}} 
+\index{Classes@{Classes}!convertDay@{convertDay}}
+\index{convertDay@{convertDay}!Classes@{Classes}}
+\doxysubsubsection{\texorpdfstring{convertDay()}{convertDay()}}
+{\footnotesize\ttfamily int Classes\+::convert\+Day (\begin{DoxyParamCaption}\item[{const string \&}]{day }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Helper function to convert day string to an integer representation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em day} & Day of the week as a string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Integer representation of the day (1 for Monday, 2 for Tuesday, etc.) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classClasses_a8539e50fa84445de304a99594bb15157}\label{classClasses_a8539e50fa84445de304a99594bb15157}} 
+\index{Classes@{Classes}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!Classes@{Classes}}
+\doxysubsubsection{\texorpdfstring{operator$<$()}{operator<()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool Classes\+::operator$<$ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classClasses}{Classes}} \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Overloaded less-\/than operator for comparing \mbox{\hyperlink{classClasses}{Classes}} objects based on timetable. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & Another \mbox{\hyperlink{classClasses}{Classes}} object to compare \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if this class\textquotesingle{}s timetable is less than the other\textquotesingle{}s timetable 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classClasses_a7ed4ae65270d60f58e678f8903b7999c}\label{classClasses_a7ed4ae65270d60f58e678f8903b7999c}} 
+\index{Classes@{Classes}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!Classes@{Classes}}
+\doxysubsubsection{\texorpdfstring{operator$<$()}{operator<()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool Classes\+::operator$<$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classClasses}{Classes}} \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Overloaded less-\/than operator for comparing \mbox{\hyperlink{classClasses}{Classes}} objects based on timetable. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & Another \mbox{\hyperlink{classClasses}{Classes}} object to compare \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if this class\textquotesingle{}s timetable is less than the other\textquotesingle{}s timetable 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Classes.\+h\end{DoxyCompactItemize}
