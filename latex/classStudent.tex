@@ -2,7 +2,7 @@
 \label{classStudent}\index{Student@{Student}}
 
 
-This class define every student by name, student code and their schedule.  
+This class defines every student by name, student code, and their schedule.  
 
 
 
@@ -13,10 +13,9 @@ This class define every student by name, student code and their schedule.
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classStudent_af9168cedbfa5565cf0b20c1a9d3f5c9d}{Student}} ()
-\begin{DoxyCompactList}\small\item\em Private member variable for student\textquotesingle{}s lessons. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Constructors. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classStudent_a4809f0ffe0c743898fee80f28223a194}{Student}} (const string \&new\+Name, const string \&new\+Student\+Code, const list$<$ \mbox{\hyperlink{classClasses}{Classes}} $>$ \&new\+Lessons=\{\})
-\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classStudent_a44b0dc0efbc95f687706f28363e897db}\label{classStudent_a44b0dc0efbc95f687706f28363e897db}} 
+\begin{DoxyCompactList}\small\item\em Constructor with parameters. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classStudent_a44b0dc0efbc95f687706f28363e897db}{operator$<$}} (const \mbox{\hyperlink{classStudent}{Student}} \&other) const
 \begin{DoxyCompactList}\small\item\em Overloaded less-\/than operator for comparing \mbox{\hyperlink{classStudent}{Student}} objects based on student code. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classStudent_abd89cc79098d40204e387e2b57b15716}\label{classStudent_abd89cc79098d40204e387e2b57b15716}} 
@@ -28,15 +27,18 @@ string {\bfseries get\+Student\+Code} ()
 \mbox{\Hypertarget{classStudent_ae5bcf78c87a6e6d09dd142bbfe397329}\label{classStudent_ae5bcf78c87a6e6d09dd142bbfe397329}} 
 list$<$ \mbox{\hyperlink{classClasses}{Classes}} $>$ {\bfseries get\+Student\+Schedule} ()
 \item 
-\mbox{\Hypertarget{classStudent_a08275d845ff0f2a316312a10e9f29d6f}\label{classStudent_a08275d845ff0f2a316312a10e9f29d6f}} 
 void \mbox{\hyperlink{classStudent_a08275d845ff0f2a316312a10e9f29d6f}{set\+Lessons}} (list$<$ \mbox{\hyperlink{classClasses}{Classes}} $>$ \&others)
 \begin{DoxyCompactList}\small\item\em Setter function to update lessons. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-This class define every student by name, student code and their schedule. 
+This class defines every student by name, student code, and their schedule. 
 
-Represents a \mbox{\hyperlink{classStudent}{Student}} by its Name, \mbox{\hyperlink{classStudent}{Student}} Code and Schedule (list of \mbox{\hyperlink{classClasses}{Classes}}) 
+$<$ Include the \mbox{\hyperlink{classClasses}{Classes}} header file
+
+$<$ Include the standard input/output library $<$ Include the string library Include the vector library $<$ Include the list library
+
+Represents a student by their name, student code, and schedule (list of \mbox{\hyperlink{classClasses}{Classes}}) 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{classStudent_af9168cedbfa5565cf0b20c1a9d3f5c9d}\label{classStudent_af9168cedbfa5565cf0b20c1a9d3f5c9d}} 
@@ -47,9 +49,9 @@ Represents a \mbox{\hyperlink{classStudent}{Student}} by its Name, \mbox{\hyperl
 
 
 
-Private member variable for student\textquotesingle{}s lessons. 
+Constructors. 
 
-Constructors \mbox{\Hypertarget{classStudent_a4809f0ffe0c743898fee80f28223a194}\label{classStudent_a4809f0ffe0c743898fee80f28223a194}} 
+Default constructor \mbox{\Hypertarget{classStudent_a4809f0ffe0c743898fee80f28223a194}\label{classStudent_a4809f0ffe0c743898fee80f28223a194}} 
 \index{Student@{Student}!Student@{Student}}
 \index{Student@{Student}!Student@{Student}}
 \doxysubsubsection{\texorpdfstring{Student()}{Student()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
@@ -57,15 +59,58 @@ Constructors \mbox{\Hypertarget{classStudent_a4809f0ffe0c743898fee80f28223a194}\
 
 
 
-Default constructor. 
+Constructor with parameters. 
 
-Constructor with parameters
 
-Initialize name with new\+Name
+\begin{DoxyParams}{Parameters}
+{\em new\+Name} & \mbox{\hyperlink{classStudent}{Student}}\textquotesingle{}s name \\
+\hline
+{\em new\+Student\+Code} & \mbox{\hyperlink{classStudent}{Student}}\textquotesingle{}s code \\
+\hline
+{\em new\+Lessons} & List of classes representing the student\textquotesingle{}s schedule \\
+\hline
+\end{DoxyParams}
+$<$ Initialize name with new\+Name
 
-Initialize student\+Code with new\+Student\+Code
+$<$ Initialize student\+Code with new\+Student\+Code
 
-Initialize lessons with new\+Lessons
+$<$ Initialize lessons with new\+Lessons
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classStudent_a44b0dc0efbc95f687706f28363e897db}\label{classStudent_a44b0dc0efbc95f687706f28363e897db}} 
+\index{Student@{Student}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily bool Student\+::operator$<$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classStudent}{Student}} \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Overloaded less-\/than operator for comparing \mbox{\hyperlink{classStudent}{Student}} objects based on student code. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & Another \mbox{\hyperlink{classStudent}{Student}} object to compare \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if this student\textquotesingle{}s code is less than the other\textquotesingle{}s code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classStudent_a08275d845ff0f2a316312a10e9f29d6f}\label{classStudent_a08275d845ff0f2a316312a10e9f29d6f}} 
+\index{Student@{Student}!setLessons@{setLessons}}
+\index{setLessons@{setLessons}!Student@{Student}}
+\doxysubsubsection{\texorpdfstring{setLessons()}{setLessons()}}
+{\footnotesize\ttfamily void Student\+::set\+Lessons (\begin{DoxyParamCaption}\item[{list$<$ \mbox{\hyperlink{classClasses}{Classes}} $>$ \&}]{others }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Setter function to update lessons. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em others} & List of classes representing the updated schedule \\
+\hline
+\end{DoxyParams}
+
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 

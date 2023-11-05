@@ -69,51 +69,48 @@ $(function() {
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#ifndef PROJETO_STUDENT_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#define PROJETO_STUDENT_H</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span>    <span class="comment">// Include the standard input/output library</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span>      <span class="comment">// Include the string library</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span>      <span class="comment">// Include the vector library</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;list&gt;</span>        <span class="comment">// Include the list library</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;Classes.h&quot;</span>   <span class="comment">// Include the Classes header file</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span>    </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span>      </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span>      </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;list&gt;</span>        </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;Classes.h&quot;</span>   </div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">using namespace </span>std;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="classStudent.html">   19</a></span>&#160;<span class="keyword">class </span><a class="code" href="classStudent.html">Student</a>{</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keywordtype">string</span> name;            </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keywordtype">string</span> studentCode;     </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        list&lt;Classes&gt; lessons;  </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="classStudent.html#af9168cedbfa5565cf0b20c1a9d3f5c9d">   28</a></span>&#160;        <a class="code" href="classStudent.html#af9168cedbfa5565cf0b20c1a9d3f5c9d">Student</a>(){}  </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="classStudent.html#a4809f0ffe0c743898fee80f28223a194">   30</a></span>&#160;        <a class="code" href="classStudent.html#a4809f0ffe0c743898fee80f28223a194">Student</a>(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; newName, <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; newStudentCode, <span class="keyword">const</span> list&lt;Classes&gt;&amp; newLessons={}) {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            this-&gt;name = newName;               </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            this-&gt;studentCode = newStudentCode; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            this-&gt;lessons = newLessons;         </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        }</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="classStudent.html#a44b0dc0efbc95f687706f28363e897db">   38</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classStudent.html#a44b0dc0efbc95f687706f28363e897db">operator&lt;</a>(<span class="keyword">const</span> <a class="code" href="classStudent.html">Student</a>&amp; other)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            <span class="keywordflow">return</span> studentCode &lt; other.studentCode;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        }</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="classStudent.html#abd89cc79098d40204e387e2b57b15716">   43</a></span>&#160;        <span class="keywordtype">string</span> <a class="code" href="classStudent.html#abd89cc79098d40204e387e2b57b15716">getName</a>() { <span class="keywordflow">return</span> name; }</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordtype">string</span> getStudentCode() { <span class="keywordflow">return</span> studentCode; }</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        list&lt;Classes&gt; getStudentSchedule() { <span class="keywordflow">return</span> lessons; }</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="classStudent.html#a08275d845ff0f2a316312a10e9f29d6f">   48</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classStudent.html#a08275d845ff0f2a316312a10e9f29d6f">setLessons</a>(list&lt;Classes&gt;&amp; others) { this-&gt;lessons = others; }</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;};</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#endif </span><span class="comment">//PROJETO_STUDENT_H</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="ttc" id="aclassStudent_html"><div class="ttname"><a href="classStudent.html">Student</a></div><div class="ttdoc">This class define every student by name, student code and their schedule.</div><div class="ttdef"><b>Definition:</b> Student.h:19</div></div>
-<div class="ttc" id="aclassStudent_html_a08275d845ff0f2a316312a10e9f29d6f"><div class="ttname"><a href="classStudent.html#a08275d845ff0f2a316312a10e9f29d6f">Student::setLessons</a></div><div class="ttdeci">void setLessons(list&lt; Classes &gt; &amp;others)</div><div class="ttdoc">Setter function to update lessons.</div><div class="ttdef"><b>Definition:</b> Student.h:48</div></div>
-<div class="ttc" id="aclassStudent_html_a44b0dc0efbc95f687706f28363e897db"><div class="ttname"><a href="classStudent.html#a44b0dc0efbc95f687706f28363e897db">Student::operator&lt;</a></div><div class="ttdeci">bool operator&lt;(const Student &amp;other) const</div><div class="ttdoc">Overloaded less-than operator for comparing Student objects based on student code.</div><div class="ttdef"><b>Definition:</b> Student.h:38</div></div>
-<div class="ttc" id="aclassStudent_html_a4809f0ffe0c743898fee80f28223a194"><div class="ttname"><a href="classStudent.html#a4809f0ffe0c743898fee80f28223a194">Student::Student</a></div><div class="ttdeci">Student(const string &amp;newName, const string &amp;newStudentCode, const list&lt; Classes &gt; &amp;newLessons={})</div><div class="ttdoc">Default constructor.</div><div class="ttdef"><b>Definition:</b> Student.h:30</div></div>
-<div class="ttc" id="aclassStudent_html_abd89cc79098d40204e387e2b57b15716"><div class="ttname"><a href="classStudent.html#abd89cc79098d40204e387e2b57b15716">Student::getName</a></div><div class="ttdeci">string getName()</div><div class="ttdoc">Getter functions to retrieve name, studentCode, and lessons.</div><div class="ttdef"><b>Definition:</b> Student.h:43</div></div>
-<div class="ttc" id="aclassStudent_html_af9168cedbfa5565cf0b20c1a9d3f5c9d"><div class="ttname"><a href="classStudent.html#af9168cedbfa5565cf0b20c1a9d3f5c9d">Student::Student</a></div><div class="ttdeci">Student()</div><div class="ttdoc">Private member variable for student's lessons.</div><div class="ttdef"><b>Definition:</b> Student.h:28</div></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">using namespace </span>std;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="classStudent.html">   20</a></span>&#160;<span class="keyword">class </span><a class="code" href="classStudent.html">Student</a>{</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">string</span> name;            </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">string</span> studentCode;     </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    list&lt;Classes&gt; lessons;  </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="classStudent.html#af9168cedbfa5565cf0b20c1a9d3f5c9d">   29</a></span>&#160;    <a class="code" href="classStudent.html#af9168cedbfa5565cf0b20c1a9d3f5c9d">Student</a>(){}  </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="classStudent.html#a4809f0ffe0c743898fee80f28223a194">   37</a></span>&#160;    <a class="code" href="classStudent.html#a4809f0ffe0c743898fee80f28223a194">Student</a>(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; newName, <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; newStudentCode, <span class="keyword">const</span> list&lt;Classes&gt;&amp; newLessons={}) {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        this-&gt;name = newName;               </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        this-&gt;studentCode = newStudentCode; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        this-&gt;lessons = newLessons;         </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    }</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="classStudent.html#a44b0dc0efbc95f687706f28363e897db">   48</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classStudent.html#a44b0dc0efbc95f687706f28363e897db">operator&lt;</a>(<span class="keyword">const</span> <a class="code" href="classStudent.html">Student</a>&amp; other)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keywordflow">return</span> studentCode &lt; other.studentCode;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    }</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="classStudent.html#abd89cc79098d40204e387e2b57b15716">   53</a></span>&#160;    <span class="keywordtype">string</span> <a class="code" href="classStudent.html#abd89cc79098d40204e387e2b57b15716">getName</a>() { <span class="keywordflow">return</span> name; }</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">string</span> getStudentCode() { <span class="keywordflow">return</span> studentCode; }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    list&lt;Classes&gt; getStudentSchedule() { <span class="keywordflow">return</span> lessons; }</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="classStudent.html#a08275d845ff0f2a316312a10e9f29d6f">   61</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classStudent.html#a08275d845ff0f2a316312a10e9f29d6f">setLessons</a>(list&lt;Classes&gt;&amp; others) { this-&gt;lessons = others; }</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;};</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#endif </span><span class="comment">//PROJETO_STUDENT_H</span></div>
+<div class="ttc" id="aclassStudent_html"><div class="ttname"><a href="classStudent.html">Student</a></div><div class="ttdoc">This class defines every student by name, student code, and their schedule.</div><div class="ttdef"><b>Definition:</b> Student.h:20</div></div>
+<div class="ttc" id="aclassStudent_html_a08275d845ff0f2a316312a10e9f29d6f"><div class="ttname"><a href="classStudent.html#a08275d845ff0f2a316312a10e9f29d6f">Student::setLessons</a></div><div class="ttdeci">void setLessons(list&lt; Classes &gt; &amp;others)</div><div class="ttdoc">Setter function to update lessons.</div><div class="ttdef"><b>Definition:</b> Student.h:61</div></div>
+<div class="ttc" id="aclassStudent_html_a44b0dc0efbc95f687706f28363e897db"><div class="ttname"><a href="classStudent.html#a44b0dc0efbc95f687706f28363e897db">Student::operator&lt;</a></div><div class="ttdeci">bool operator&lt;(const Student &amp;other) const</div><div class="ttdoc">Overloaded less-than operator for comparing Student objects based on student code.</div><div class="ttdef"><b>Definition:</b> Student.h:48</div></div>
+<div class="ttc" id="aclassStudent_html_a4809f0ffe0c743898fee80f28223a194"><div class="ttname"><a href="classStudent.html#a4809f0ffe0c743898fee80f28223a194">Student::Student</a></div><div class="ttdeci">Student(const string &amp;newName, const string &amp;newStudentCode, const list&lt; Classes &gt; &amp;newLessons={})</div><div class="ttdoc">Constructor with parameters.</div><div class="ttdef"><b>Definition:</b> Student.h:37</div></div>
+<div class="ttc" id="aclassStudent_html_abd89cc79098d40204e387e2b57b15716"><div class="ttname"><a href="classStudent.html#abd89cc79098d40204e387e2b57b15716">Student::getName</a></div><div class="ttdeci">string getName()</div><div class="ttdoc">Getter functions to retrieve name, studentCode, and lessons.</div><div class="ttdef"><b>Definition:</b> Student.h:53</div></div>
+<div class="ttc" id="aclassStudent_html_af9168cedbfa5565cf0b20c1a9d3f5c9d"><div class="ttname"><a href="classStudent.html#af9168cedbfa5565cf0b20c1a9d3f5c9d">Student::Student</a></div><div class="ttdeci">Student()</div><div class="ttdoc">Constructors.</div><div class="ttdef"><b>Definition:</b> Student.h:29</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

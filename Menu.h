@@ -26,11 +26,15 @@ public:
             this->data = newData;
         }
 
-        /// 1st Part of the Menu //
+        /**
+         * @brief 1st Part of the Menu
+         */
         void accessInfo_1();
         void requestChange_2();
 
-        /// 2nd Part -> accessInfo //
+        /**
+         * @brief 2nd Part -> accessInfo
+         */
         void showStudentSchedule_1();
         void showStudentsPer_2();
         void showStudentsInAtLeastNUCs_3();
@@ -39,9 +43,13 @@ public:
         void checkOccupationPer_5();
         void checkBiggestUc_6();
 
-        /// 3rd Part -> requestChange //
+        /**
+         * @brief 3rd Part -> requestChange
+         */
         void addStudent_1();
-        ///Helper functions of the ADDREQUEST//
+        /**
+         * @brief Helper functions of the ADDREQUEST
+         */
         vector<pair<Classes,int>> checkocu();
         bool balanceclasses(vector <pair<Classes,int>> original);
         bool overlap(list<Classes> Sch, Classes clwantchange);
@@ -51,12 +59,16 @@ public:
 
         void showHistory();
 
-        /// 4th Part -> accessInfo -> showStudentsPer
+        /**
+         * @brief 4th Part -> accessInfo -> showStudentsPer
+         */
         void showStudentsPerYear_1();
         void showStudentsPerClass_2();
         void showStudentsPerUC_3();
 
-        /// 5th Part -> accessInfo -> checkOccupationPer
+        /**
+         * @brief 5th Part -> accessInfo -> checkOccupationPer
+         */
         void checkOccupationPerYear_1();
         void checkOccupationPerClass_2();
         void checkOccupationPerUC_3();

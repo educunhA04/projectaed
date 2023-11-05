@@ -69,7 +69,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Represents a class by its Class Code, UC Code, Day, Start Hour, Duration and Type.  
+<p>Represents a class with its Class Code, UC Code, Day, Start Hour, Duration, and Type.  
  <a href="classClasses.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="Classes_8h_source.html">Classes.h</a>&gt;</code></p>
@@ -77,9 +77,9 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ae62aaf5d976500a0104dfe6262525455"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClasses.html#ae62aaf5d976500a0104dfe6262525455">Classes</a> ()</td></tr>
-<tr class="memdesc:ae62aaf5d976500a0104dfe6262525455"><td class="mdescLeft">&#160;</td><td class="mdescRight">Private member variable for timetable.  <a href="classClasses.html#ae62aaf5d976500a0104dfe6262525455">More...</a><br /></td></tr>
 <tr class="separator:ae62aaf5d976500a0104dfe6262525455"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4f29781ba05274461298ab533f0bb122"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClasses.html#a4f29781ba05274461298ab533f0bb122">Classes</a> (const string &amp;cCode, const string &amp;uCode, <a class="el" href="classTimeType.html">TimeType</a> &amp;newTimetable)</td></tr>
+<tr class="memdesc:a4f29781ba05274461298ab533f0bb122"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with parameters.  <a href="classClasses.html#a4f29781ba05274461298ab533f0bb122">More...</a><br /></td></tr>
 <tr class="separator:a4f29781ba05274461298ab533f0bb122"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0e3775575bcb8f61706244d000ffa81c"><td class="memItemLeft" align="right" valign="top"><a id="a0e3775575bcb8f61706244d000ffa81c"></a>
 string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClasses.html#a0e3775575bcb8f61706244d000ffa81c">getClassCode</a> () const</td></tr>
@@ -89,18 +89,17 @@ string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cl
 string&#160;</td><td class="memItemRight" valign="bottom"><b>getUcCode</b> () const</td></tr>
 <tr class="separator:a9ac5c936b991344fc5314b5079d2a370"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a86fabd1ee582eaac38f5cd1448752dcb"><td class="memItemLeft" align="right" valign="top"><a id="a86fabd1ee582eaac38f5cd1448752dcb"></a>
-<a class="el" href="classTimeType.html">TimeType</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getTimetable</b> () const</td></tr>
+<a class="el" href="classTimeType.html">TimeType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClasses.html#a86fabd1ee582eaac38f5cd1448752dcb">getTimetable</a> () const</td></tr>
+<tr class="memdesc:a86fabd1ee582eaac38f5cd1448752dcb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Time when the class occurs. <br /></td></tr>
 <tr class="separator:a86fabd1ee582eaac38f5cd1448752dcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8539e50fa84445de304a99594bb15157"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClasses.html#a8539e50fa84445de304a99594bb15157">operator&lt;</a> (<a class="el" href="classClasses.html">Classes</a> &amp;other) const</td></tr>
-<tr class="memdesc:a8539e50fa84445de304a99594bb15157"><td class="mdescLeft">&#160;</td><td class="mdescRight">Time when the class occur.  <a href="classClasses.html#a8539e50fa84445de304a99594bb15157">More...</a><br /></td></tr>
+<tr class="memdesc:a8539e50fa84445de304a99594bb15157"><td class="mdescLeft">&#160;</td><td class="mdescRight">Overloaded less-than operator for comparing <a class="el" href="classClasses.html" title="Represents a class with its Class Code, UC Code, Day, Start Hour, Duration, and Type.">Classes</a> objects based on timetable.  <a href="classClasses.html#a8539e50fa84445de304a99594bb15157">More...</a><br /></td></tr>
 <tr class="separator:a8539e50fa84445de304a99594bb15157"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abae35e843901c550689216ea343447e9"><td class="memItemLeft" align="right" valign="top"><a id="abae35e843901c550689216ea343447e9"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClasses.html#abae35e843901c550689216ea343447e9">convertDay</a> (const string &amp;day) const</td></tr>
-<tr class="memdesc:abae35e843901c550689216ea343447e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper function to convert day string to an integer representation. <br /></td></tr>
+<tr class="memitem:abae35e843901c550689216ea343447e9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClasses.html#abae35e843901c550689216ea343447e9">convertDay</a> (const string &amp;day) const</td></tr>
+<tr class="memdesc:abae35e843901c550689216ea343447e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper function to convert day string to an integer representation.  <a href="classClasses.html#abae35e843901c550689216ea343447e9">More...</a><br /></td></tr>
 <tr class="separator:abae35e843901c550689216ea343447e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7ed4ae65270d60f58e678f8903b7999c"><td class="memItemLeft" align="right" valign="top"><a id="a7ed4ae65270d60f58e678f8903b7999c"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClasses.html#a7ed4ae65270d60f58e678f8903b7999c">operator&lt;</a> (const <a class="el" href="classClasses.html">Classes</a> &amp;other) const</td></tr>
-<tr class="memdesc:a7ed4ae65270d60f58e678f8903b7999c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Overloaded less-than operator for comparing <a class="el" href="classClasses.html" title="Represents a class by its Class Code, UC Code, Day, Start Hour, Duration and Type.">Classes</a> objects based on timetable. <br /></td></tr>
+<tr class="memitem:a7ed4ae65270d60f58e678f8903b7999c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClasses.html#a7ed4ae65270d60f58e678f8903b7999c">operator&lt;</a> (const <a class="el" href="classClasses.html">Classes</a> &amp;other) const</td></tr>
+<tr class="memdesc:a7ed4ae65270d60f58e678f8903b7999c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Overloaded less-than operator for comparing <a class="el" href="classClasses.html" title="Represents a class with its Class Code, UC Code, Day, Start Hour, Duration, and Type.">Classes</a> objects based on timetable.  <a href="classClasses.html#a7ed4ae65270d60f58e678f8903b7999c">More...</a><br /></td></tr>
 <tr class="separator:a7ed4ae65270d60f58e678f8903b7999c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa858523346abd37cdfcfbdc0108530de"><td class="memItemLeft" align="right" valign="top"><a id="aa858523346abd37cdfcfbdc0108530de"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClasses.html#aa858523346abd37cdfcfbdc0108530de">setClassCode</a> (const string &amp;newCode)</td></tr>
@@ -114,7 +113,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>setTimetable</b> (<a 
 <tr class="separator:a6576d937e812c840ff538c8632f1ec0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Represents a class by its Class Code, UC Code, Day, Start Hour, Duration and Type. </p>
+<div class="textblock"><p>Represents a class with its Class Code, UC Code, Day, Start Hour, Duration, and Type. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ae62aaf5d976500a0104dfe6262525455"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae62aaf5d976500a0104dfe6262525455">&#9670;&nbsp;</a></span>Classes() <span class="overload">[1/2]</span></h2>
@@ -138,10 +137,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>setTimetable</b> (<a 
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>Private member variable for timetable. </p>
-<p>Default constructor</p>
-<p>Initialize ucCode with an empty string</p>
+<p>&lt; Default constructor</p>
+<p>&lt; Initialize ucCode with an empty string</p>
 
 </div>
 </div>
@@ -184,15 +181,60 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>setTimetable</b> (<a 
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Initialize classCode with cCode</p>
-<p>Initialize ucCode with uCode</p>
-<p>Initialize timetable with newTimetable</p>
+
+<p>Constructor with parameters. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cCode</td><td>Class Code </td></tr>
+    <tr><td class="paramname">uCode</td><td>UC Code </td></tr>
+    <tr><td class="paramname">newTimetable</td><td><a class="el" href="classTimeType.html" title="Represents a time for a class.">TimeType</a> object representing the class timetable </td></tr>
+  </table>
+  </dd>
+</dl>
+<p>&lt; Initialize classCode with cCode</p>
+<p>&lt; Initialize ucCode with uCode</p>
+<p>&lt; Initialize timetable with newTimetable</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="abae35e843901c550689216ea343447e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abae35e843901c550689216ea343447e9">&#9670;&nbsp;</a></span>convertDay()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Classes::convertDay </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>day</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Helper function to convert day string to an integer representation. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">day</td><td>Day of the week as a string </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Integer representation of the day (1 for Monday, 2 for Tuesday, etc.) </dd></dl>
+
+</div>
+</div>
 <a id="a8539e50fa84445de304a99594bb15157"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8539e50fa84445de304a99594bb15157">&#9670;&nbsp;</a></span>operator&lt;()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a8539e50fa84445de304a99594bb15157">&#9670;&nbsp;</a></span>operator&lt;() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -215,8 +257,49 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>setTimetable</b> (<a 
 </table>
 </div><div class="memdoc">
 
-<p>Time when the class occur. </p>
-<p>Overloaded less-than operator for comparing <a class="el" href="classClasses.html" title="Represents a class by its Class Code, UC Code, Day, Start Hour, Duration and Type.">Classes</a> objects based on timetable </p>
+<p>Overloaded less-than operator for comparing <a class="el" href="classClasses.html" title="Represents a class with its Class Code, UC Code, Day, Start Hour, Duration, and Type.">Classes</a> objects based on timetable. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>Another <a class="el" href="classClasses.html" title="Represents a class with its Class Code, UC Code, Day, Start Hour, Duration, and Type.">Classes</a> object to compare </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if this class's timetable is less than the other's timetable </dd></dl>
+
+</div>
+</div>
+<a id="a7ed4ae65270d60f58e678f8903b7999c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ed4ae65270d60f58e678f8903b7999c">&#9670;&nbsp;</a></span>operator&lt;() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Classes::operator&lt; </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classClasses.html">Classes</a> &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Overloaded less-than operator for comparing <a class="el" href="classClasses.html" title="Represents a class with its Class Code, UC Code, Day, Start Hour, Duration, and Type.">Classes</a> objects based on timetable. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>Another <a class="el" href="classClasses.html" title="Represents a class with its Class Code, UC Code, Day, Start Hour, Duration, and Type.">Classes</a> object to compare </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if this class's timetable is less than the other's timetable </dd></dl>
 
 </div>
 </div>
