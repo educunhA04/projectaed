@@ -351,19 +351,27 @@ void Menu::showStudentsInAtLeastNUCs_3() {
     int input;
     cin >> input;
     set<string> a;
+    int count;
 
     cout << "The following students study at least " << input << " UC's:\n";
     for (auto element : data.getStudents()) {
         auto horario = element.getStudentSchedule();
-
         for (auto aula : horario) {
             a.insert(aula.getUcCode());
         }
+
         if (a.size() >= input) {
+            a.clear();
+            count ++;
             cout << "Student Code: "  << element.getStudentCode() << " / Student Name: " << element.getName() << endl;
         }
+
     }
     char what;
+    cout << endl << "Total: " << count << " students. " << endl << endl;
+    if (count == 0) {
+        cout << "There are no students enrolled in at least this number of UC's. " << endl;
+    }
 
     cout << "Insert 'R' to RETURN" << endl;
     cout << "Insert 'Q' to QUIT" << endl;
