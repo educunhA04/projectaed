@@ -1,4 +1,2 @@
-REMOVED(-): The student  whose student code is  was removed from L.EIC015 UC.
-REMOVED(-): The student Jose Luis whose student code is 202050392 was removed from L.EIC013 UC.
-REMOVED(-): The student  whose student code is  was removed from L.EIC013 UC.
-REMOVED(-): The student Jose Luis whose student code is 202050392 was removed from L.EIC013 UC.
+REMOVED(-): The student Iara whose student code is 202025232 was removed from L.EIC002 UC.
+ADDED(+):  The student Iara whose student code is 202025232 was added to the UC L.EIC001 at 1LEIC07 class.
