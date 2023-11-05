@@ -964,6 +964,35 @@ void Menu::removeStudent_2() {
                 sch.push_back(cl);
             }
         }
+
+        int n;
+        ifstream ifile("../Files/students_classes.csv");
+        ofstream ofile("../Files/students_change.csv");
+        string line;
+        string word;
+        vector<string> aux;
+        if (ifile.is_open() and ofile.is_open()) {
+            getline(ifile, line);
+            ofile << line << '\n';
+            while (getline(ifile, line)) {
+                aux.clear();
+                istringstream iss(line);
+                while (getline(iss, word, ',')) {
+                    aux.push_back(word);
+                }
+                string stuCode = aux[0];
+                string ucode = aux[2];
+                string ccode = aux[3];
+                if (stuCode == Student1.getStudentCode() and ucode == ucode1) {n = 1;}
+
+                else { ofile << aux[0] << "," << aux[1] << "," << aux[2] << "," << aux[3] << '\n'; }
+            }
+            ifile.close();
+            ofile.close();
+            remove("../Files/students_classes.csv");
+            rename("../Files/students_change.csv", "../Files/students_classes.csv");
+
+        } else { cout << "file not found"; }
         Student1.setLessons(sch);
         change = "REMOVED(-): The student " + Student1.getName() + " whose student code is " + Student1.getStudentCode()
                 + " was removed from " + ucode1 + " UC.";
@@ -977,45 +1006,40 @@ void Menu::removeStudent_2() {
                 sch.push_back(cl);
             }
         }
+
+        int n;
+        ifstream ifile("../Files/students_classes.csv");
+        ofstream ofile("../Files/students_change.csv");
+        string line;
+        string word;
+        vector<string> aux;
+        if (ifile.is_open() and ofile.is_open()) {
+            getline(ifile, line);
+            ofile << line << '\n';
+            while (getline(ifile, line)) {
+                aux.clear();
+                istringstream iss(line);
+                while (getline(iss, word, ',')) {
+                    aux.push_back(word);
+                }
+                string stuCode = aux[0];
+                string ucode = aux[2];
+                string ccode = aux[3];
+                if (stuCode == Student1.getStudentCode() and ccode == ccode1) {n = 1;}
+
+                else { ofile << aux[0] << "," << aux[1] << "," << aux[2] << "," << aux[3] << '\n'; }
+            }
+            ifile.close();
+            ofile.close();
+            remove("../Files/students_classes.csv");
+            rename("../Files/students_change.csv", "../Files/students_classes.csv");
+
+        } else { cout << "file not found"; }
         Student1.setLessons(sch);
         change = "REMOVED(-): The student " + Student1.getName() + " whose student code is " + Student1.getStudentCode()
                  + " was removed from " + ccode1 + " class.";
         addToHistory(change);
     }
-    //------------------------------------------ Writing in the file----------------------------------------------------------------------------------//
-
-    int n;
-    ifstream ifile("../Files/students_classes.csv");
-    ofstream ofile("../Files/students_change.csv");
-    string line;
-    string word;
-    vector<string> aux;
-    if (ifile.is_open() and ofile.is_open()) {
-        getline(ifile, line);
-        ofile << line << '\n';
-        while (getline(ifile, line)) {
-            aux.clear();
-            istringstream iss(line);
-            while (getline(iss, word, ',')) {
-                aux.push_back(word);
-            }
-            string stuCode = aux[0];
-            string ucode = aux[2];
-            string ccode = aux[3];
-            if (stuCode == Student1.getStudentCode() and ccode == ccode1 and
-                ucode == ucode1) {
-                n = 1;
-            } else { ofile << aux[0] << "," << aux[1] << "," << aux[2] << "," << aux[3] << '\n'; }
-        }
-        ifile.close();
-        ofile.close();
-        remove("../Files/students_classes.csv");
-        rename("../Files/students_change.csv", "../Files/students_classes.csv");
-
-    } else { cout << "file not found"; }
-
-//----------------------------------------------------------------------------------------------------------------------//
-
 };
 
 void Menu::switchStudent_3() {
