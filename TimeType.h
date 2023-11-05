@@ -6,40 +6,71 @@
 
 using namespace std;
 
+/**
+ * @class TimeType
+ * @brief Represents a time for a class.
+ */
 class TimeType {
-    private:
-        string startHour;       // Private member variable for start hour
-        string classDuration;   // Private member variable for class duration
-        string typeOfClass;     // Private member variable for type of class
-        string day;             // Private member variable for start day
+private:
+    string startHour;       ///< Private member variable for start hour
+    string classDuration;   ///< Private member variable for class duration
+    string typeOfClass;     ///< Private member variable for type of class
+    string day;             ///< Private member variable for start day
 
-    public:
-        TimeType(){}    // Default constructor
+public:
+    /**
+     * @brief Default constructor for TimeType.
+     */
+    TimeType(){}
 
-        TimeType(const string& newDay, const string& newStartHour, const string& newClassDuration, const string& newTypeOfClass) {
-            // Constructor with parameters
-            this->day = newDay;                   // Initialize day with newDay
-            this->startHour = newStartHour;       // Initialize startHour with newStartHour
-            this->classDuration = newClassDuration;   // Initialize classDuration with newClassDuration
-            this->typeOfClass = newTypeOfClass;   // Initialize typeOfClass with newTypeOfClass
-        }
+    /**
+     * @brief Constructor with parameters for TimeType.
+     * @param newDay The day of the class.
+     * @param newStartHour The start hour of the class.
+     * @param newClassDuration The duration of the class.
+     * @param newTypeOfClass The type of class.
+     */
+    TimeType(const string& newDay, const string& newStartHour, const string& newClassDuration, const string& newTypeOfClass) {
+        this->day = newDay;
+        this->startHour = newStartHour;
+        this->classDuration = newClassDuration;
+        this->typeOfClass = newTypeOfClass;
+    }
 
-        // Overloaded less-than operator for comparing TimeType objects based on day
-        bool operator<(const TimeType& notyet) const {
-            if (day < notyet.getDay()) return true;  // Compare days
-            if (day > notyet.getDay()) return false; // Compare days
-        }
+    /**
+     * @brief Overloaded less-than operator for comparing TimeType objects based on day.
+     * @param notyet The TimeType object to compare with.
+     * @return True if this TimeType is less than 'notyet', otherwise false.
+     */
+    bool operator<(const TimeType& notyet) const {
+        if (day < notyet.getDay()) return true;
+        if (day > notyet.getDay()) return false;
+        return false; // Add return statement for all cases.
+    }
 
-        // Getter functions to retrieve day, startHour
-        string getDay() const { return day; }
-        string getStartHour() const { return startHour; }
+    /**
+     * @brief Getter function to retrieve the day.
+     * @return The day of the class.
+     */
+    string getDay() const { return day; }
 
-        // Overloaded getter functions (non-const version)
-        string getDay() { return day; }
-        string getStartHour() { return startHour; }
-        string getClassDuration() { return classDuration; }
-        string getTypeOfClass() { return typeOfClass; }
+    /**
+     * @brief Getter function to retrieve the start hour.
+     * @return The start hour of the class.
+     */
+    string getStartHour() const { return startHour; }
 
+    /**
+     * @brief Getter function to retrieve the class duration.
+     * @return The duration of the class.
+     */
+    string getClassDuration() { return classDuration; }
+
+    /**
+     * @brief Getter function to retrieve the type of class.
+     * @return The type of class.
+     */
+    string getTypeOfClass() { return typeOfClass; }
 };
 
 #endif //PROJETO_TIMETYPE_H
