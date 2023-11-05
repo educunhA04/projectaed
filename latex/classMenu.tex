@@ -1,0 +1,494 @@
+\hypertarget{classMenu}{}\doxysection{Menu Class Reference}
+\label{classMenu}\index{Menu@{Menu}}
+
+
+Retains all Menus used in this program and the functions used inside these menus;.  
+
+
+
+
+{\ttfamily \#include $<$Menu.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMenu_ad466dd83355124a6ed958430450bfe94}\label{classMenu_ad466dd83355124a6ed958430450bfe94}} 
+\mbox{\hyperlink{classMenu_ad466dd83355124a6ed958430450bfe94}{Menu}} ()
+\begin{DoxyCompactList}\small\item\em Create a set of Students by calling the read\+Students\+Data function. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMenu_ae1ec62e738dda7faaaec850bd0b58ffe}{start}} ()
+\item 
+\mbox{\Hypertarget{classMenu_a49e5843834b23e0719b6e58ff585968c}\label{classMenu_a49e5843834b23e0719b6e58ff585968c}} 
+void {\bfseries set\+Data} (const \mbox{\hyperlink{classAllData}{All\+Data}} \&new\+Data)
+\item 
+void \mbox{\hyperlink{classMenu_a8761870de90e6d70b6f3a7a7f033fa6f}{access\+Info\+\_\+1}} ()
+\begin{DoxyCompactList}\small\item\em 1st Part of the \mbox{\hyperlink{classMenu}{Menu}} // \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMenu_abb2546a9c1a565add9a589790281923d}{request\+Change\+\_\+2}} ()
+\item 
+void \mbox{\hyperlink{classMenu_a94310223c036f183dd3701244b1275a9}{show\+Student\+Schedule\+\_\+1}} ()
+\begin{DoxyCompactList}\small\item\em 2nd Part -\/$>$ access\+Info // \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMenu_a0e4c44f99d508d655f1c308c36859150}{show\+Students\+Per\+\_\+2}} ()
+\item 
+void \mbox{\hyperlink{classMenu_a9ce38e5c7a138e9e9011d0f6034d4f93}{show\+Students\+In\+At\+Least\+NUCs\+\_\+3}} ()
+\item 
+void \mbox{\hyperlink{classMenu_a734798de5d2254c151308bfd89689805}{show\+Class\+Schedule\+\_\+4}} ()
+\item 
+void \mbox{\hyperlink{classMenu_a61c9f8211683b0a368e3a71ad85066cd}{check\+Occupation\+Per\+\_\+5}} ()
+\item 
+void \mbox{\hyperlink{classMenu_a8e64ca1220b4152cdd6d59b9ad281e06}{check\+Biggest\+Uc\+\_\+6}} ()
+\item 
+void \mbox{\hyperlink{classMenu_a647ffbf5e332f5aa6703308803ca00ed}{add\+Student\+\_\+1}} ()
+\begin{DoxyCompactList}\small\item\em 3rd Part -\/$>$ request\+Change // \end{DoxyCompactList}\item 
+vector$<$ pair$<$ \mbox{\hyperlink{classClasses}{Classes}}, int $>$ $>$ \mbox{\hyperlink{classMenu_a865f55358cac6b792c148a480ea3a54d}{checkocu}} ()
+\begin{DoxyCompactList}\small\item\em Helper functions of the ADDREQUEST//. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classMenu_a7282d8b3a13611407c24095d12767ef3}{balanceclasses}} (vector$<$ pair$<$ \mbox{\hyperlink{classClasses}{Classes}}, int $>$$>$ original)
+\begin{DoxyCompactList}\small\item\em Function to check if the class occupancy is balanced. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classMenu_a91acb716d31734c183451f53fe099594}{overlap}} (list$<$ \mbox{\hyperlink{classClasses}{Classes}} $>$ Sch, \mbox{\hyperlink{classClasses}{Classes}} clwantchange)
+\begin{DoxyCompactList}\small\item\em Function to check if a class overlaps with the student\textquotesingle{}s existing schedule. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMenu_a5586ac53b8c440075a35004ea3629502}{remove\+Student\+\_\+2}} ()
+\item 
+void \mbox{\hyperlink{classMenu_ad23028ab6aa216bd80ec99ba7765d932}{switch\+Student\+\_\+3}} ()
+\begin{DoxyCompactList}\small\item\em Function to switch a student from one class/\+UC to another. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMenu_a768abc87a24a86783c58a74364c116d5}{show\+History}} ()
+\begin{DoxyCompactList}\small\item\em Function to display the history from the history file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMenu_af7ccf684523b96085900d49fa22974e6}{show\+Students\+Per\+Year\+\_\+1}} ()
+\begin{DoxyCompactList}\small\item\em 4th Part -\/$>$ access\+Info -\/$>$ show\+Students\+Per \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMenu_a86530da4cb62f76064e255c251db377e}{show\+Students\+Per\+Class\+\_\+2}} ()
+\item 
+void \mbox{\hyperlink{classMenu_ae969f40b5a529444c389dda0f2a7a875}{show\+Students\+Per\+UC\+\_\+3}} ()
+\item 
+void \mbox{\hyperlink{classMenu_a6be74cd91045b18e447fdbbede20b992}{check\+Occupation\+Per\+Year\+\_\+1}} ()
+\begin{DoxyCompactList}\small\item\em 5th Part -\/$>$ access\+Info -\/$>$ check\+Occupation\+Per \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMenu_a57cb9fa00ad07e73e584eef451b70874}{check\+Occupation\+Per\+Class\+\_\+2}} ()
+\item 
+void \mbox{\hyperlink{classMenu_ada9fb293c7f6905e9369bd669af518d2}{check\+Occupation\+Per\+UC\+\_\+3}} ()
+\item 
+void \mbox{\hyperlink{classMenu_aa0819f56f6d99ca0fe2207ab8e2a8ef4}{add\+To\+History}} (const string \&change)
+\begin{DoxyCompactList}\small\item\em Function to add a change to the history file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Retains all Menus used in this program and the functions used inside these menus;. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classMenu_a8761870de90e6d70b6f3a7a7f033fa6f}\label{classMenu_a8761870de90e6d70b6f3a7a7f033fa6f}} 
+\index{Menu@{Menu}!accessInfo\_1@{accessInfo\_1}}
+\index{accessInfo\_1@{accessInfo\_1}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{accessInfo\_1()}{accessInfo\_1()}}
+{\footnotesize\ttfamily void Menu\+::access\+Info\+\_\+1 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+1st Part of the \mbox{\hyperlink{classMenu}{Menu}} // 
+
+Function to access different types of information\mbox{\Hypertarget{classMenu_a647ffbf5e332f5aa6703308803ca00ed}\label{classMenu_a647ffbf5e332f5aa6703308803ca00ed}} 
+\index{Menu@{Menu}!addStudent\_1@{addStudent\_1}}
+\index{addStudent\_1@{addStudent\_1}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{addStudent\_1()}{addStudent\_1()}}
+{\footnotesize\ttfamily void Menu\+::add\+Student\+\_\+1 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+3rd Part -\/$>$ request\+Change // 
+
+\doxysubparagraph*{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# FUNCTIONS CHANGE \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#///}Clear the console screen
+
+Display a menu for adding a student to a class or a UC
+
+Prompt the user for their choice
+
+Handle user\textquotesingle{}s choice for UC (1), Class (2), or going back to the menu
+
+Prompt the user to insert the student\textquotesingle{}s code
+
+Find the \mbox{\hyperlink{classStudent}{Student}} object with the given student code
+
+If the student code is not found, inform the user and restart the process
+
+Check if the student is already enrolled in 7 UCs, which is the maximum
+
+Prompt the user to insert the UC code to which the student should be added
+
+Iterate through available classes and display the ones for the selected UC
+
+If the selected UC doesn\textquotesingle{}t exist, inform the user
+
+Prompt the user to insert the code of the class they wish to add
+
+Checking if the class has reached its maximum occupancy
+
+Check if the overall balance of classes is exceeded
+
+Prompt the user to insert the class code to which the student should be added
+
+Prompt the user to insert the code of the UC they wish to be added
+
+Checking if the class has reached its maximum occupancy
+
+Check if the overall balance of classes is exceeded
+
+Adding the changes to the \mbox{\hyperlink{classStudent}{Student}}
+
+Create a new \mbox{\hyperlink{classClasses}{Classes}} object for the class to be added
+
+Checking if the new class overlaps with the student\textquotesingle{}s existing schedule
+
+Add the new class to the student\textquotesingle{}s schedule
+
+Open the file for writing changes
+
+Create a line to be written to the file when adding to a UC
+
+Create a change record and add it to the history
+
+Create a line to be written to the file when adding to a class
+
+Create a change record and add it to the history
+
+Close the file
+
+Update data objects with the latest data from files\mbox{\Hypertarget{classMenu_aa0819f56f6d99ca0fe2207ab8e2a8ef4}\label{classMenu_aa0819f56f6d99ca0fe2207ab8e2a8ef4}} 
+\index{Menu@{Menu}!addToHistory@{addToHistory}}
+\index{addToHistory@{addToHistory}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{addToHistory()}{addToHistory()}}
+{\footnotesize\ttfamily void Menu\+::add\+To\+History (\begin{DoxyParamCaption}\item[{const string \&}]{change }\end{DoxyParamCaption})}
+
+
+
+Function to add a change to the history file. 
+
+Note\+: If the file cannot be opened, it will silently fail without any error handling.\mbox{\Hypertarget{classMenu_a7282d8b3a13611407c24095d12767ef3}\label{classMenu_a7282d8b3a13611407c24095d12767ef3}} 
+\index{Menu@{Menu}!balanceclasses@{balanceclasses}}
+\index{balanceclasses@{balanceclasses}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{balanceclasses()}{balanceclasses()}}
+{\footnotesize\ttfamily bool Menu\+::balanceclasses (\begin{DoxyParamCaption}\item[{vector$<$ pair$<$ \mbox{\hyperlink{classClasses}{Classes}}, int $>$$>$}]{original }\end{DoxyParamCaption})}
+
+
+
+Function to check if the class occupancy is balanced. 
+
+Check if the difference in occupancy is more than 4 or less than -\/4\mbox{\Hypertarget{classMenu_a8e64ca1220b4152cdd6d59b9ad281e06}\label{classMenu_a8e64ca1220b4152cdd6d59b9ad281e06}} 
+\index{Menu@{Menu}!checkBiggestUc\_6@{checkBiggestUc\_6}}
+\index{checkBiggestUc\_6@{checkBiggestUc\_6}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{checkBiggestUc\_6()}{checkBiggestUc\_6()}}
+{\footnotesize\ttfamily void Menu\+::check\+Biggest\+Uc\+\_\+6 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Clear the console screen
+
+Initialize variables to keep track of the biggest UC
+
+Iterate through the list of classes
+
+Display the biggest UC in the format \char`\"{}\+The biggest UC in L.\+EIC is \{\+UC Code\}.\char`\"{}
+
+Ask the user for further action\mbox{\Hypertarget{classMenu_a61c9f8211683b0a368e3a71ad85066cd}\label{classMenu_a61c9f8211683b0a368e3a71ad85066cd}} 
+\index{Menu@{Menu}!checkOccupationPer\_5@{checkOccupationPer\_5}}
+\index{checkOccupationPer\_5@{checkOccupationPer\_5}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{checkOccupationPer\_5()}{checkOccupationPer\_5()}}
+{\footnotesize\ttfamily void Menu\+::check\+Occupation\+Per\+\_\+5 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Function to check the occupation per year, class, or UC\mbox{\Hypertarget{classMenu_a57cb9fa00ad07e73e584eef451b70874}\label{classMenu_a57cb9fa00ad07e73e584eef451b70874}} 
+\index{Menu@{Menu}!checkOccupationPerClass\_2@{checkOccupationPerClass\_2}}
+\index{checkOccupationPerClass\_2@{checkOccupationPerClass\_2}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{checkOccupationPerClass\_2()}{checkOccupationPerClass\_2()}}
+{\footnotesize\ttfamily void Menu\+::check\+Occupation\+Per\+Class\+\_\+2 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Prompt the user to input a valid Class code
+
+Display a menu with two options to choose from
+
+Iterate through the list of students and their schedules
+
+Iterate through the classes in each student\textquotesingle{}s schedule
+
+No need to continue searching
+
+Iterate through the list of students and their schedules
+
+Iterate through the classes in each student\textquotesingle{}s schedule
+
+No need to continue searching
+
+Display the count of students with lessons in the specified class
+
+Ask the user for further action\mbox{\Hypertarget{classMenu_ada9fb293c7f6905e9369bd669af518d2}\label{classMenu_ada9fb293c7f6905e9369bd669af518d2}} 
+\index{Menu@{Menu}!checkOccupationPerUC\_3@{checkOccupationPerUC\_3}}
+\index{checkOccupationPerUC\_3@{checkOccupationPerUC\_3}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{checkOccupationPerUC\_3()}{checkOccupationPerUC\_3()}}
+{\footnotesize\ttfamily void Menu\+::check\+Occupation\+Per\+UC\+\_\+3 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Clear the console screen
+
+Prompt the user to input a valid UC Code
+
+Display a menu with two options to choose from
+
+Prompt the user to choose an option
+
+Iterate through the list of students and their schedules
+
+Iterate through the classes in each student\textquotesingle{}s schedule
+
+No need to continue searching
+
+Iterate through the list of students and their schedules
+
+Iterate through the classes in each student\textquotesingle{}s schedule
+
+No need to continue searching
+
+Display the count of students enrolled in the specified UC
+
+Ask the user for further action\mbox{\Hypertarget{classMenu_a6be74cd91045b18e447fdbbede20b992}\label{classMenu_a6be74cd91045b18e447fdbbede20b992}} 
+\index{Menu@{Menu}!checkOccupationPerYear\_1@{checkOccupationPerYear\_1}}
+\index{checkOccupationPerYear\_1@{checkOccupationPerYear\_1}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{checkOccupationPerYear\_1()}{checkOccupationPerYear\_1()}}
+{\footnotesize\ttfamily void Menu\+::check\+Occupation\+Per\+Year\+\_\+1 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+5th Part -\/$>$ access\+Info -\/$>$ check\+Occupation\+Per 
+
+Clear the console screen
+
+Prompt the user to input a year number
+
+Determine the ordinal indicator for the year (e.\+g., 1st, 2nd, 3rd, etc.)
+
+Iterate through the list of students
+
+Iterate through the classes in the student\textquotesingle{}s schedule
+
+Check if the maximum year number matches the input
+
+Display the count of students in the specified year
+
+Ask the user for further action\mbox{\Hypertarget{classMenu_a865f55358cac6b792c148a480ea3a54d}\label{classMenu_a865f55358cac6b792c148a480ea3a54d}} 
+\index{Menu@{Menu}!checkocu@{checkocu}}
+\index{checkocu@{checkocu}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{checkocu()}{checkocu()}}
+{\footnotesize\ttfamily vector$<$ pair$<$ \mbox{\hyperlink{classClasses}{Classes}}, int $>$ $>$ Menu\+::checkocu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Helper functions of the ADDREQUEST//. 
+
+Function to check the occupation of classes
+
+Iterate through the available classes
+
+Iterate through all students\textquotesingle{} schedules to count how many are enrolled in the class\mbox{\Hypertarget{classMenu_a91acb716d31734c183451f53fe099594}\label{classMenu_a91acb716d31734c183451f53fe099594}} 
+\index{Menu@{Menu}!overlap@{overlap}}
+\index{overlap@{overlap}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{overlap()}{overlap()}}
+{\footnotesize\ttfamily bool Menu\+::overlap (\begin{DoxyParamCaption}\item[{list$<$ \mbox{\hyperlink{classClasses}{Classes}} $>$}]{Sch,  }\item[{\mbox{\hyperlink{classClasses}{Classes}}}]{clwantchange }\end{DoxyParamCaption})}
+
+
+
+Function to check if a class overlaps with the student\textquotesingle{}s existing schedule. 
+
+Iterate through the student\textquotesingle{}s existing classes
+
+Checking the types of the classes
+
+Checking if the classes overlap\mbox{\Hypertarget{classMenu_a5586ac53b8c440075a35004ea3629502}\label{classMenu_a5586ac53b8c440075a35004ea3629502}} 
+\index{Menu@{Menu}!removeStudent\_2@{removeStudent\_2}}
+\index{removeStudent\_2@{removeStudent\_2}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{removeStudent\_2()}{removeStudent\_2()}}
+{\footnotesize\ttfamily void Menu\+::remove\+Student\+\_\+2 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Function to remove a student from a class or UC
+
+Interaction with the user to choose the removal option
+
+Option to go back to the main menu
+
+Check if the provided student code exists
+
+Return to the student removal option
+
+Exit the program
+
+If the user chose to remove the student from a UC
+
+Create a new schedule without the specified UC
+
+UC found
+
+Return to the student removal option
+
+Exit the program
+
+Copy and modify the student\textquotesingle{}s class information in the data file
+
+Add the removal action to the history
+
+If the user chose to remove the student from a class
+
+Create a new schedule without the specified class
+
+Class found
+
+Return to the student removal option
+
+Exit the program
+
+Copy and modify the student\textquotesingle{}s class information in the data file
+
+Add the removal action to the history\mbox{\Hypertarget{classMenu_abb2546a9c1a565add9a589790281923d}\label{classMenu_abb2546a9c1a565add9a589790281923d}} 
+\index{Menu@{Menu}!requestChange\_2@{requestChange\_2}}
+\index{requestChange\_2@{requestChange\_2}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{requestChange\_2()}{requestChange\_2()}}
+{\footnotesize\ttfamily void Menu\+::request\+Change\+\_\+2 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Function to handle change requests\mbox{\Hypertarget{classMenu_a734798de5d2254c151308bfd89689805}\label{classMenu_a734798de5d2254c151308bfd89689805}} 
+\index{Menu@{Menu}!showClassSchedule\_4@{showClassSchedule\_4}}
+\index{showClassSchedule\_4@{showClassSchedule\_4}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{showClassSchedule\_4()}{showClassSchedule\_4()}}
+{\footnotesize\ttfamily void Menu\+::show\+Class\+Schedule\+\_\+4 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Clear the console screen
+
+Prompt the user to input a valid Class Code
+
+Iterate through the list of UCs to find a matching class code
+
+Ask the user for further action\mbox{\Hypertarget{classMenu_a768abc87a24a86783c58a74364c116d5}\label{classMenu_a768abc87a24a86783c58a74364c116d5}} 
+\index{Menu@{Menu}!showHistory@{showHistory}}
+\index{showHistory@{showHistory}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{showHistory()}{showHistory()}}
+{\footnotesize\ttfamily void Menu\+::show\+History (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Function to display the history from the history file. 
+
+Open the history file for reading
+
+Display each line of the history file
+
+Close the history file
+
+Return to the main menu if \textquotesingle{}R\textquotesingle{} is entered
+
+Exit the program if \textquotesingle{}Q\textquotesingle{} or any other input is entered\mbox{\Hypertarget{classMenu_a94310223c036f183dd3701244b1275a9}\label{classMenu_a94310223c036f183dd3701244b1275a9}} 
+\index{Menu@{Menu}!showStudentSchedule\_1@{showStudentSchedule\_1}}
+\index{showStudentSchedule\_1@{showStudentSchedule\_1}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{showStudentSchedule\_1()}{showStudentSchedule\_1()}}
+{\footnotesize\ttfamily void Menu\+::show\+Student\+Schedule\+\_\+1 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+2nd Part -\/$>$ access\+Info // 
+
+\doxysubparagraph*{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# FUNCTIONS INFO \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#///}Function to display a student\textquotesingle{}s schedule\mbox{\Hypertarget{classMenu_a9ce38e5c7a138e9e9011d0f6034d4f93}\label{classMenu_a9ce38e5c7a138e9e9011d0f6034d4f93}} 
+\index{Menu@{Menu}!showStudentsInAtLeastNUCs\_3@{showStudentsInAtLeastNUCs\_3}}
+\index{showStudentsInAtLeastNUCs\_3@{showStudentsInAtLeastNUCs\_3}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{showStudentsInAtLeastNUCs\_3()}{showStudentsInAtLeastNUCs\_3()}}
+{\footnotesize\ttfamily void Menu\+::show\+Students\+In\+At\+Least\+NUCs\+\_\+3 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Clear the console screen
+
+Prompt the user to input the number of UCs
+
+Create a set to store unique UC codes for each student
+
+Inform the user about the purpose of the operation
+
+Iterate through the list of students
+
+Get the student\textquotesingle{}s schedule
+
+Iterate through the classes in the student\textquotesingle{}s schedule
+
+Check if the student is enrolled in at least \textquotesingle{}input\textquotesingle{} UCs
+
+Display the total count of eligible students
+
+Ask the user for further action\mbox{\Hypertarget{classMenu_a0e4c44f99d508d655f1c308c36859150}\label{classMenu_a0e4c44f99d508d655f1c308c36859150}} 
+\index{Menu@{Menu}!showStudentsPer\_2@{showStudentsPer\_2}}
+\index{showStudentsPer\_2@{showStudentsPer\_2}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{showStudentsPer\_2()}{showStudentsPer\_2()}}
+{\footnotesize\ttfamily void Menu\+::show\+Students\+Per\+\_\+2 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Function to display options to show students per year, class, or UC\mbox{\Hypertarget{classMenu_a86530da4cb62f76064e255c251db377e}\label{classMenu_a86530da4cb62f76064e255c251db377e}} 
+\index{Menu@{Menu}!showStudentsPerClass\_2@{showStudentsPerClass\_2}}
+\index{showStudentsPerClass\_2@{showStudentsPerClass\_2}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{showStudentsPerClass\_2()}{showStudentsPerClass\_2()}}
+{\footnotesize\ttfamily void Menu\+::show\+Students\+Per\+Class\+\_\+2 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Function to display students in a specific class
+
+Iterate through students and their schedules to check for the specified class
+
+Display students in the specified class\mbox{\Hypertarget{classMenu_ae969f40b5a529444c389dda0f2a7a875}\label{classMenu_ae969f40b5a529444c389dda0f2a7a875}} 
+\index{Menu@{Menu}!showStudentsPerUC\_3@{showStudentsPerUC\_3}}
+\index{showStudentsPerUC\_3@{showStudentsPerUC\_3}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{showStudentsPerUC\_3()}{showStudentsPerUC\_3()}}
+{\footnotesize\ttfamily void Menu\+::show\+Students\+Per\+UC\+\_\+3 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Function to display students per UC
+
+Iterate through students and their schedules to check for the specified UC
+
+Keep checking student schedules until the UC is found
+
+Display students studying the specified UC\mbox{\Hypertarget{classMenu_af7ccf684523b96085900d49fa22974e6}\label{classMenu_af7ccf684523b96085900d49fa22974e6}} 
+\index{Menu@{Menu}!showStudentsPerYear\_1@{showStudentsPerYear\_1}}
+\index{showStudentsPerYear\_1@{showStudentsPerYear\_1}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{showStudentsPerYear\_1()}{showStudentsPerYear\_1()}}
+{\footnotesize\ttfamily void Menu\+::show\+Students\+Per\+Year\+\_\+1 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+4th Part -\/$>$ access\+Info -\/$>$ show\+Students\+Per 
+
+Function to display students by a specific year
+
+Initialize variables for year and class code comparison
+
+Iterate through the students and their schedules to check for the specified year
+
+Find the maximum class code for the student
+
+Display student information if the year matches\mbox{\Hypertarget{classMenu_ae1ec62e738dda7faaaec850bd0b58ffe}\label{classMenu_ae1ec62e738dda7faaaec850bd0b58ffe}} 
+\index{Menu@{Menu}!start@{start}}
+\index{start@{start}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily void Menu\+::start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\doxysubparagraph*{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# MENUS \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#///}Main menu function to display and handle user options\mbox{\Hypertarget{classMenu_ad23028ab6aa216bd80ec99ba7765d932}\label{classMenu_ad23028ab6aa216bd80ec99ba7765d932}} 
+\index{Menu@{Menu}!switchStudent\_3@{switchStudent\_3}}
+\index{switchStudent\_3@{switchStudent\_3}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{switchStudent\_3()}{switchStudent\_3()}}
+{\footnotesize\ttfamily void Menu\+::switch\+Student\+\_\+3 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Function to switch a student from one class/\+UC to another. 
+
+Display menu for choosing class or UC
+
+Interaction\+: Choose between UC or Class
+
+Option to go back to the main menu
+
+Find the student based on their student code
+
+Switching within UCs
+
+Switching within classes
+
+Check class occupation
+
+Check if class switching results in class overlap
+
+Prepare the new schedule and check for overlaps
+
+Check for class overlaps
+
+Update the class information in the data file and add to history
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Menu.\+h\item 
+Menu.\+cpp\end{DoxyCompactItemize}

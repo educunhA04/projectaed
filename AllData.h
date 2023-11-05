@@ -8,31 +8,58 @@
 #include "Student.h"
 #include "Classes.h"
 
-using namespace std;
-
+/**
+ * @class AllData
+ * @brief Retains all the UCs, students, and schedule of a class.
+ */
 class AllData {
-    //AllData retains all the uc's, students and schedule of a class in specific
-    private:
-        string ccode;
-        vector<Classes> ucInSchedule;
-        set<Student> students;
+private:
+    vector<Classes> ucInSchedule; ///< Vector of Classes representing the schedule.
+    set<Student> students; ///< Set of Students.
 
-    public:
-        AllData(){students={};}
-        AllData(const vector<Classes>& newUcInShedule, const set<Student>& newStudents){
-            this->ucInSchedule = newUcInShedule;
-            this->students = newStudents;
-        }
+public:
+    /**
+     * @brief Default constructor for the AllData class.
+     */
+    AllData() { students = {}; }
 
-        vector<Classes> getUCS() const {return ucInSchedule;}
-        set<Student> getStudents() const {return students;}
+    /**
+     * @brief Parameterized constructor for the AllData class.
+     * @param newUcInSchedule Vector of Classes representing the schedule.
+     * @param newStudents Set of Students.
+     */
+    AllData(const vector<Classes>& newUcInSchedule, const set<Student>& newStudents) {
+        this->ucInSchedule = newUcInSchedule;
+        this->students = newStudents;
+    }
 
-        void setStudents(const set<Student>& newStudents){
-            this->students = newStudents;
-        }
-        void setClasses(const vector<Classes>& newClasses){
-            this -> ucInSchedule = newClasses;
-        }
+    /**
+     * @brief Getter function to retrieve the vector of Classes representing the schedule.
+     * @return Vector of Classes.
+     */
+    vector<Classes> getUCS() const { return ucInSchedule; }
+
+    /**
+     * @brief Getter function to retrieve the set of Students.
+     * @return Set of Students.
+     */
+    set<Student> getStudents() const { return students; }
+
+    /**
+     * @brief Setter function to update the set of Students.
+     * @param newStudents New set of Students.
+     */
+    void setStudents(const set<Student>& newStudents) {
+        this->students = newStudents;
+    }
+
+    /**
+     * @brief Setter function to update the vector of Classes representing the schedule.
+     * @param newClasses New vector of Classes.
+     */
+    void setClasses(const vector<Classes>& newClasses) {
+        this->ucInSchedule = newClasses;
+    }
 };
 
 #endif // PROJETO_ALLDATA_H

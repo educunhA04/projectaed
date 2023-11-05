@@ -5,49 +5,63 @@
 #include <vector>
 #include "TimeType.h"
 
+/**
+    * @class Classes
+    * @brief Represents a class by its Class Code, UC Code, Day, Start Hour, Duration and Type
+    */
+
 using namespace std;
 
-class Classes{
+class Classes {
     private:
-        string classCode;
-        string ucCode;
-        TimeType timetable;
+        string classCode;   /// Private member variable for class code
+        string ucCode;      /// Private member variable for UC code
+        TimeType timetable; /// Private member variable for timetable
 
     public:
-        Classes(){ucCode="";}
-        Classes( const string& cCode, const string& uCode, TimeType& newTimetable) {
-            this -> classCode = cCode;
-            this -> ucCode = uCode;
-            this -> timetable = newTimetable;
+        Classes(){          /// Default constructor
+            ucCode = "";    /// Initialize ucCode with an empty string
         }
 
-        string getClassCode() const {return classCode;}
-        string getUcCode() const {return ucCode;}
-        TimeType getTimetable() const {return timetable;}
-        bool operator<( Classes& other) const {
-            return timetable < other.getTimetable();
-        }
-        int convertDay(const string& day) const{
-            if (day == "Monday") return 1;
-            if (day == "Tuesday") return 2;
-            if (day == "Wednesday") return 3;
-            if (day == "Thursday") return 4;
-            if (day == "Friday") return 5;
-            else return 0;
-        }
+    Classes(const string& cCode, const string& uCode, TimeType& newTimetable) {
+        // Constructor with parameters
+        this->classCode = cCode;             /// Initialize classCode with cCode
+        this->ucCode = uCode;                /// Initialize ucCode with uCode
+        this->timetable = newTimetable;      /// Initialize timetable with newTimetable
+    }
 
-        bool operator<(const Classes& other) const{
-            bool result = false;
+    /// Getter functions to retrieve classCode, ucCode, and timetable
+    string getClassCode() const {return classCode;}
+    string getUcCode() const {return ucCode;}
+    TimeType getTimetable() const {return timetable;}    /// Time when the class occur
 
-            if (convertDay(timetable.getDay()) < convertDay(other.timetable.getDay())) result = true;
-            else if (timetable.getStartHour() < other.timetable.getStartHour()) result = true;
+    /// Overloaded less-than operator for comparing Classes objects based on timetable
+    bool operator<( Classes& other) const {
+        return timetable < other.getTimetable();
+    }
 
-            return result;
-        }
+    /// Helper function to convert day string to an integer representation
+    int convertDay(const string& day) const{
+        if (day == "Monday") return 1;
+        if (day == "Tuesday") return 2;
+        if (day == "Wednesday") return 3;
+        if (day == "Thursday") return 4;
+        if (day == "Friday") return 5;
+        else return 0;
+    }
+    /// Overloaded less-than operator for comparing Classes objects based on timetable
+    bool operator<(const Classes& other) const{     //The classes are organized by the timetable
+        bool result = false;
 
-        void setClassCode(const string& newCode) {classCode = newCode;}
-        void setUcCode(const string& newUcCode) {ucCode = newUcCode;}
+        if (convertDay(timetable.getDay()) < convertDay(other.timetable.getDay())) result = true;
+        else if (timetable.getStartHour() < other.timetable.getStartHour()) result = true;
 
+        return result;
+    }
+    /// Setter functions to update classCode, ucCode, and timetable
+    void setClassCode(const string& newCode) {classCode = newCode;}
+    void setUcCode(const string& newUcCode) {ucCode = newUcCode;}
+    void setTimetable( TimeType newTimetable){timetable =newTimetable;}
 };
 
 #endif //PROJETO_CLASSES_H

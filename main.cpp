@@ -5,12 +5,17 @@
 using namespace std;
 
 int main(){
-    // Get Data;
+    /**
+     * @brief Creating the Data to work in the project, and reading it from the files;
+     */
+    /// Get Data;
     AllData allData;
     allData.setClasses(readClassesData()); // classcode, uccode, time(weekday, starthour, duration, type)
     allData.setStudents(readStudentsData()); // studentname, upcode, classdata(classcode, uccode, time)
 
-    // Initialize Menu and Move Data inside the menu;
+    /**
+     * @brief Initializing the Menu with the Data read before;
+     */
     Menu menu;
     menu.setData(allData);
     menu.start();

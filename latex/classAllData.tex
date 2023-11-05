@@ -1,0 +1,114 @@
+\hypertarget{classAllData}{}\doxysection{All\+Data Class Reference}
+\label{classAllData}\index{AllData@{AllData}}
+
+
+Retains all the UCs, students, and schedule of a class.  
+
+
+
+
+{\ttfamily \#include $<$All\+Data.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classAllData_a32649d520dc88c8cde10cf9686d8d421}\label{classAllData_a32649d520dc88c8cde10cf9686d8d421}} 
+\mbox{\hyperlink{classAllData_a32649d520dc88c8cde10cf9686d8d421}{All\+Data}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for the \mbox{\hyperlink{classAllData}{All\+Data}} class. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classAllData_af1225c7365e06d97e2f2256855418e09}{All\+Data}} (const vector$<$ \mbox{\hyperlink{classClasses}{Classes}} $>$ \&new\+Uc\+In\+Schedule, const set$<$ \mbox{\hyperlink{classStudent}{Student}} $>$ \&new\+Students)
+\begin{DoxyCompactList}\small\item\em Parameterized constructor for the \mbox{\hyperlink{classAllData}{All\+Data}} class. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{classClasses}{Classes}} $>$ \mbox{\hyperlink{classAllData_acdeb64e6a751e460c5971281dcf59f15}{get\+UCS}} () const
+\begin{DoxyCompactList}\small\item\em Getter function to retrieve the vector of \mbox{\hyperlink{classClasses}{Classes}} representing the schedule. \end{DoxyCompactList}\item 
+set$<$ \mbox{\hyperlink{classStudent}{Student}} $>$ \mbox{\hyperlink{classAllData_a2ac4c46d786d82172f6f928a0deeacc7}{get\+Students}} () const
+\begin{DoxyCompactList}\small\item\em Getter function to retrieve the set of Students. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classAllData_a3c51a02d95aa51e0956f8ff36c526de9}{set\+Students}} (const set$<$ \mbox{\hyperlink{classStudent}{Student}} $>$ \&new\+Students)
+\begin{DoxyCompactList}\small\item\em Setter function to update the set of Students. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classAllData_aec2c907d2aaaa6e25f78f7ac84e144f9}{set\+Classes}} (const vector$<$ \mbox{\hyperlink{classClasses}{Classes}} $>$ \&new\+Classes)
+\begin{DoxyCompactList}\small\item\em Setter function to update the vector of \mbox{\hyperlink{classClasses}{Classes}} representing the schedule. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Retains all the UCs, students, and schedule of a class. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classAllData_af1225c7365e06d97e2f2256855418e09}\label{classAllData_af1225c7365e06d97e2f2256855418e09}} 
+\index{AllData@{AllData}!AllData@{AllData}}
+\index{AllData@{AllData}!AllData@{AllData}}
+\doxysubsubsection{\texorpdfstring{AllData()}{AllData()}}
+{\footnotesize\ttfamily All\+Data\+::\+All\+Data (\begin{DoxyParamCaption}\item[{const vector$<$ \mbox{\hyperlink{classClasses}{Classes}} $>$ \&}]{new\+Uc\+In\+Schedule,  }\item[{const set$<$ \mbox{\hyperlink{classStudent}{Student}} $>$ \&}]{new\+Students }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Parameterized constructor for the \mbox{\hyperlink{classAllData}{All\+Data}} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Uc\+In\+Schedule} & Vector of \mbox{\hyperlink{classClasses}{Classes}} representing the schedule. \\
+\hline
+{\em new\+Students} & Set of Students. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classAllData_a2ac4c46d786d82172f6f928a0deeacc7}\label{classAllData_a2ac4c46d786d82172f6f928a0deeacc7}} 
+\index{AllData@{AllData}!getStudents@{getStudents}}
+\index{getStudents@{getStudents}!AllData@{AllData}}
+\doxysubsubsection{\texorpdfstring{getStudents()}{getStudents()}}
+{\footnotesize\ttfamily set$<$\mbox{\hyperlink{classStudent}{Student}}$>$ All\+Data\+::get\+Students (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Getter function to retrieve the set of Students. 
+
+\begin{DoxyReturn}{Returns}
+Set of Students. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classAllData_acdeb64e6a751e460c5971281dcf59f15}\label{classAllData_acdeb64e6a751e460c5971281dcf59f15}} 
+\index{AllData@{AllData}!getUCS@{getUCS}}
+\index{getUCS@{getUCS}!AllData@{AllData}}
+\doxysubsubsection{\texorpdfstring{getUCS()}{getUCS()}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{classClasses}{Classes}}$>$ All\+Data\+::get\+UCS (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Getter function to retrieve the vector of \mbox{\hyperlink{classClasses}{Classes}} representing the schedule. 
+
+\begin{DoxyReturn}{Returns}
+Vector of \mbox{\hyperlink{classClasses}{Classes}}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classAllData_aec2c907d2aaaa6e25f78f7ac84e144f9}\label{classAllData_aec2c907d2aaaa6e25f78f7ac84e144f9}} 
+\index{AllData@{AllData}!setClasses@{setClasses}}
+\index{setClasses@{setClasses}!AllData@{AllData}}
+\doxysubsubsection{\texorpdfstring{setClasses()}{setClasses()}}
+{\footnotesize\ttfamily void All\+Data\+::set\+Classes (\begin{DoxyParamCaption}\item[{const vector$<$ \mbox{\hyperlink{classClasses}{Classes}} $>$ \&}]{new\+Classes }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Setter function to update the vector of \mbox{\hyperlink{classClasses}{Classes}} representing the schedule. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Classes} & New vector of \mbox{\hyperlink{classClasses}{Classes}}. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classAllData_a3c51a02d95aa51e0956f8ff36c526de9}\label{classAllData_a3c51a02d95aa51e0956f8ff36c526de9}} 
+\index{AllData@{AllData}!setStudents@{setStudents}}
+\index{setStudents@{setStudents}!AllData@{AllData}}
+\doxysubsubsection{\texorpdfstring{setStudents()}{setStudents()}}
+{\footnotesize\ttfamily void All\+Data\+::set\+Students (\begin{DoxyParamCaption}\item[{const set$<$ \mbox{\hyperlink{classStudent}{Student}} $>$ \&}]{new\+Students }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Setter function to update the set of Students. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Students} & New set of Students. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+All\+Data.\+h\end{DoxyCompactItemize}
